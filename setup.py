@@ -5,7 +5,7 @@ os.environ['CC'] = 'gcc'
 
 src_dir = 'src'
 
-ext_modules = [Extension('custom', [src_dir + '/MyClass.cpp'])]
+ext_modules = [Extension('custom', [src_dir + '/Sample.cpp'])]
 
 setup(
   name='custom',
