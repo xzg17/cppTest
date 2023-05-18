@@ -10,6 +10,8 @@ typedef struct {
 } CustomObject;
 
 static PyObject *Class_sum(CustomObject *self);
+static int *Dummy_init(CustomObject *self, PyObject *args);
+
 
 static PyMethodDef CustomObject_methods[] = {
     {"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
