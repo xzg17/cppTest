@@ -1,6 +1,6 @@
 #include <math.h>
 #include <Python.h>
-//*
+
 class MyClass{
   public:
     int dummy_int;
@@ -21,11 +21,6 @@ MyClass::MyClass(int a, int b){
   b = b;
 };
 
-
 int MyClass::mysum(){
   return a+b;
-};
-//*/
-int mydummy(int a){
-  return a;
 };
