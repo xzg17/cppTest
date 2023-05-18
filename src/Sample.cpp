@@ -55,7 +55,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_descr_get */
     0,                        /* tp_descr_set */
     0,                        /* tp_dictoffset */
-    (initproc)Dummy_init,     /* tp_init */
+    0,//(initproc)Dummy_init,     /* tp_init */
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
@@ -76,7 +76,7 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
         return 0;
     }
     //*/
-    return -1;
+    return 0;
 };
 
 static PyModuleDef custommodule = {
