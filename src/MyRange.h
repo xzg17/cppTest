@@ -6,7 +6,6 @@ class MyRange{
     MyRange(int a);
     MyRange(int a, int b);
     MyRange(int a, int b, int c);
-  private:
     int a;
     int b;
     int c;
