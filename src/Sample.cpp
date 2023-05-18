@@ -9,7 +9,7 @@ typedef struct {
         MyClass *myclass;
 } CustomObject;
 
-static PyObject *Class_sum(MyClass *self);
+static PyObject *Class_sum(CustomObject *self);
 
 static PyMethodDef CustomObject_methods[] = {
     //{"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
@@ -58,9 +58,9 @@ static PyTypeObject CustomType = {
     PyType_GenericNew,        /* tp_new */
 };
 
-static PyObject *Class_sum(MyClass *self){
-    //return Py_BuildValue("i", self->myclass->mysum());
-    //*
+static PyObject *Class_sum(CustomObject *self){
+    return Py_BuildValue("i", self->myclass->mysum());
+    /*
     MyClass *dummy;
     int dummyint = dummy->mysum();
     return Py_BuildValue("i", 0);
