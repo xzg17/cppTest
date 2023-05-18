@@ -69,8 +69,10 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
     int a, b;
     
     if(PyArg_ParseTuple(args, "ii", &a, &b)){
+        printf("Success!");
         self->myclass = new MyClass(a, b);
     } else {
+        printf("Error!");
         self->myclass = new MyClass(0, 0);
     }
     return 0;
