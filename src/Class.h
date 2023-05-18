@@ -13,7 +13,8 @@ class MyClass{
 };
 
 MyClass::MyClass(){
-  return;
+  a = 0;
+  b = 0;
 };
 /*
 MyClass::MyClass(int a, int b){
