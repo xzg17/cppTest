@@ -9,6 +9,11 @@ typedef struct {
         MyClass *myclass;
 } CustomObject;
 
+static PyMethodDef CustomObject_methods[] = {
+    {NULL} /* Sentinel */
+};
+
+
 static PyTypeObject CustomType = {
     PyVarObject_HEAD_INIT(NULL, 0) "custom.Custom", /* tp_name */
     sizeof(CustomObject),                           /* tp_basicsize */
