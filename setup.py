@@ -5,7 +5,7 @@ os.environ['CC'] = 'gcc'
 
 src_dir = 'src'
 
-ext_modules = [Extension('MyRange', [src_dir + '/MyRange.cpp'], language='c++')]
+ext_modules = [Extension('MyRange', [src_dir + '/MyClass.cpp'], language='c++')]
 
 setup(
   name='cppTest',
