@@ -65,7 +65,7 @@ static PyObject *Class_sum(CustomObject *self){
 };
 
 static int *Dummy_init(CustomObject *self, PyObject *args){
-    /*
+    //*
     if(PyCallable_Check(args)){
         int a, b;
         if(!PyArg_ParseTuple(args, "ii", &a, &b)){
