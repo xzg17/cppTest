@@ -63,7 +63,7 @@ static PyModuleDef classmodule = {
 };
 
 PyMODINIT_FUNC
-PyInit_custom(void){
+PyInit_MyClass(void){
     PyObject *m;
     
     m = PyModule_Create(&classmodule);
