@@ -63,7 +63,7 @@ static PyTypeObject CustomType = {
 static PyObject *Class_sum(CustomObject *self){
     return Py_BuildValue("i", self->myclass->mysum());
 };
-
+/*
 static int *Dummy_init(CustomObject *self, PyObject *args){
     int a, b;
     if(PyArg_ParseTuple(args, "ii", %a, &b)){
@@ -73,7 +73,7 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
     };
     return 0;
 };
-
+//*/
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
     "customZ",
