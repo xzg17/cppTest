@@ -9,7 +9,10 @@ typedef struct {
         MyClass *myclass;
 } CustomObject;
 
+static PyObject *Class_sum(MyClass *self, PyObject *args);
+
 static PyMethodDef CustomObject_methods[] = {
+    //{"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
     {NULL} /* Sentinel */
 };
 
