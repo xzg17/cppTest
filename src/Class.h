@@ -11,6 +11,10 @@ class MyClass{
     int a;
     int b;
 };
+
+MyClass::MyClass(){
+  return;
+};
 /*
 MyClass::MyClass(int a, int b){
   this->a = a;
