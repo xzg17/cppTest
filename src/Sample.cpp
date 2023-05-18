@@ -3,8 +3,10 @@
 #include "Class.h"
 
 typedef struct {
+    
     PyObject_HEAD
     /* Type-specific fields go here. */
+        MyClass *myclass;
 } CustomObject;
 
 static PyTypeObject CustomType = {
