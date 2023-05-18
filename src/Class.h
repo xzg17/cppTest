@@ -1,27 +1,18 @@
 #include <math.h>
 #include <Python.h>
 
-class MyRange{
+class MyClass{
   public:
-    MyRange(int a);
-    MyRange(int a, int b);
-    MyRange(int a, int b, int c);
+    MyClass(int a, int b);
+    int mysum(void);
+  private:
     int a;
     int b;
-    int c;
 };
-MyRange::MyRange(int b){
-  this->a = 0;
-  this->b = b;
-  thid->c = 1;
-};
-MyRange::MyRange(int a, int b){
+MyClass:MyClass(int a, int b){
   this->a = a;
   this->b = b;
-  thid->c = 1;
 };
-MyRange::MyRange(int a, int b, int c){
-  this->a = a;
-  this->b = b;
-  thid->c = c;
+int MyClass::mysum(void){
+  return a+b;
 };
