@@ -68,7 +68,7 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
     
     int a, b;
     
-    if(PyArg_ParseTuple(args, "ii", %a, &b)){
+    if(PyArg_ParseTuple(args, "ii", &a, &b)){
         int c;
         //self->myclass = new MyClass(a, b);
     }/* else {
