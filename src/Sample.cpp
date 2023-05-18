@@ -12,7 +12,7 @@ typedef struct {
 static PyObject *Class_sum(CustomObject *self);
 
 static PyMethodDef CustomObject_methods[] = {
-    //{"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
+    {"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
     {NULL} /* Sentinel */
 };
 
