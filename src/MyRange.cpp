@@ -16,9 +16,9 @@ static PyMethodDef Py_Range_methods[] = {
 
 static PyObject *Range_range(Py_Range *self, PyObject *args){
   int a, b, c;
-  a = self->range->a;
-  b = self->range->b;
-  c = self->range->c;
+  a = self->range.a;
+  b = self->range.b;
+  c = self->range.c;
   
   int n = 0; 
   for(int i=a;i<b;i+=c){
