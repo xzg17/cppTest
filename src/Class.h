@@ -4,6 +4,7 @@
 class MyClass{
   public:
     int dummy_int;
+    MyClass();
     //MyClass(int a, int b);
     //int mysum(void);
   private:
