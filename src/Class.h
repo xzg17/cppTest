@@ -1,6 +1,6 @@
 #include <math.h>
 #include <Python.h>
-/*
+//*
 class MyClass{
   public:
     int dummy_int;
