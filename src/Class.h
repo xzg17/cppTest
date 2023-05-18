@@ -13,14 +13,16 @@ class MyClass{
 };
 
 MyClass::MyClass(){
-  a = 0;
-  b = 0;
+  this->a = 0;
+  this->b = 0;
 };
 MyClass::MyClass(int a, int b){
-  a = a;
-  b = b;
+  this->a = a;
+  this->b = b;
 };
 
 int MyClass::mysum(){
+  int a = this->a;
+  int b = this->b;
   return a+b;
 };
