@@ -8,7 +8,7 @@ src_dir = 'src'
 ext_modules = [Extension('custom', [src_dir + '/Sample.cpp'])]
 
 setup(
-  name='cppTest',
+  name='custom',
   ext_modules = ext_modules,
   url="https://github.com/xzg17/cppTest"
 )
