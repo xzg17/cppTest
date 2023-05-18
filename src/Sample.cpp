@@ -22,7 +22,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_as_mapping */
     0,                        /* tp_hash */
     0,                        /* tp_call */
-    (reprfunc)Line_str,       /* tp_str */
+    0,       /* tp_str */
     0,                        /* tp_getattro */
     0,                        /* tp_setattro */
     0,                        /* tp_as_buffer */
