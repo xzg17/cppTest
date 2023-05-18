@@ -50,14 +50,14 @@ static PyTypeObject CustomType = {
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
-    "custom",
+    "customZ",
     "Example module that creates an extension type.",
     -1,
     NULL
 };
 
 PyMODINIT_FUNC
-PyInit_custom(void){
+PyInit_customZ(void){
     PyObject *m;
     
     m = PyModule_Create(&custommodule);
