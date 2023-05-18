@@ -58,6 +58,10 @@ static PyTypeObject CustomType = {
     PyType_GenericNew,        /* tp_new */
 };
 
+static PyObject *Class_sum(MyClass *self){
+    return Py_BuildValue("i", self->myclass->mysum());
+}
+
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
