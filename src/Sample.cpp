@@ -67,11 +67,11 @@ static PyObject *Class_sum(CustomObject *self){
 static int *Dummy_init(CustomObject *self, PyObject *args){
     
     int a, b;
-    /*
+    //*
     if(PyArg_ParseTuple(args, "ii", %a, &b)){
-        self->myclass = new Myclass(a, b);
+        self->myclass = new MyClass(a, b);
     } else {
-        self->myclass = new Myclass(0, 0);
+        self->myclass = new MyClass(0, 0);
     };
     //*/
     return 0;
