@@ -6,7 +6,7 @@ class MyClass{
     int dummy_int;
     MyClass();
     MyClass(int a, int b);
-    //int mysum(void);
+    int mysum();
   private:
     int a;
     int b;
@@ -21,8 +21,8 @@ MyClass::MyClass(int a, int b){
   b = b;
 };
 
-/*
-int MyClass::mysum(void){
+
+int MyClass::mysum(){
   return a+b;
 };
 //*/
