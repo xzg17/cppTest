@@ -1,6 +1,6 @@
 #include <math.h>
 #include <Python.h>
-
+/*
 class MyClass{
   public:
     MyClass(int a, int b);
@@ -15,4 +15,8 @@ MyClass::MyClass(int a, int b){
 };
 int MyClass::mysum(void){
   return a+b;
+};
+//*/
+int mydummy(int a){
+  return a;
 };
