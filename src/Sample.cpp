@@ -59,7 +59,7 @@ static PyTypeObject CustomType = {
 };
 
 static PyObject *Class_sum(MyClass *self){
-    Myclass dummy;
+    MyClass dummy;
     //return Py_BuildValue("i", self->myclass->mysum());
     return Py_BuildValue("i", 0);
 }
