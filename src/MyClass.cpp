@@ -76,7 +76,7 @@ PyInit_MyClass(void){
     }
 
     Py_INCREF(&ClassType);
-    PyModule_AddObject(m, "Custom", (PyObject *) &ClassType);
+    PyModule_AddObject(m, "Class", (PyObject *) &ClassType);
 
     return m;
 }
