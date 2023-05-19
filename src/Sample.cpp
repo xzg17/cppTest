@@ -68,7 +68,7 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
     int a = 0;
     int b = 0;
     if (PyArg_ParseTuple(args, "|ii", &a, &b)) {
-        self->myclass = new MyClass(0, 0);        
+        self->myclass = new MyClass(a, b);        
     } else {
         PyErr_SetString(PyExc_ValueError, "Invalid arguments. Use {a, b}.\n for example: MyClass(10, 20)");        
     }
