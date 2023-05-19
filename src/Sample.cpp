@@ -65,14 +65,9 @@ static PyObject *Class_sum(CustomObject *self){
 };
 
 static int *Dummy_init(CustomObject *self, PyObject *args){
-    int a;
-    int b;
+    int a = 0;
+    int b = 0;
     if (PyArg_ParseTuple(args, "|ii", &a, &b)) {
-        if((a==NULL) && (b==NULL)){
-            a = 0;
-            b = 0;
-            PyErr_SetString(PyExc_ValueError, "Invalid arguments. Use {a, b}.\n for example: MyClass(10, 20)");
-        }
         self->myclass = new MyClass(a, b);        
     } else {
         PyErr_SetString(PyExc_ValueError, "Invalid arguments. Use {a, b}.\n for example: MyClass(10, 20)");        
