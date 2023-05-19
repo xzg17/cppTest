@@ -71,7 +71,7 @@ static int *Dummy_init(CustomObject *self, PyObject *args){
         self->myclass = new MyClass(a, b);        
     } else {
         PyErr_SetObject(PyExc_ValueError, args);
-        PyErr_SetString(PyExc_ValueError, "Invalid arguments. Use {a, b}.\n for example: MyClass(10, 20)");        
+        //PyErr_SetString(PyExc_ValueError, "Invalid arguments. Use {a, b}.\n for example: MyClass(10, 20)");        
     }
     return 0;
 };
