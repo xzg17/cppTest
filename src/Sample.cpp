@@ -99,7 +99,7 @@ PyInit_customZ(void){
     }
 
     Py_INCREF(&CustomType);
-    PyModule_AddObject(m, "Custom", (PyObject *) &CustomType);
+    PyModule_AddObject(m, "MyPyClass", (PyObject *) &CustomType);
 
     return m;
 }
