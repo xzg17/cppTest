@@ -65,8 +65,9 @@ static PyObject *Class_sum(CustomObject *self){
 };
 
 static int *Dummy_init(CustomObject *self, PyObject *args){
+    //my memo:引数なしでPyType_Check(args)はnon_zero
     //*
-    if(!PyType_Check(args)){
+    if(!PyType_CheckExact(args)){
         PyErr_SetString(PyExc_ValueError, "Dummy!");
     }//*/
     int a = 0;
