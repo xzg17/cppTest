@@ -65,9 +65,10 @@ static PyObject *Class_sum(CustomObject *self){
 };
 
 static int *Dummy_init(CustomObject *self, PyObject *args){
+    /*
     if(args==Py_None){
         PyErr_SetString(PyExc_ValueError, "Dummy!");
-    }
+    }//*/
     int a = 0;
     int b = 0;
     if (PyArg_ParseTuple(args, "|ii", &a, &b)) {
