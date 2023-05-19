@@ -1,9 +1,17 @@
 #include <math.h>
 #include <Python.h>
+typedef struct{
+    int f;//from
+    int t;//to
+    int p;//piece
+    int pro;//progress
+    int d;//dir
+} move;
 
 class TestBoard{
 public:
     TestBoard(int bo[25], int il[2]);
+    int push();
 private:
     int board[25];
     int ills[2];
