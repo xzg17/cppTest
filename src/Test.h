@@ -10,7 +10,7 @@ typedef struct{
 class TestBoard{
 public:
     TestBoard(int bo[25], int il[2]);
-    int push(move);
+    int push(move mo,);
 private:
     int board[25];
     int ills[2];
