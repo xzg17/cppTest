@@ -58,12 +58,6 @@ int hen[14][6]={
     {8, 9,11,-1,-1,-1},
     {-1,-1,-1,-1,-1,-1}
 };
-typedef struct{
-    int f;//from
-    int t;//to
-    int p;//piece
-    int g;//get
-} move;
 
 class TestBoard{
 public:
