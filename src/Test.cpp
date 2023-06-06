@@ -8,6 +8,9 @@ typedef struct {
     TestBoard *test_bo
 } Py_Class_Board;
 
+static PyObject *Board_moves(CustomObject *self);
+static int *Dummy_init(CustomObject *self, PyObject *args);
+
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "generate moves."},
     {NULL} /* Sentinel */
@@ -130,6 +133,9 @@ static PyObject *Board_moves(Py_Class_Board *self){
   
 };
 //*/
+static int *Dummy_init(CustomObject *self, PyObject *args){
+    return 0;
+};
 
 static PyModuleDef classmodule = {
     PyModuleDef_HEAD_INIT,
