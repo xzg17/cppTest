@@ -1,7 +1,6 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "Class.h"
-#include "Test.h"
 
 typedef struct {
     
