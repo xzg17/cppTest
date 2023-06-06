@@ -14,8 +14,8 @@ ext_modules = [
   #'''
   Extension(
     'customZ',
-    [src_dir + '/Sample.cpp'],
-    language='c++')
+    [src_dir + '/Sample.cpp']
+    )
 ]
 
 setup(
