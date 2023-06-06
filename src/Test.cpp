@@ -136,14 +136,12 @@ static PyObject *Board_moves(Py_Class_Board *self){
                             }
                         }
                     }else{
-                        for(j=0;j<4;j++){
-                            p=chick[i][j];
-                            if(p+1){
-                                moves[m]=p;
-                                m++;
-                            }else{
-                                break;
-                            }
+                        p=chick[i][0];
+                        if(p+1){
+                            moves[m]=p;
+                            m++;
+                        }else{
+                            break;
                         }
                     }
                 }else{
