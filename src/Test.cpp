@@ -16,7 +16,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
 static PyMethodDef Py_Class_Board_methods[] = {
-    {"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
     {NULL} /* Sentinel */
 };
 
