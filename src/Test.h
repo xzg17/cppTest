@@ -64,7 +64,7 @@ public:
     int hands[6];
 private:
 };
-TestBoard(int bo[13], int hands[6]){
+TestBoard::TestBoard(int bo[13], int hands[6]){
     this->board[0] = bo[0];
     this->board[1] = bo[1];
     this->board[2] = bo[2];
