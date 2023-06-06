@@ -17,6 +17,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
 static PyMethodDef Py_Class_Board_methods[] = {
+    {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
     {NULL} /* Sentinel */
 };
 
