@@ -65,6 +65,9 @@ static PyTypeObject CustomType = {
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     PyObject *pyboard, *pyhands;
+    if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
+        return NULL;
+    }
     return 0;
 };
 
