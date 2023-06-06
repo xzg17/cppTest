@@ -54,7 +54,9 @@ static PyTypeObject ClassType = {
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
-
+//*
+static PyObject *Board_moves(Py_Class_Board *self){return Py_BuildValue("i", 1);}
+/*/
 static PyObject *Board_moves(Py_Class_Board *self){
     int moves[48];
     int i,j,m;
@@ -127,7 +129,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
     }
   
 };
-
+//*/
 
 static PyModuleDef classmodule = {
     PyModuleDef_HEAD_INIT,
