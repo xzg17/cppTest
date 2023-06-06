@@ -59,7 +59,6 @@ typedef struct{
 class TestBoard{
 public:
     TestBoard(int bo[13], int hands[6]);
-    int push(move mo,);
     int board[12];
     int hands[6];
 private:
