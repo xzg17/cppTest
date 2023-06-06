@@ -61,12 +61,12 @@ int hen[14][6]={
 
 class TestBoard{
 public:
-    TestBoard(int bo[13], int hands[6]);
-    int board[12];
+    TestBoard(int bo[14], int hands[6]);
+    int board[14];
     int hands[6];
 private:
 };
-TestBoard::TestBoard(int bo[13], int hands[6]){
+TestBoard::TestBoard(int bo[14], int hands[6]){
     this->board[0] = bo[0];
     this->board[1] = bo[1];
     this->board[2] = bo[2];
@@ -80,4 +80,11 @@ TestBoard::TestBoard(int bo[13], int hands[6]){
     this->board[10] = bo[10];
     this->board[11] = bo[11];
     this->board[12] = bo[12];
+    this->board[13] = bo[13];
+    this->hands[0] = hands[0];
+    this->hands[1] = hands[1];
+    this->hands[2] = hands[2];
+    this->hands[3] = hands[3];
+    this->hands[4] = hands[4];
+    this->hands[5] = hands[5];
 };
