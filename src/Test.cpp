@@ -61,10 +61,6 @@ static PyTypeObject CustomType = {
     PyType_GenericNew,        /* tp_new */
 };
 
-static PyObject *Class_sum(Py_Class_Board *self){
-    return Py_BuildValue("i", self->myclass->mysum());
-};
-
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     return 0;
 };
