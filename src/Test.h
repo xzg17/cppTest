@@ -10,9 +10,9 @@ class TestBoard{
 public:
     TestBoard(int bo[13], int hands[6]);
     int push(move mo,);
+    int board[12];
+    int hands[6];
 private:
-    int board[25];
-    int ills[2];
 };
 TestBoard(int bo[13], int hands[6]){
     this->board[0] = bo[0];
