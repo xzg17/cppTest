@@ -8,8 +8,8 @@ typedef struct {
     TestBoard *test_bo
 } Py_Class_Board;
 
-static PyObject *Board_moves(CustomObject *self);
-static int *Dummy_init(CustomObject *self, PyObject *args);
+static PyObject *Board_moves(Py_Class_Board *self);
+static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "generate moves."},
@@ -53,7 +53,7 @@ static PyTypeObject ClassType = {
     0,                        /* tp_descr_get */
     0,                        /* tp_descr_set */
     0,                        /* tp_dictoffset */
-    0,                        /* tp_init */
+    (initproc)Dummy_init,     /* tp_init */
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
