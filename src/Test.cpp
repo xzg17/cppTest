@@ -8,6 +8,7 @@ typedef struct {
     PyObject_HEAD
     /* Type-specific fields go here. */
         MyClass *myclass;
+        TestBoard *test_bo;
 } Py_Class_Board;
 
 static PyObject *Class_sum(Py_Class_Board *self);
