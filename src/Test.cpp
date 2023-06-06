@@ -1,20 +1,21 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "Test.h"
-
+//0,1,2,3,4,5<->null,lion,jiraffe,elephant,chick,hen
 typedef struct {
-  PyObject_HEAD
+    PyObject_HEAD
     /* Type-specific fields go here. */
-    Class *class
-} Py_Class_Object;
+    TestBoard *test_bo
+} Py_Class_Board;
 
-static PyMethodDef Py_Class_Object_methods[] = {
+static PyMethodDef Py_Class_Board_methods[] = {
+    {"moves", (PyCFunction)Board_moves, METH_VARARGS, "sum of a and b."},
     {NULL} /* Sentinel */
 };
 
 
 static PyTypeObject ClassType = {
-    PyVarObject_HEAD_INIT(NULL, 0) "Class", /* tp_name */
+    PyVarObject_HEAD_INIT(NULL, 0) "Test", /* tp_name */
     sizeof(Py_Class_Object),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
@@ -54,17 +55,87 @@ static PyTypeObject ClassType = {
     PyType_GenericNew,        /* tp_new */
 };
 
+static PyObject *Board_moves(Py_Class_Board *self){
+    int moves[48];
+    int i,j,m;
+    m=0;
+    for(i=0;i<13;i++){
+        int p=self->test_bo->board[i];
+        if(0<p){
+            if(p<3){
+                if(p==1){
+                    for(j=0;j<12;j++){
+                        p=lion[i][j];
+                        if(p+1){
+                            moves[m]=p;
+                            m++;
+                        }else{
+                            break;
+                        }
+                    };
+                }else{
+                    for(j=0;j<4;j++){
+                        p=jiraffe[i][j];
+                        if(p+1){
+                            moves[m]=p;
+                            m++;
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }else{
+                if(5-p){
+                    if(4-p){
+                        for(j=0;j<4;j++){
+                            p=elephant[i][j];
+                            if(p+1){
+                                moves[m]=p;
+                                m++;
+                            }else{
+                                break;
+                            }
+                        }
+                    }else{
+                        for(j=0;j<4;j++){
+                            p=chick[i][j];
+                            if(p+1){
+                                moves[m]=p;
+                                m++;
+                            }else{
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    for(j=0;j<6;j++){
+                        p=hen[i][j];
+                        if(p+1){
+                            moves[m]=p;
+                            m++;
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return Py_BuildValue("i", self->test_bo->mysum());
+  
+};
+
 
 static PyModuleDef classmodule = {
     PyModuleDef_HEAD_INIT,
-    "MyClass",
-    "Example module that creates an extension type.",
+    "TestBoard",
+    "(^o^)/",
     -1,
     NULL
 };
 
 PyMODINIT_FUNC
-PyInit_MyClass(void){
+PyInit_TestBoard(void){
     PyObject *m;
     
     m = PyModule_Create(&classmodule);
