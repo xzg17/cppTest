@@ -133,7 +133,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
   
 };
 //*/
-static int *Dummy_init(CustomObject *self, PyObject *args){
+static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     return 0;
 };
 
