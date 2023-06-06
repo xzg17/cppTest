@@ -5,8 +5,8 @@ os.environ['CC'] = 'gcc'
 
 src_dir = 'src'
 
-ext_modules = [Extension('customZ',[src_dir + '/Sample.cpp'])]
-#ext_modules = [Extension('TestBoard',[src_dir + '/Test.cpp'])]
+#ext_modules = [Extension('customZ',[src_dir + '/Sample.cpp'])]
+ext_modules = [Extension('TestBoard',[src_dir + '/Test.cpp'])]
 setup(
   name='custom',
   ext_modules = ext_modules,
