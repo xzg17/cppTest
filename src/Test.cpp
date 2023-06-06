@@ -9,7 +9,7 @@ typedef struct {
 } Py_Class_Board;
 
 static PyMethodDef Py_Class_Board_methods[] = {
-    {"moves", (PyCFunction)Board_moves, METH_VARARGS, "sum of a and b."},
+    {"moves", (PyCFunction)Board_moves, METH_VARARGS, "generate moves."},
     {NULL} /* Sentinel */
 };
 
@@ -67,7 +67,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                     for(j=0;j<12;j++){
                         p=lion[i][j];
                         if(p+1){
-                            moves[m]=p;
+                            moves[m]=i*13+p;
                             m++;
                         }else{
                             break;
@@ -121,7 +121,10 @@ static PyObject *Board_moves(Py_Class_Board *self){
             }
         }
     }
-    return Py_BuildValue("i", self->test_bo->mysum());
+    PyObject *move_list = PyList_New(m);
+    for(int i=0;i<m;i++){
+        PyList_SET_ITEM(move_list, i, PyLong_FromLong((long)moves[i]));
+    }
   
 };
 
