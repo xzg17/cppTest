@@ -45,7 +45,7 @@ static PyTypeObject ClassType = {
     0,                        /* tp_weaklistoffset */
     0,                        /* tp_iter */
     0,                        /* tp_iternext */
-    0,                        /* tp_methods */
+    Py_Class_Board_methods,   /* tp_methods */
     0,                        /* tp_members */
     0,                        /* tp_getset */
     0,                        /* tp_base */
