@@ -58,7 +58,7 @@ static PyTypeObject ClassType = {
     PyType_GenericNew,        /* tp_new */
 };
 //*
-static PyObject *Board_moves(Py_Class_Board *self){return Py_BuildValue("i", 1);}
+static PyObject *Board_moves(Py_Class_Board *self){return Py_BuildValue("i", 1);};
 /*/
 static PyObject *Board_moves(Py_Class_Board *self){
     int moves[48];
