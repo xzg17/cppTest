@@ -8,13 +8,13 @@ typedef struct {
     PyObject_HEAD
     /* Type-specific fields go here. */
         MyClass *myclass;
-} CustomObject;
+} Py_Class_Board;
 
-static PyObject *Class_sum(CustomObject *self);
-static int *Dummy_init(CustomObject *self, PyObject *args);
+static PyObject *Class_sum(Py_Class_Board *self);
+static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
-static PyMethodDef CustomObject_methods[] = {
+static PyMethodDef Py_Class_Board_methods[] = {
     {"mysum", (PyCFunction)Class_sum, METH_VARARGS, "sum of a and b."},
     {NULL} /* Sentinel */
 };
@@ -22,7 +22,7 @@ static PyMethodDef CustomObject_methods[] = {
 
 static PyTypeObject CustomType = {
     PyVarObject_HEAD_INIT(NULL, 0) "custom.Custom", /* tp_name */
-    sizeof(CustomObject),                           /* tp_basicsize */
+    sizeof(Py_Class_Board),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
     0, /* tp_dealloc */
@@ -48,7 +48,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_weaklistoffset */
     0,                        /* tp_iter */
     0,                        /* tp_iternext */
-    CustomObject_methods,     /* tp_methods */
+    Py_Class_Board_methods,     /* tp_methods */
     0,                        /* tp_members */
     0,                        /* tp_getset */
     0,                        /* tp_base */
@@ -61,11 +61,11 @@ static PyTypeObject CustomType = {
     PyType_GenericNew,        /* tp_new */
 };
 
-static PyObject *Class_sum(CustomObject *self){
+static PyObject *Class_sum(Py_Class_Board *self){
     return Py_BuildValue("i", self->myclass->mysum());
 };
 
-static int *Dummy_init(CustomObject *self, PyObject *args){
+static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     //my memo:引数なしでPyType_Check(args)はnon_zero
     //my memo:引数なしでPyType_CheckExact(args)でもnon_zero
     //args==NULL,args==Py_Noneはうまくいかない。これどうするの？
