@@ -11,6 +11,8 @@ typedef struct {
         TestBoard *test_bo;
 } Py_Class_Board;
 
+
+static PyObject *Board_moves(Py_Class_Board *self);
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
