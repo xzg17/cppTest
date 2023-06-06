@@ -103,7 +103,7 @@ PyInit_customZ(void){
 
     return m;
 }
-/*
+//*
 static PyObject *Board_moves(Py_Class_Board *self){
     int moves[48];
     int i,j,m;
