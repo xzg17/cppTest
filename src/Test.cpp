@@ -16,7 +16,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
 
 static PyTypeObject ClassType = {
     PyVarObject_HEAD_INIT(NULL, 0) "Test", /* tp_name */
-    sizeof(Py_Class_Object),                           /* tp_basicsize */
+    sizeof(Py_Class_Board),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
     0, /* tp_dealloc */
