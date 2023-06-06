@@ -64,6 +64,7 @@ static PyTypeObject CustomType = {
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
+    PyObject *pyboard, *pyhands;
     return 0;
 };
 
