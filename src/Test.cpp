@@ -18,7 +18,7 @@ static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
-static PyObject *Board_str(Py_Class_Board *self)
+static PyObject *Board_str(Py_Class_Board *self);
 
 
 static PyMethodDef Py_Class_Board_methods[] = {
