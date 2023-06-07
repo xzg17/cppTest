@@ -7,11 +7,11 @@ private:
     int top;
     int stack[200]; 
 };
-/*
-void MoveStack::MoveStack(){
+MoveStack::MoveStack(){
     this->top=-1;
 };
 
+/*
 void MoveStack::push(int x){
     this->top++;
     this->stack[this->top]=x;
