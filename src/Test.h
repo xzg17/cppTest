@@ -1,5 +1,7 @@
 #include <string>
 #include "Piece.h"
+#include "MoveStack.h"
+
 class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
