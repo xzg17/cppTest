@@ -79,7 +79,22 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         return NULL;
     }
     int dummyint=(int)PyLong_AsLong(PyList_GetItem(pyboard, 0));
-    int cboard[14];
+    int cboard[14]={
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 0)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 1)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 2)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 3)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 4)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 5)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 6)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 7)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 8)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard, 9)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard,10)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard,11)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
+        (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
+    };
     int chands[6];
     return 0;
 };
