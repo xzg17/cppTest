@@ -14,6 +14,7 @@ public:
     int hands[6];
     int lost_history[8];//2~7
     int tesu;
+    MoveStack history();
 private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
