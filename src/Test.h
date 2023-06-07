@@ -103,7 +103,6 @@ int TestBoard::pop(){
     this->rotate();
     int f,t;
     int move=this->history[this->tesu];
-    this->tesu-=1;
     f=move / 14;
     t=move % 14;
     this->board[f]=this->board[t];
@@ -111,7 +110,7 @@ int TestBoard::pop(){
         this->board[t]=-2;
     }
     if(this->lost_history[3]==tesu){
-        this->board[t]=-4;
+        this->board[t]=-3;
     }
     if(this->lost_history[4]==tesu){
         this->board[t]=-4;
@@ -125,6 +124,7 @@ int TestBoard::pop(){
     if(this->lost_history[7]==tesu){
         this->board[t]=-4;
     }
+    this->tesu-=1;
     return move;
 }
 int TestBoard::get_tesu(){
