@@ -106,6 +106,7 @@ int TestBoard::pop(){
     f=move / 14;
     t=move % 14;
     this->board[f]=this->board[t];
+    this->board[t]=0;
     if(this->lost_history[2]==tesu){
         this->board[t]=-2;
         this->lost_history[2]=0;
@@ -119,15 +120,15 @@ int TestBoard::pop(){
         this->lost_history[4]=0;
     }
     if(this->lost_history[5]==tesu){
-        this->board[t]=-5;
+        this->board[t]=-2;
         this->lost_history[5]=0;
     }
     if(this->lost_history[6]==tesu){
-        this->board[t]=-6;
+        this->board[t]=-3;
         this->lost_history[6]=0;
     }
     if(this->lost_history[7]==tesu){
-        this->board[t]=-7;
+        this->board[t]=-4;
         this->lost_history[7]=0;
     }
     this->tesu-=1;
