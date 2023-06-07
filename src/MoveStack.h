@@ -7,6 +7,7 @@ public:
     void push(int x);
     int pop();   
 };
+//*
 void MoveStack::MoveStack(){
     this->top=-1;
 };
@@ -21,3 +22,4 @@ int MoveStack::pop(){
     this->top--;
     return x;
 };
+//*/
