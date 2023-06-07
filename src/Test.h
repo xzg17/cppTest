@@ -96,7 +96,7 @@ void TestBoard::push(int move){
     }
     this->board[t]=this->board[f];
     this->board[f]=0;
-    //this->rotate();
+    this->rotate();
 };
 int TestBoard::pop(){
     return 0;
