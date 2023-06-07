@@ -62,9 +62,9 @@ int hen[14][6]={
 class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
-private:
     int board[14];
     int hands[6];
+private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
     this->board[0] = bo[0];
