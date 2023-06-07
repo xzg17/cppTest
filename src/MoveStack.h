@@ -1,11 +1,11 @@
 class MoveStack{
-private:
-    int top;
-    //int stack[200];
 public:
     void MoveStack();
     void push(int x);
-    int pop();   
+    int pop();
+private:
+    int top;
+    int stack[200]; 
 };
 //*
 void MoveStack::MoveStack(){
