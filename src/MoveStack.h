@@ -7,7 +7,7 @@ private:
     int top;
     int stack[200]; 
 };
-//*
+/*
 void MoveStack::MoveStack(){
     this->top=-1;
 };
