@@ -63,8 +63,11 @@ class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
     void rotate();
+    void push(int move);
     int board[14];
     int hands[6];
+    int lost_history[8];//2~7
+    int tesu;
 private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
@@ -89,7 +92,6 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->hands[4] = hands[4];
     this->hands[5] = hands[5];
 };
-//*
 void TestBoard::rotate(){
     int _;
     _ = this->board[0];
@@ -123,4 +125,18 @@ void TestBoard::rotate(){
     this->hands[2] = this->hands[3];
     this->hands[3] = _;
 };
-//*/
+void TestBoard::push(int move){
+    int f,t;
+    this->tesu+=1
+    f=move / 14;
+    t=move % 14;
+    if(this->board[t]<0){
+        int p=this->board[t];
+        this->hands[-p-2]+=1;
+        if(this->lost_history[-p]){
+            this->lost_history[-p+3]=tesu;
+        }else{
+            this->lost_history[-p+3]=tesu;
+        }
+    }
+};
