@@ -1,4 +1,6 @@
 #include <math.h>
+#include "Piece.h"
+/*
 int chick[14][1]={
     {-1},
     {-1},{-1},{-1},
@@ -58,7 +60,7 @@ int hen[14][6]={
     {8, 9,11,-1,-1,-1},
     {-1,-1,-1,-1,-1,-1}
 };
-
+//*/
 class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
