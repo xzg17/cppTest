@@ -127,7 +127,7 @@ void TestBoard::rotate(){
 };
 void TestBoard::push(int move){
     int f,t;
-    this->tesu+=1
+    this->tesu+=1;
     f=move / 14;
     t=move % 14;
     if(this->board[t]<0){
