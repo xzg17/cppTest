@@ -130,10 +130,8 @@ static PyObject *Board_moves(Py_Class_Board *self){
     int moves[48];
     int i,j,m;
     m=0;
-    //*
-    PyObject *dummy;
-    return dummy;
     for(i=0;i<13;i++){
+        return Py_BuildValue("i", 1);
         int p=self->test_bo->board[i];
         if(0<p){
             PyErr_SetString(PyExc_ValueError, "move1!");
