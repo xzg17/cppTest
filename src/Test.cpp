@@ -16,6 +16,8 @@ typedef struct {
 
 static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
+static PyObject *push_move(Py_Class_Board *self, PyObject *args);
+
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 static PyObject *Board_str(Py_Class_Board *self);
@@ -68,14 +70,26 @@ static PyTypeObject CustomType = {
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
+
+
 static PyObject *rotate_board(Py_Class_Board *self){
     self->test_bo->rotate();
-    
     Py_INCREF(Py_None);
     return Py_None;
 };
+
+static PyObject *push_move(Py_Class_Board *self, PyObject *args){
+    int move;
+    if (!PyArg_ParseTuple(args, "i", &move)) {
+        PyErr_SetString(PyExc_ValueError, "PushError1!");
+        return NULL;
+    };
+    self->test_bo->push(move);
+    Py_INCREF(Py_None);
+    return Py_None;
+};
+
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
-    printf("Hello World!\n");
     PyObject *pyboard, *pyhands;
     if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
         PyErr_SetString(PyExc_ValueError, "InitError1!");
@@ -90,7 +104,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "InitError3!");
         return NULL;
     }
-    int dummyint=(int)PyLong_AsLong(PyList_GetItem(pyboard, 0));
     int cboard[14]={
         (int)PyLong_AsLong(PyList_GetItem(pyboard, 0)),
         (int)PyLong_AsLong(PyList_GetItem(pyboard, 1)),
@@ -107,11 +120,8 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
         (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
     };
-    //*
     int chands[6]={0,0,0,0,0,0};
-    //*
     self->test_bo=new TestBoard(cboard,chands);
-    //*/
     return 0;
 };
 static PyObject *Board_str(Py_Class_Board *self){
