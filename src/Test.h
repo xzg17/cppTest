@@ -100,7 +100,32 @@ void TestBoard::push(int move){
     this->rotate();
 };
 int TestBoard::pop(){
-    return 0;
+    this->rotate();
+    int f,t;
+    int move=this->history[this->tesu];
+    this->tesu-=1;
+    f=move / 14;
+    t=move % 14;
+    this->board[f]=this->board[t];
+    if(this->lost_history[2]==tesu){
+        this->board[t]=-2;
+    }
+    if(this->lost_history[3]==tesu){
+        this->board[t]=-3;
+    }
+    if(this->lost_history[4]==tesu){
+        this->board[t]=-4;
+    }
+    if(this->lost_history[5]==tesu){
+        this->board[t]=-2;
+    }
+    if(this->lost_history[6]==tesu){
+        this->board[t]=-3;
+    }
+    if(this->lost_history[7]==tesu){
+        this->board[t]=-4;
+    }
+    return move;
 }
 int TestBoard::get_tesu(){
     return this->tesu;
