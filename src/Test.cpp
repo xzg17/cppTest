@@ -66,10 +66,12 @@ static PyTypeObject CustomType = {
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     PyObject *pyboard, *pyhands;
     if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
+        PyErr_SetString(PyExc_ValueError, "Dummy1!");
         return NULL;
     }
     
     if((PyList_Size(pyboard)!=14)||(PyList_Size(pyboard)!=6)){
+        PyErr_SetString(PyExc_ValueError, "Dummy2!");
         return NULL;
     }
     int dummyint=(int)PyLong_AsLong(PyList_GetItem(pyboard, 0));
