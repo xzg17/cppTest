@@ -15,6 +15,7 @@ typedef struct {
 
 static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
+static PyObject *get_tesu(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
 
 
@@ -87,6 +88,10 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
     self->test_bo->push(move);
     Py_INCREF(Py_None);
     return Py_None;
+};
+
+static PyObject *get_tesu(Py_Class_Board *self){
+    return Py_BuildValue("i", self->test_bo->get_tesu());
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
