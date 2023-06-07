@@ -34,6 +34,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
     {"pop", (PyCFunction)pop_move, METH_VARARGS, "\(^_^)/"},
     {"get_tesu", (PyCFunction)get_tesu, METH_VARARGS, "(-_-)"},
+    {"debug", (PyCFunction)my_debug1, METH_VARARGS, "(x_x)"},
     {NULL} /* Sentinel */
 };
 
