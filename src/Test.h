@@ -17,6 +17,7 @@ public:
 private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
+    this->tesu=0;
     this->board[0] = bo[0];
     this->board[1] = bo[1];
     this->board[2] = bo[2];
