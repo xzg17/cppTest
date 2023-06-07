@@ -195,6 +195,6 @@ static PyObject *Board_moves(Py_Class_Board *self){
     for(int i=0;i<m;i++){
         PyList_SET_ITEM(move_list, i, PyLong_FromLong((long)moves[i]));
     }
-  
+    return move_list;
 };
 //*/
