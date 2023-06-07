@@ -1,7 +1,7 @@
 class MoveStack{
 private:
     int top;
-    int stack[200];
+    //int stack[200];
 public:
     void MoveStack();
     void push(int x);
