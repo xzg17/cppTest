@@ -13,6 +13,7 @@ typedef struct {
 
 
 static PyObject *Board_moves(Py_Class_Board *self);
+static void rotate(Py_Class_Board *self);
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
@@ -62,7 +63,10 @@ static PyTypeObject CustomType = {
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
+static void rotate(Py_Class_Board *self){
+    self->test_bo.rotate();
 
+};
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     PyObject *pyboard, *pyhands;
     if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
