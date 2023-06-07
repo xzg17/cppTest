@@ -97,8 +97,8 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     };
     //*
     int chands[6]={0,0,0,0,0,0};
-    /*
-    self->test_bo=TestBoard(cboard,chands);
+    //*
+    self->test_bo=new TestBoard(cboard,chands);
     //*/
     return 0;
 };
