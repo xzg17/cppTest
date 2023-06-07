@@ -82,3 +82,10 @@ void TestBoard::push(int move){
         }
     }
 };
+std::string TestBoard::to_string(){
+    return 
+        " "+std::to_string(this->bo[1])+" "+std::to_string(this->bo[2])+" "+std::to_string(this->bo[3])+"\n"+
+        " "+std::to_string(this->bo[4])+" "+std::to_string(this->bo[5])+" "+std::to_string(this->bo[6])+"\n"+
+        " "+std::to_string(this->bo[7])+" "+std::to_string(this->bo[8])+" "+std::to_string(this->bo[9])+"\n"+
+        " "+std::to_string(this->bo[10])+" "+std::to_string(this->bo[11])+" "+std::to_string(this->bo[12])+"\n";
+}
