@@ -8,12 +8,14 @@ public:
     void push(int move);
     int get_tesu();
     int pop();
+    int is_end();
     std::string to_string();
     int board[14];
     int hands[6];
     int lost_history[8];//2~7
     int tesu;
     int history[200];
+    int end;//0,1
 private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
@@ -134,6 +136,11 @@ int TestBoard::pop(){
     this->tesu-=1;
     return move;
 }
+
+int TestBoard::is_end(){
+    return this->end;
+};
+
 int TestBoard::get_tesu(){
     return this->tesu;
 };
