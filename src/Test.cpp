@@ -2,7 +2,7 @@
 #include <Python.h>
 #include "Class.h"
 #include "Test.h"
-//#include "MoveStack.h"
+#include "MoveStack.h"
 
 
 typedef struct {
