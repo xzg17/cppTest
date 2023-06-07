@@ -72,6 +72,9 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     if((PyList_Size(pyboard)!=14)||(PyList_Size(pyboard)!=6)){
         return NULL;
     }
+    int dummyint=(int)PyLong_AsLong(PyList_GetItem(pyboard, 0));
+    int cboard[14];
+    int chands[6];
     return 0;
 };
 
