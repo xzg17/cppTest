@@ -6,6 +6,7 @@ public:
     void rotate();
     void push(int move);
     int get_tesu();
+    int pop();
     std::string to_string();
     int board[14];
     int hands[6];
@@ -34,6 +35,14 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->hands[3] = hands[3];
     this->hands[4] = hands[4];
     this->hands[5] = hands[5];
+    this->lost_history[0] = 0;
+    this->lost_history[1] = 0;
+    this->lost_history[2] = 0;
+    this->lost_history[3] = 0;
+    this->lost_history[4] = 0;
+    this->lost_history[5] = 0;
+    this->lost_history[6] = 0;
+    this->lost_history[7] = 0;
 };
 void TestBoard::rotate(){
     int _;
