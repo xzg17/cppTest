@@ -95,6 +95,9 @@ void TestBoard::push(int move){
     this->board[f]=0;
     //this->rotate();
 };
+int TestBoard::pop(){
+    return 0;
+}
 int TestBoard::get_tesu(){
     return this->tesu;
 };
