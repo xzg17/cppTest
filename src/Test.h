@@ -90,9 +90,9 @@ void TestBoard::push(int move){
         int p=this->board[t];
         this->hands[-p-2]+=1;
         if(this->lost_history[-p]){
-            this->lost_history[-p]=tesu;
-        }else{
             this->lost_history[-p+3]=tesu;
+        }else{
+            this->lost_history[-p]=tesu;
         }
     }
     this->board[t]=this->board[f];
