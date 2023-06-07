@@ -26,8 +26,9 @@ static PyObject *Board_str(Py_Class_Board *self);
 
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
-    {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "\(^o^)/"},
+    {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
+    {"pop", (PyCFunction)pop_move, METH_VARARGS, "\(^_^)/"},
     {"get_tesu", (PyCFunction)get_tesu, METH_VARARGS, "(-_-)"},
     {NULL} /* Sentinel */
 };
