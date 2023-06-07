@@ -112,6 +112,10 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     //*/
     return 0;
 };
+static PyObject *Board_str(Py_Class_Board *self){
+    return PyUnicode_FromFormat(self->test_bo->to_string().c_str());
+}
+
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
@@ -237,3 +241,4 @@ static PyObject *Board_moves(Py_Class_Board *self){
     return move_list;
 };
 //*/
+
