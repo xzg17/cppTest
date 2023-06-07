@@ -157,7 +157,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                 if(p==1){
                     for(j=0;j<12;j++){
                         p=lion[i][j];
-                        if(p+1){
+                        if((p+1)&&(board[p]<=0)){
                             moves[m]=i*14+p;
                             m++;
                         }else{
