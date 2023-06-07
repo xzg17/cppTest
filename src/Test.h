@@ -38,14 +38,14 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->hands[3] = hands[3];
     this->hands[4] = hands[4];
     this->hands[5] = hands[5];
-    this->lost_history[0] = -1;
-    this->lost_history[1] = -1;
-    this->lost_history[2] = -1;
-    this->lost_history[3] = -1;
-    this->lost_history[4] = -1;
-    this->lost_history[5] = -1;
-    this->lost_history[6] = -1;
-    this->lost_history[7] = -1;
+    this->lost_history[0] = 0;
+    this->lost_history[1] = 0;
+    this->lost_history[2] = 0;
+    this->lost_history[3] = 0;
+    this->lost_history[4] = 0;
+    this->lost_history[5] = 0;
+    this->lost_history[6] = 0;
+    this->lost_history[7] = 0;
 };
 void TestBoard::rotate(){
     int _;
@@ -90,7 +90,7 @@ void TestBoard::push(int move){
         int p=this->board[t];
         this->hands[-p-2]+=1;
         if(this->lost_history[-p]){
-            this->lost_history[-p+3]=tesu;
+            this->lost_history[-p]=tesu;
         }else{
             this->lost_history[-p+3]=tesu;
         }
@@ -108,21 +108,27 @@ int TestBoard::pop(){
     this->board[f]=this->board[t];
     if(this->lost_history[2]==tesu){
         this->board[t]=-2;
+        this->lost_history[2]=0;
     }
     if(this->lost_history[3]==tesu){
         this->board[t]=-3;
+        this->lost_history[3]=0;
     }
     if(this->lost_history[4]==tesu){
         this->board[t]=-4;
+        this->lost_history[4]=0;
     }
     if(this->lost_history[5]==tesu){
         this->board[t]=-2;
+        this->lost_history[5]=0;
     }
     if(this->lost_history[6]==tesu){
         this->board[t]=-3;
+        this->lost_history[6]=0;
     }
     if(this->lost_history[7]==tesu){
         this->board[t]=-4;
+        this->lost_history[7]=0;
     }
     this->tesu-=1;
     return move;
