@@ -70,7 +70,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         return NULL;
     }
     
-    if(PyList_Size(pyboard)!=14){
+    if((int)(PyList_Size(pyboard))!=14){
         PyErr_SetString(PyExc_ValueError, "Dummy2!");
         return NULL;
     }
