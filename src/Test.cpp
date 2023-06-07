@@ -27,6 +27,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "\(^o^)/"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
+    {"get_tesu", (PyCFunction)get_tesu, METH_VARARGS, "(-_-)"},
     {NULL} /* Sentinel */
 };
 
