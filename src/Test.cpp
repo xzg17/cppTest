@@ -142,7 +142,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                     for(j=0;j<12;j++){
                         p=lion[i][j];
                         if(p+1){
-                            moves[m]=i*13+p;
+                            moves[m]=i*14+p;
                             m++;
                         }else{
                             break;
@@ -152,7 +152,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                     for(j=0;j<4;j++){
                         p=jiraffe[i][j];
                         if(p+1){
-                            moves[m]=p;
+                            moves[m]=i*14+p;
                             m++;
                         }else{
                             break;
@@ -165,7 +165,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                         for(j=0;j<4;j++){
                             p=elephant[i][j];
                             if(p+1){
-                                moves[m]=p;
+                                moves[m]=i*14+p;
                                 m++;
                             }else{
                                 break;
@@ -174,7 +174,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                     }else{
                         p=chick[i][0];
                         if(p+1){
-                            moves[m]=p;
+                            moves[m]=i*14+p;
                             m++;
                         }else{
                             break;
@@ -184,7 +184,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
                     for(j=0;j<6;j++){
                         p=hen[i][j];
                         if(p+1){
-                            moves[m]=p;
+                            moves[m]=i*14+p;
                             m++;
                         }else{
                             break;
