@@ -5,6 +5,7 @@ public:
     TestBoard(int bo[14], int hands[6]);
     void rotate();
     void push(int move);
+    int get_tesu();
     std::string to_string();
     int board[14];
     int hands[6];
@@ -84,6 +85,9 @@ void TestBoard::push(int move){
     this->board[t]=this->board[f];
     this->board[f]=0;
     //this->rotate();
+};
+int TestBoard::get_tesu(){
+    return this->tesu;
 };
 std::string TestBoard::to_string(){
     return 
