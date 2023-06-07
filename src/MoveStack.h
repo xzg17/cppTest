@@ -1,6 +1,6 @@
 class MoveStack{
 public:
-    void MoveStack();
+    MoveStack();
     void push(int x);
     int pop();
 private:
