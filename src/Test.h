@@ -1,6 +1,5 @@
 #include <string>
 #include "Piece.h"
-#include "MoveStack.h"
 
 class TestBoard{
 public:
@@ -14,7 +13,7 @@ public:
     int hands[6];
     int lost_history[8];//2~7
     int tesu;
-    MoveStack history();
+    int history[200];
 private:
 };
 TestBoard::TestBoard(int bo[14], int hands[6]){
@@ -46,7 +45,6 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->lost_history[5] = 0;
     this->lost_history[6] = 0;
     this->lost_history[7] = 0;
-    this->history = new MoveStack();
 };
 void TestBoard::rotate(){
     int _;
