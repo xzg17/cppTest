@@ -111,7 +111,7 @@ int TestBoard::pop(){
         this->board[t]=-2;
     }
     if(this->lost_history[3]==tesu){
-        this->board[t]=-3;
+        this->board[t]=-4;
     }
     if(this->lost_history[4]==tesu){
         this->board[t]=-4;
