@@ -11,12 +11,11 @@ MoveStack::MoveStack(){
     this->top=-1;
 };
 
-//*
 void MoveStack::push(int x){
     this->top++;
     this->stack[this->top]=x;
 };
-/*
+//*
 int MoveStack::pop(){
     int x = this->stack[this->top];
     this->top--;
