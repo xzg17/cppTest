@@ -5,9 +5,8 @@ private:
 public:
     void MoveStack();
     void push(int x);
-    int pop();
-    
-}
+    int pop();   
+};
 void MoveStack::MoveStack(){
     this->top=-1;
 };
