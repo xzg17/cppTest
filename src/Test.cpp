@@ -68,8 +68,7 @@ static PyObject *rotate_board(Py_Class_Board *self){
     self->test_bo->rotate();
     
     Py_INCREF(Py_None);
-    //return PyNone;
-    return Py_BuildValue("i",1);
+    return Py_None;
 };
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     PyObject *pyboard, *pyhands;
