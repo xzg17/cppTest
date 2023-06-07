@@ -68,6 +68,10 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
         return NULL;
     }
+    
+    if((PyList_Size(pyboard)!=14)||(PyList_Size(pyboard)!=6)){
+        return NULL;
+    }
     return 0;
 };
 
