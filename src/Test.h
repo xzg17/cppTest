@@ -81,6 +81,9 @@ void TestBoard::push(int move){
             this->lost_history[-p+3]=tesu;
         }
     }
+    this->board[t]=this->board[f];
+    this->board[f]=0;
+    //this->rotate();
 };
 std::string TestBoard::to_string(){
     return 
