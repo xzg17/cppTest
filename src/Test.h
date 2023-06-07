@@ -5,6 +5,7 @@ public:
     TestBoard(int bo[14], int hands[6]);
     void rotate();
     void push(int move);
+    std::string to_string();
     int board[14];
     int hands[6];
     int lost_history[8];//2~7
