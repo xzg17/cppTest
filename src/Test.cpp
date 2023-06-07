@@ -95,8 +95,10 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
         (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
     };
+    /*
     int chands[6]={0,0,0,0,0,0};
     self->test_bo=TestBoard(cboard,chands);
+    //*/
     return 0;
 };
 
