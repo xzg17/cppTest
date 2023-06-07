@@ -67,7 +67,7 @@ static PyTypeObject CustomType = {
 static PyObject *rotate_board(Py_Class_Board *self){
     self->test_bo->rotate();
     
-    //Py_INCREF(Py_None);
+    Py_INCREF(Py_None);
     //return PyNone;
     return Py_BuildValue("i",1);
 };
