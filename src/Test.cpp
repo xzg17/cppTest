@@ -64,8 +64,7 @@ static PyTypeObject CustomType = {
     PyType_GenericNew,        /* tp_new */
 };
 static void rotate(Py_Class_Board *self){
-    self->test_bo.rotate();
-
+    self->test_bo->rotate();
 };
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     PyObject *pyboard, *pyhands;
