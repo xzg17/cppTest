@@ -17,13 +17,16 @@ static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
-static PyObject *pop_move(Py_Class_Board *self
+static PyObject *pop_move(Py_Class_Board *self);
 static PyObject *my_debug1(Py_Class_Board *self);
 
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 static PyObject *Board_str(Py_Class_Board *self);
 
+static PyObject *my_debug1(Py_Class_Board *self){
+    return Py_BuildValue("[ii]", &(self->test_bo->lost_history[4]), &(self->test_bo->lost_history[7]));
+};
 
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
