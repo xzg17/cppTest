@@ -89,6 +89,7 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->hands[4] = hands[4];
     this->hands[5] = hands[5];
 };
+/*
 TestBoard::rotate(){
     int _;
     _ = this->board[0];
@@ -122,3 +123,4 @@ TestBoard::rotate(){
     this->hands[2] = this->hands[3];
     this->hands[3] = _;
 };
+//*/
