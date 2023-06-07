@@ -13,12 +13,13 @@ typedef struct {
 
 
 static PyObject *Board_moves(Py_Class_Board *self);
-static void rotate(Py_Class_Board *self);
+static void rotate_board(Py_Class_Board *self);
 static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 
 
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
+    {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "\(^o^)/"},
     {NULL} /* Sentinel */
 };
 
@@ -63,7 +64,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
-static void rotate(Py_Class_Board *self){
+static void rotate_board(Py_Class_Board *self){
     self->test_bo->rotate();
 };
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
