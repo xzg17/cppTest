@@ -73,6 +73,7 @@ static PyObject *rotate_board(Py_Class_Board *self){
     return Py_None;
 };
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
+    printf("Hello World!\n");
     PyObject *pyboard, *pyhands;
     if (!PyArg_ParseTuple(args, "OO", &pyboard, &pyhands)) {
         PyErr_SetString(PyExc_ValueError, "InitError1!");
