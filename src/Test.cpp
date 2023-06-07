@@ -69,11 +69,12 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "Dummy1!");
         return NULL;
     }
-    Py_ssize_t p1=PyList_Size(pyboard);
-    if(14!=14){
+    if (!PyList_Check(pyboard)) {
         PyErr_SetString(PyExc_ValueError, "Dummy2!");
         return NULL;
     }
+
+    Py_ssize_t p1=PyList_Size(pyboard);
     
     if(PyList_Size(pyhands)!=6){
         PyErr_SetString(PyExc_ValueError, "Dummy3!");
