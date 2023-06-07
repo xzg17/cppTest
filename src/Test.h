@@ -62,6 +62,7 @@ int hen[14][6]={
 class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
+    int rotate();
     int board[14];
     int hands[6];
 private:
@@ -87,4 +88,37 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->hands[3] = hands[3];
     this->hands[4] = hands[4];
     this->hands[5] = hands[5];
+};
+TestBoard::rotate(){
+    int _;
+    _ = this->board[0];
+    this->board[0] = this->board[13];
+    this->board[13] = _;
+    _ = this->board[1];
+    this->board[1] = this->board[12];
+    this->board[12] = _;
+    _ = this->board[2];
+    this->board[2] = this->board[11];
+    this->board[11] = _;
+    _ = this->board[3];
+    this->board[3] = this->board[10];
+    this->board[10] = _;
+    _ = this->board[4];
+    this->board[4] = this->board[9];
+    this->board[9] = _;
+    _ = this->board[5];
+    this->board[5] = this->board[8];
+    this->board[8] = _;
+    _ = this->board[6];
+    this->board[6] = this->board[7];
+    this->board[7] = _;
+    _ = this->hands[0];
+    this->hands[0] = this->hands[5];
+    this->hands[5] = _;
+    _ = this->hands[1];
+    this->hands[1] = this->hands[4];
+    this->hands[4] = _;
+    _ = this->hands[2];
+    this->hands[2] = this->hands[3];
+    this->hands[3] = _;
 };
