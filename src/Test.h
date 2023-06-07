@@ -62,7 +62,7 @@ int hen[14][6]={
 class TestBoard{
 public:
     TestBoard(int bo[14], int hands[6]);
-    rotate();
+    //rotate();
     int board[14];
     int hands[6];
 private:
