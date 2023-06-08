@@ -48,6 +48,7 @@ TestBoard::TestBoard(int bo[14], int hands[6]){
     this->lost_history[5] = 0;
     this->lost_history[6] = 0;
     this->lost_history[7] = 0;
+    this->end=0;
 };
 void TestBoard::rotate(){
     int _;
