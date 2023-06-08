@@ -17,6 +17,7 @@ static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
+static PyObject *next_player(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
 static PyObject *pop_move(Py_Class_Board *self);
 static PyObject *is_end(Py_Class_Board *self);
@@ -114,6 +115,10 @@ static PyObject *is_end(Py_Class_Board *self){
 
 static PyObject *get_tesu(Py_Class_Board *self){
     return Py_BuildValue("i", self->test_bo->get_tesu());
+};
+
+static PyObject *next_player(Py_Class_Board *self){
+    return Py_BuildValue("i", self->test_bo->next_palyer());
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
