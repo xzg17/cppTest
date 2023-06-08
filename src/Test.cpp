@@ -106,7 +106,7 @@ static PyObject *pop_move(Py_Class_Board *self){
 };
 
 static PyObject *is_end(Py_Class_Board *self){
-    return self->test_bo->is_end();
+    return Py_BuildValue("i", self->test_bo->is_end());
 };
 
 static PyObject *get_tesu(Py_Class_Board *self){
