@@ -296,8 +296,7 @@ static PyObject *catch_moves(Py_Class_Board *self){
         self->test_bo->board[12],
         self->test_bo->board[13]
     };
-    int i,j,m;
-    m=0;
+    int i,j;
     for(i=0;i<14;i++){
         int p=board[i];
         if(0<p){
