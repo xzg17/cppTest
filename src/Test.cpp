@@ -39,6 +39,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"pop", (PyCFunction)pop_move, METH_VARARGS, "\(^_^)/"},
     {"is_end", (PyCFunction)is_end, METH_VARARGS, "\(-A-)/"},
     {"get_tesu", (PyCFunction)get_tesu, METH_VARARGS, "(-_-)"},
+    {"next_player", (PyCFunction)next_player, METH_VARARGS, "(-_-)?"},
     //{"debug", (PyCFunction)my_debug1, METH_VARARGS, "(x_x)"},
     {NULL} /* Sentinel */
 };
