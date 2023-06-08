@@ -14,6 +14,7 @@ typedef struct {
 
 
 static PyObject *Board_moves(Py_Class_Board *self);
+static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
@@ -182,6 +183,103 @@ PyInit_customZ(void){
 }
 //*
 static PyObject *Board_moves(Py_Class_Board *self){
+    int board[14]={
+        board[0]=self->test_bo->board[0],
+        board[1]=self->test_bo->board[1],
+        board[2]=self->test_bo->board[2],
+        board[3]=self->test_bo->board[3],
+        board[4]=self->test_bo->board[4],
+        board[5]=self->test_bo->board[5],
+        board[6]=self->test_bo->board[6],
+        board[7]=self->test_bo->board[7],
+        board[8]=self->test_bo->board[8],
+        board[9]=self->test_bo->board[9],
+        board[10]=self->test_bo->board[10],
+        board[11]=self->test_bo->board[11],
+        board[12]=self->test_bo->board[12],
+        board[13]=self->test_bo->board[13]
+    };
+    int moves[48];
+    int i,j,m;
+    m=0;
+    for(i=0;i<14;i++){
+        int p=board[i];
+        if(0<p){
+            if(p<3){
+                if(p==1){
+                    for(j=0;j<12;j++){
+                        p=lion[i][j];
+                        if(p+1){
+                            if((board[p]<=0)){
+                                moves[m]=i*14+p;
+                                m++;
+                            }
+                        }else{
+                            break;
+                        }
+                    };
+                }else{
+                    for(j=0;j<4;j++){
+                        p=jiraffe[i][j];
+                        if(p+1){
+                            if((board[p]<=0)){
+                                moves[m]=i*14+p;
+                                m++;
+                            }
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }else{
+                if(5-p){
+                    if(4-p){
+                        for(j=0;j<4;j++){
+                            p=elephant[i][j];
+                            if(p+1){
+                                if((board[p]<=0)){
+                                    moves[m]=i*14+p;
+                                    m++;
+                                }
+                            }else{
+                                break;
+                            }
+                        }
+                    }else{
+                        p=chick[i][0];
+                        if(p+1){
+                            if((board[p]<=0)){
+                                moves[m]=i*14+p;
+                                m++;
+                            }
+                        }else{
+                            break;
+                        }
+                    }
+                }else{
+                    for(j=0;j<6;j++){
+                        p=hen[i][j];
+                        if(p+1){
+                            if((board[p]<=0)){
+                                moves[m]=i*14+p;
+                                m++;
+                            }
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    PyObject *move_list = PyList_New(m);
+    for(int i=0;i<m;i++){
+        PyList_SET_ITEM(move_list, i, PyLong_FromLong((long)moves[i]));
+    }
+    return move_list;
+};
+
+static PyObject *catch_moves(Py_Class_Board *self){
     int board[14]={
         board[0]=self->test_bo->board[0],
         board[1]=self->test_bo->board[1],
