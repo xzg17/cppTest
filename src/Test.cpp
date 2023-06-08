@@ -14,6 +14,7 @@ typedef struct {
 
 
 static PyObject *Board_moves(Py_Class_Board *self);
+static PyObject *get_information(Py_Class_Board *self);
 static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
@@ -373,3 +374,88 @@ static PyObject *catch_moves(Py_Class_Board *self){
 };
 //*/
 
+static PyObject *get_information(Py_Class_Board *self){
+    int board[14]={
+        self->test_bo->board[0],
+        self->test_bo->board[1],
+        self->test_bo->board[2],
+        self->test_bo->board[3],
+        self->test_bo->board[4],
+        self->test_bo->board[5],
+        self->test_bo->board[6],
+        self->test_bo->board[7],
+        self->test_bo->board[8],
+        self->test_bo->board[9],
+        self->test_bo->board[10],
+        self->test_bo->board[11],
+        self->test_bo->board[12],
+        self->test_bo->board[13]
+    };
+    int i,j;
+    int info[14]={-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9};
+    for(i=0;i<14;i++){
+        int p=board[i];
+        if(0<p){
+            info[i]=board[i];
+            if(p<3){
+                if(p==1){
+                    for(j=0;j<12;j++){
+                        p=lion[i][j];
+                        if(p+1){
+                            info[p]=board[p];
+                        }else{
+                            break;
+                        }
+                    };
+                }else{
+                    for(j=0;j<4;j++){
+                        p=jiraffe[i][j];
+                        if(p+1){
+                            info[p]=board[p];
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }else{
+                if(5-p){
+                    if(4-p){
+                        for(j=0;j<4;j++){
+                            p=elephant[i][j];
+                            if(p+1){
+                                info[p]=board[p];
+                            }else{
+                                break;
+                            }
+                        }
+                    }else{
+                        p=chick[i][0];
+                        if(p+1){
+                            info[p]=board[p];
+                        }else{
+                            break;
+                        }
+                    }
+                }else{
+                    for(j=0;j<6;j++){
+                        p=hen[i][j];
+                        if(p+1){
+                            info[p]=board[p];
+                        }else{
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return Py_BuildValue(
+        "[iiiiiiiiiiiiii]",
+        info[0],
+        info[1],info[2],info[3],
+        info[4],info[5],info[6],
+        info[7],info[8],info[9],
+        info[10],info[11],info[12],
+        info[13]
+    );
+};
