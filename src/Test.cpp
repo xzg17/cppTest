@@ -184,20 +184,20 @@ PyInit_customZ(void){
 //*
 static PyObject *Board_moves(Py_Class_Board *self){
     int board[14]={
-        board[0]=self->test_bo->board[0],
-        board[1]=self->test_bo->board[1],
-        board[2]=self->test_bo->board[2],
-        board[3]=self->test_bo->board[3],
-        board[4]=self->test_bo->board[4],
-        board[5]=self->test_bo->board[5],
-        board[6]=self->test_bo->board[6],
-        board[7]=self->test_bo->board[7],
-        board[8]=self->test_bo->board[8],
-        board[9]=self->test_bo->board[9],
-        board[10]=self->test_bo->board[10],
-        board[11]=self->test_bo->board[11],
-        board[12]=self->test_bo->board[12],
-        board[13]=self->test_bo->board[13]
+        self->test_bo->board[0],
+        self->test_bo->board[1],
+        self->test_bo->board[2],
+        self->test_bo->board[3],
+        self->test_bo->board[4],
+        self->test_bo->board[5],
+        self->test_bo->board[6],
+        self->test_bo->board[7],
+        self->test_bo->board[8],
+        self->test_bo->board[9],
+        self->test_bo->board[10],
+        self->test_bo->board[11],
+        self->test_bo->board[12],
+        self->test_bo->board[13]
     };
     int moves[48];
     int i,j,m;
