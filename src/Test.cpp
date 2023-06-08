@@ -118,7 +118,7 @@ static PyObject *get_tesu(Py_Class_Board *self){
 };
 
 static PyObject *next_player(Py_Class_Board *self){
-    return Py_BuildValue("i", self->test_bo->next_palyer());
+    return Py_BuildValue("i", self->test_bo->next_player());
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
