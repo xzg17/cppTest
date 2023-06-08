@@ -7,6 +7,7 @@ public:
     void rotate();
     void push(int move);
     int get_tesu();
+    int next_player();
     int pop();
     int is_end();
     std::string to_string();
