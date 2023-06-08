@@ -156,6 +156,11 @@ int TestBoard::is_end(){
 int TestBoard::get_tesu(){
     return this->tesu;
 };
+
+int TestBoard::next_player(){
+    return this->tesu % 2;
+};
+
 std::string TestBoard::to_string(){
     return 
         " "+std::to_string(this->board[1])+" "+std::to_string(this->board[2])+" "+std::to_string(this->board[3])+"\n"+
