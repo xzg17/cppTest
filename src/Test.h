@@ -114,30 +114,35 @@ int TestBoard::pop(){
     t=move % 14;
     this->board[f]=this->board[t];
     this->board[t]=0;
-    if(this->lost_history[2]==tesu){
-        this->board[t]=-2;
-        this->lost_history[2]=0;
-    }
-    if(this->lost_history[3]==tesu){
-        this->board[t]=-3;
-        this->lost_history[3]=0;
-    }
-    if(this->lost_history[4]==tesu){
-        this->board[t]=-4;
-        this->lost_history[4]=0;
-    }
-    if(this->lost_history[5]==tesu){
-        this->board[t]=-2;
-        this->lost_history[5]=0;
-    }
-    if(this->lost_history[6]==tesu){
-        this->board[t]=-3;
-        this->lost_history[6]=0;
-    }
-    if(this->lost_history[7]==tesu){
-        this->board[t]=-4;
-        this->lost_history[7]=0;
-    }
+    if(this->end){
+        this->end=0;
+        this->board[t]=-1;
+    }else{
+        if(this->lost_history[2]==tesu){
+            this->board[t]=-2;
+            this->lost_history[2]=0;
+        }
+        if(this->lost_history[3]==tesu){
+            this->board[t]=-3;
+            this->lost_history[3]=0;
+        }
+        if(this->lost_history[4]==tesu){
+            this->board[t]=-4;
+            this->lost_history[4]=0;
+        }
+        if(this->lost_history[5]==tesu){
+            this->board[t]=-2;
+            this->lost_history[5]=0;
+        }
+        if(this->lost_history[6]==tesu){
+            this->board[t]=-3;
+            this->lost_history[6]=0;
+        }
+        if(this->lost_history[7]==tesu){
+            this->board[t]=-4;
+            this->lost_history[7]=0;
+        }
+    };
     this->tesu-=1;
     return move;
 }
