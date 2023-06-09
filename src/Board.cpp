@@ -171,8 +171,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
             (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
             (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
         };
-        self->board=new Board(cboard, next);
-        return 0;
     }
     
     if (PyTuple_Check(pyboard)) {
@@ -196,10 +194,55 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
             (int)PyLong_AsLong(PyTuple_GetItem(pyboard, 12)),
             (int)PyLong_AsLong(PyTuple_GetItem(pyboard, 13))
         };
-        self->board=new Board(cboard, next);
-        return 0;
     }
-    return NULL;
+    self->board=new Board(cboard, next);
+    int end=1;
+    if(self->board->board[0]==1){
+        end=0;
+    }
+    if(self->board->board[1]==1){
+        end=0;
+    }
+    if(self->board->board2[]==1){
+        end=0;
+    }
+    if(self->board->board[3]==1){
+        end=0;
+    }
+    if(self->board->board[4]==1){
+        end=0;
+    }
+    if(self->board->board[5]==1){
+        end=0;
+    }
+    if(self->board->board[6]==1){
+        end=0;
+    }
+    if(self->board->board[7]==1){
+        end=0;
+    }
+    if(self->board->board[8]==1){
+        end=0;
+    }
+    if(self->board->board[9]==1){
+        end=0;
+    }
+    if(self->board->board[10]==1){
+        end=0;
+    }
+    if(self->board->board[11]==1){
+        end=0;
+    }
+    if(self->board->board[12]==1){
+        end=0;
+    }
+    if(self->board->board[13]==1){
+        end=0;
+    }
+    if(end){
+        self->board->end=1;
+    }
+    return 0;
 };
 static PyObject *Board_str(Py_Class_Board *self){
     return PyUnicode_FromFormat(self->board->to_string().c_str());
