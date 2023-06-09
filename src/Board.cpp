@@ -169,14 +169,14 @@ static PyObject *Board_str(Py_Class_Board *self){
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
-    "customZ",
+    "np_nd_DIDS",
     "Example module that creates an extension type.",
     -1,
     NULL
 };
 
 PyMODINIT_FUNC
-PyInit_customZ(void){
+PyInit_np_nd_DIDS(void){
     PyObject *m;
     
     m = PyModule_Create(&custommodule);
