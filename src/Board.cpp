@@ -553,10 +553,11 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
                         if(p+1){
                             if((board[p]<=0)){
                                 if(board[p]+1){
+                                    moves[m]=i*14+p;
+                                    m++;
+                                }else{
                                     return Py_BuildValue("[i]", i*14+p);
                                 }
-                                moves[m]=i*14+p;
-                                m++;
                             }
                         }else{
                             break;
@@ -568,10 +569,11 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
                         if(p+1){
                             if((board[p]<=0)){
                                 if(board[p]+1){
+                                    moves[m]=i*14+p;
+                                    m++;
+                                }else{
                                     return Py_BuildValue("[i]", i*14+p);
                                 }
-                                moves[m]=i*14+p;
-                                m++;
                             }
                         }else{
                             break;
@@ -586,10 +588,11 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
                             if(p+1){
                                 if((board[p]<=0)){
                                     if(board[p]+1){
+                                        moves[m]=i*14+p;
+                                        m++;
+                                    }else{
                                         return Py_BuildValue("[i]", i*14+p);
                                     }
-                                    moves[m]=i*14+p;
-                                    m++;
                                 }
                             }else{
                                 break;
@@ -600,10 +603,11 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
                         if(p+1){
                             if((board[p]<=0)){
                                 if(board[p]+1){
+                                    moves[m]=i*14+p;
+                                    m++;
+                                }else{
                                     return Py_BuildValue("[i]", i*14+p);
                                 }
-                                moves[m]=i*14+p;
-                                m++;
                             }
                         }else{
                             break;
@@ -615,10 +619,11 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
                         if(p+1){
                             if((board[p]<=0)){
                                 if(board[p]+1){
+                                    moves[m]=i*14+p;
+                                    m++;
+                                }else{
                                     return Py_BuildValue("[i]", i*14+p);
                                 }
-                                moves[m]=i*14+p;
-                                m++;
                             }
                         }else{
                             break;
