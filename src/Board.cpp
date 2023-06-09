@@ -128,7 +128,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         return NULL;
     }
     
-    if((PyList_Size(pyboard)!=14)||(PyList_Size(pyhands)!=6)){
+    if(PyList_Size(pyboard)!=14){
         PyErr_SetString(PyExc_ValueError, "InitError3!");
         return NULL;
     }
