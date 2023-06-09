@@ -7,7 +7,7 @@ src_dir = 'src'
 
 #ext_modules = [Extension('customZ',[src_dir + '/Sample.cpp'])]
 #ext_modules = [Extension('customZ',[src_dir + '/Test.cpp'])]
-ext_modules = [Extension('np_nd_DIDS',[src_dir + '/Board.cpp'])]
+ext_modules = [Extension('customZ',[src_dir + '/Test.cpp']),Extension('np_nd_DIDS',[src_dir + '/Board.cpp'])]
 setup(
   name='custom',
   ext_modules = ext_modules,
