@@ -1,5 +1,5 @@
 #include <string>
-#include "Piece.h"
+#include "Piece.hpp"
 
 class TestBoard{
 public:
