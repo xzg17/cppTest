@@ -543,9 +543,6 @@ static PyObject *catch_or_moves(Py_Class_Board *self){
     int i,j,m;
     m=0;
     for(i=0;i<14;i++){
-        if(c){
-            break;
-        };
         int p=board[i];
         if(0<p){
             if(p<3){
