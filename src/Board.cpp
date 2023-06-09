@@ -133,8 +133,7 @@ static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
     child = new Board(board,self->board->next);
     //*/
     child->push(move);
-    return Py_BuildValue("i", self->board->is_end());
-    //return get_board(child):
+    return child.get_board():
 };
 //*/
 static PyObject *is_end(Py_Class_Board *self){
