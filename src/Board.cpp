@@ -114,7 +114,7 @@ static PyObject *next_player(Py_Class_Board *self){
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
-    PyObject *pyboard, *pyhands;
+    PyObject *pyboard;
     if (!PyArg_ParseTuple(args, "O", &pyboard)) {
         PyErr_SetString(PyExc_ValueError, "InitError1!");
         return NULL;
