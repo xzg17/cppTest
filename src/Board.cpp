@@ -119,6 +119,10 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "InitError1!");
         return NULL;
     }
+    if (!PyArg_ParseTuple(args, "O", &pyboard)) {
+        PyErr_SetString(PyExc_ValueError, "InitError1!");
+        return NULL;
+    }
     if (!PyList_Check(pyboard) || !PyList_Check(pyhands)) {
         PyErr_SetString(PyExc_ValueError, "InitError2!");
         return NULL;
@@ -144,7 +148,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
         (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
     };
-    int chands[6]={0,0,0,0,0,0};
     self->board=new Board(cboard);
     return 0;
 };
