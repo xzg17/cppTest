@@ -203,7 +203,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
         if(0<p){
             if(p<3){
                 if(p==1){
-                    for(j=0;j<12;j++){
+                    for(j=0;j<13;j++){
                         p=lion[i][j];
                         if(p+1){
                             if((board[p]<=0)){
@@ -298,7 +298,7 @@ static PyObject *catch_moves(Py_Class_Board *self){
         if(0<p){
             if(p<3){
                 if(p==1){
-                    for(j=0;j<12;j++){
+                    for(j=0;j<13;j++){
                         p=lion[i][j];
                         if(p+1){
                             if((board[p]==-1)){
@@ -387,7 +387,7 @@ static PyObject *get_information(Py_Class_Board *self){
             info[i]=board[i];
             if(p<3){
                 if(p==1){
-                    for(j=0;j<12;j++){
+                    for(j=0;j<13;j++){
                         p=lion[i][j];
                         if(p+1){
                             info[p]=board[p];
