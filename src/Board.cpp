@@ -150,6 +150,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     };
     int chands[6]={0,0,0,0,0,0};
     self->test_bo=new TestBoard(cboard,chands);
+    self->board=new Board(cboard);
     return 0;
 };
 static PyObject *Board_str(Py_Class_Board *self){
