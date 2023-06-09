@@ -57,7 +57,6 @@ void TestBoard::rotate(){
 };
 void TestBoard::push(int move){
     int f,t;
-    this->history[this->tesu]=move;
     f=move / 14;
     t=move % 14;
     this->board[t]=this->board[f];
