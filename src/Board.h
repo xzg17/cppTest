@@ -2,7 +2,7 @@
 
 class Board{
 public:
-    Board(int bo[14]);
+    Board(int bo[14], int turn);
     void rotate();
     void push(int move);
     int next_player();
@@ -13,7 +13,7 @@ public:
     int end;//0,1
 private:
 };
-Board::Board(int bo[14]){
+Board::Board(int bo[14], int turn){
     this->board[0] = bo[0];
     this->board[1] = bo[1];
     this->board[2] = bo[2];
@@ -28,7 +28,7 @@ Board::Board(int bo[14]){
     this->board[11] = bo[11];
     this->board[12] = bo[12];
     this->board[13] = bo[13];
-    this->next=0;
+    this->next=turn;
     this->end=0;
 };
 void Board::rotate(){
