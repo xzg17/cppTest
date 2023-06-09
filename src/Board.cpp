@@ -173,7 +173,7 @@ PyInit_np_nd_DIDS(void){
     }
 
     Py_INCREF(&CustomType);
-    PyModule_AddObject(m, "MyPyClass", (PyObject *) &CustomType);
+    PyModule_AddObject(m, "DIBoard", (PyObject *) &CustomType);
 
     return m;
 }
