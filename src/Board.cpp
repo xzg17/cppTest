@@ -112,26 +112,24 @@ static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "PushError1!");
         return NULL;
     };
-    int board[14]={
-        self->board->board[0],
-        self->board->board[1],
-        self->board->board[2],
-        self->board->board[3],
-        self->board->board[4],
-        self->board->board[5],
-        self->board->board[6],
-        self->board->board[7],
-        self->board->board[8],
-        self->board->board[9],
-        self->board->board[10],
-        self->board->board[11],
-        self->board->board[12],
-        self->board->board[13]
-    };
-    Py_Class_Board *child;
-    child->board = new Board(board,self->board->next);
-    child->board->push(move);
-    return get_board(child);
+    Board child=self->board->pushed(move);
+    return Py_BuildValue(
+        "(iiiiiiiiiiiiii)",
+        child->board[0],
+        child->board[1],
+        child->board[2],
+        child->board[3],
+        child->board[4],
+        child->board[5],
+        child->board[6],
+        child->board[7],
+        child->board[8],
+        child->board[9],
+        child->board[10],
+        child->board[11],
+        child->board[12],
+        child->board[13]
+    );
 };
 //*/
 static PyObject *is_end(Py_Class_Board *self){
