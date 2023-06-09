@@ -2,7 +2,7 @@
 
 class Board{
 public:
-    TestBoard(int bo[14]);
+    Board(int bo[14]);
     void rotate();
     void push(int move);
     int next_player();
@@ -13,7 +13,7 @@ public:
     int end;//0,1
 private:
 };
-TestBoard::TestBoard(int bo[14]){
+Board::Board(int bo[14]){
     this->board[0] = bo[0];
     this->board[1] = bo[1];
     this->board[2] = bo[2];
@@ -31,7 +31,7 @@ TestBoard::TestBoard(int bo[14]){
     this->next=0;
     this->end=0;
 };
-void TestBoard::rotate(){
+void Board::rotate(){
     int _;
     _ = this->board[0];
     this->board[0] = -this->board[13];
@@ -55,7 +55,7 @@ void TestBoard::rotate(){
     this->board[6] = -this->board[7];
     this->board[7] = -_;
 };
-void TestBoard::push(int move){
+void Board::push(int move){
     int f,t;
     f=move / 14;
     t=move % 14;
@@ -64,15 +64,15 @@ void TestBoard::push(int move){
     this->next=1-next;
     this->rotate();
 };
-int TestBoard::is_end(){
+int Board::is_end(){
     return this->end;
 };
 
-int TestBoard::next_player(){
+int Board::next_player(){
     return this->next;
 };
 
-std::string TestBoard::to_string(){
+std::string Board::to_string(){
     return 
         " "+std::to_string(this->board[1])+" "+std::to_string(this->board[2])+" "+std::to_string(this->board[3])+"\n"+
         " "+std::to_string(this->board[4])+" "+std::to_string(this->board[5])+" "+std::to_string(this->board[6])+"\n"+
