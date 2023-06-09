@@ -19,6 +19,7 @@ static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *next_player(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
+static PyObject *pushed_board(Py_Class_Board *self, PyObject *args);
 static PyObject *pop_move(Py_Class_Board *self);
 static PyObject *is_end(Py_Class_Board *self);
 static PyObject *my_debug1(Py_Class_Board *self);
@@ -103,7 +104,35 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
     Py_INCREF(Py_None);
     return Py_None;
 };
-
+/*
+static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
+    int move;
+    if (!PyArg_ParseTuple(args, "i", &move)) {
+        PyErr_SetString(PyExc_ValueError, "PushError1!");
+        return NULL;
+    };
+    int board[14]={
+        self->board->board[0],
+        self->board->board[1],
+        self->board->board[2],
+        self->board->board[3],
+        self->board->board[4],
+        self->board->board[5],
+        self->board->board[6],
+        self->board->board[7],
+        self->board->board[8],
+        self->board->board[9],
+        self->board->board[10],
+        self->board->board[11],
+        self->board->board[12],
+        self->board->board[13]
+    };
+    Board *child;
+    child = new Board(borad[14],self->board->next);
+    child->push(move);
+    return get_board(child):
+};
+//*/
 static PyObject *is_end(Py_Class_Board *self){
     return Py_BuildValue("i", self->board->is_end());
 };
