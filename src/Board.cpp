@@ -100,17 +100,13 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "PushError1!");
         return NULL;
     };
-    self->test_bo->push(move);
+    self->board->push(move);
     Py_INCREF(Py_None);
     return Py_None;
 };
 
 static PyObject *is_end(Py_Class_Board *self){
-    return Py_BuildValue("i", self->test_bo->is_end());
-};
-
-static PyObject *get_tesu(Py_Class_Board *self){
-    return Py_BuildValue("i", self->test_bo->get_tesu());
+    return Py_BuildValue("i", self->board->is_end());
 };
 
 static PyObject *next_player(Py_Class_Board *self){
