@@ -105,12 +105,6 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
     return Py_None;
 };
 
-static PyObject *pop_move(Py_Class_Board *self){
-    int move;
-    move = self->test_bo->pop();
-    return Py_BuildValue("i", move);
-};
-
 static PyObject *is_end(Py_Class_Board *self){
     return Py_BuildValue("i", self->test_bo->is_end());
 };
@@ -120,7 +114,7 @@ static PyObject *get_tesu(Py_Class_Board *self){
 };
 
 static PyObject *next_player(Py_Class_Board *self){
-    return Py_BuildValue("i", self->test_bo->next_player());
+    return Py_BuildValue("i", self->board->next_player());
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
