@@ -113,8 +113,9 @@ static PyObject *next_player(Py_Class_Board *self){
 };
 
 static int *Dummy_init(Py_Class_Board *self, PyObject *args){
+    int next;
     PyObject *pyboard;
-    if (!PyArg_ParseTuple(args, "O", &pyboard)) {
+    if (!PyArg_ParseTuple(args, "Oi", &pyboard, &next)) {
         PyErr_SetString(PyExc_ValueError, "InitError1!");
         return NULL;
     }
@@ -139,7 +140,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
         (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
     };
-    self->board=new Board(cboard);
+    self->board=new Board(cboard, next);
     return 0;
 };
 static PyObject *Board_str(Py_Class_Board *self){
