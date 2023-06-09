@@ -1,6 +1,5 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include "Class.h"
 #include "Test.h"
 #include "Board.h"
 
@@ -9,7 +8,6 @@ typedef struct {
     
     PyObject_HEAD
     /* Type-specific fields go here. */
-        MyClass *myclass;
         TestBoard *test_bo;
 } Py_Class_Board;
 
