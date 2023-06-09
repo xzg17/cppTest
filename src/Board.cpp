@@ -37,6 +37,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"catch", (PyCFunction)catch_moves, METH_VARARGS, "(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
+    {"pushed", (PyCFunction)pushed_board, METH_VARARGS, "{O_O}"},
     {"is_end", (PyCFunction)is_end, METH_VARARGS, "\(-A-)/"},
     {"get_info", (PyCFunction)get_information, METH_VARARGS, "v(^o^)"},
     {"get_board", (PyCFunction)get_board, METH_VARARGS, "v(^o^)"},
