@@ -118,10 +118,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         PyErr_SetString(PyExc_ValueError, "InitError1!");
         return NULL;
     }
-    if (!PyList_Check(pyboard)) {
-        PyErr_SetString(PyExc_ValueError, "InitError2!");
-        return NULL;
-    }
     
     if(PyList_Size(pyboard)!=14){
         PyErr_SetString(PyExc_ValueError, "InitError3!");
