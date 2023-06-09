@@ -128,9 +128,9 @@ static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
         self->board->board[12],
         self->board->board[13]
     };
-    Board *child;
-    child = new Board(board,self->board->next);
-    child->push(move);
+    Py_Class_Board *child;
+    child->board = new Board(board,self->board->next);
+    child->board->push(move);
     return get_board(child);
 };
 //*/
