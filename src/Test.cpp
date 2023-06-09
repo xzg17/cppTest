@@ -2,6 +2,7 @@
 #include <Python.h>
 #include "Class.h"
 #include "Test.h"
+#include "Board.h"
 
 
 typedef struct {
