@@ -148,28 +148,30 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         return NULL;
     }
     
-    if(PyList_Size(pyboard)!=14){
-        PyErr_SetString(PyExc_ValueError, "InitError3!");
-        return NULL;
+    if (PyList_Check(pyboard)) {
+        if(PyList_Size(pyboard)!=14){
+            PyErr_SetString(PyExc_ValueError, "InitError3!");
+            return NULL;
+        }
+        int cboard[14]={
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 0)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 1)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 2)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 3)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 4)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 5)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 6)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 7)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 8)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard, 9)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard,10)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard,11)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
+            (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
+        };
+        self->board=new Board(cboard, next);
+        return 0;
     }
-    int cboard[14]={
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 0)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 1)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 2)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 3)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 4)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 5)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 6)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 7)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 8)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard, 9)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard,10)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard,11)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
-        (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
-    };
-    self->board=new Board(cboard, next);
-    return 0;
 };
 static PyObject *Board_str(Py_Class_Board *self){
     return PyUnicode_FromFormat(self->board->to_string().c_str());
