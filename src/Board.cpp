@@ -203,7 +203,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
     if(self->board->board[1]==1){
         end=0;
     }
-    if(self->board->board2[]==1){
+    if(self->board->board[2]==1){
         end=0;
     }
     if(self->board->board[3]==1){
