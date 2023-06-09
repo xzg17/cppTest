@@ -458,19 +458,19 @@ static PyObject *get_information(Py_Class_Board *self){
 static PyObject *get_board(Py_Class_Board *self){
     return Py_BuildValue(
         "(iiiiiiiiiiiiii)",
-        self->test_bo->board[0],
-        self->test_bo->board[1],
-        self->test_bo->board[2],
-        self->test_bo->board[3],
-        self->test_bo->board[4],
-        self->test_bo->board[5],
-        self->test_bo->board[6],
-        self->test_bo->board[7],
-        self->test_bo->board[8],
-        self->test_bo->board[9],
-        self->test_bo->board[10],
-        self->test_bo->board[11],
-        self->test_bo->board[12],
-        self->test_bo->board[13]
+        self->board->board[0],
+        self->board->board[1],
+        self->board->board[2],
+        self->board->board[3],
+        self->board->board[4],
+        self->board->board[5],
+        self->board->board[6],
+        self->board->board[7],
+        self->board->board[8],
+        self->board->board[9],
+        self->board->board[10],
+        self->board->board[11],
+        self->board->board[12],
+        self->board->board[13]
     );
 };
