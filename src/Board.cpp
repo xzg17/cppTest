@@ -104,7 +104,7 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
     Py_INCREF(Py_None);
     return Py_None;
 };
-/*
+//*
 static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
     int move;
     if (!PyArg_ParseTuple(args, "i", &move)) {
