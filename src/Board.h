@@ -5,6 +5,7 @@ public:
     Board(int bo[14], int turn);
     void rotate();
     void push(int move);
+    Board pushed(int move);
     int next_player();
     int is_end();
     std::string to_string();
@@ -67,6 +68,13 @@ void Board::push(int move){
     this->next=1-next;
     this->rotate();
 };
+
+Board Board::pushed(int move){
+    Board board(this->board, this->next);
+    board.push(move);
+    return board;
+};
+
 int Board::is_end(){
     return this->end;
 };
