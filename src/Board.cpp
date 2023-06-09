@@ -171,8 +171,8 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
             (int)PyLong_AsLong(PyList_GetItem(pyboard,12)),
             (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
         };
+        self->board=new Board(cboard, next);
     }
-    
     if (PyTuple_Check(pyboard)) {
         if(PyTuple_Size(pyboard)!=14){
             PyErr_SetString(PyExc_ValueError, "InitError3!");
@@ -194,8 +194,8 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
             (int)PyLong_AsLong(PyTuple_GetItem(pyboard, 12)),
             (int)PyLong_AsLong(PyTuple_GetItem(pyboard, 13))
         };
+        self->board=new Board(cboard, next);
     }
-    self->board=new Board(cboard, next);
     int end=1;
     if(self->board->board[0]==1){
         end=0;
