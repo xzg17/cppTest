@@ -1,5 +1,4 @@
 #include <string>
-#include "Piece.hpp"
 
 class Board{
 public:
