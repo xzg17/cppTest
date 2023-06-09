@@ -1,6 +1,6 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include <Piece.hpp>
+#include <Piece.h>
 #include "Board.h"
 
 
