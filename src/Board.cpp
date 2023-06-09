@@ -279,7 +279,7 @@ static PyObject *Board_moves(Py_Class_Board *self){
 };
 
 static PyObject *catch_moves(Py_Class_Board *self){
-    int board[14]={)",
+    int board[14]={
         self->board->board[0],
         self->board->board[1],
         self->board->board[2],
@@ -366,7 +366,7 @@ static PyObject *catch_moves(Py_Class_Board *self){
 //*/
 
 static PyObject *get_information(Py_Class_Board *self){
-    int board[14]={)",
+    int board[14]={
         self->board->board[0],
         self->board->board[1],
         self->board->board[2],
