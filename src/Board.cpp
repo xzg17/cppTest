@@ -36,6 +36,7 @@ static PyObject *my_debug1(Py_Class_Board *self){
 static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
     {"catch", (PyCFunction)catch_moves, METH_VARARGS, "(^o^)v"},
+    {"catch_or_moves", (PyCFunction)catch_or_moves, METH_VARARGS, "(ToT)/\(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
     {"pushed", (PyCFunction)pushed_board, METH_VARARGS, "{O_O}"},
