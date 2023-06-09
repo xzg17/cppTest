@@ -59,6 +59,9 @@ void Board::push(int move){
     int f,t;
     f=move / 14;
     t=move % 14;
+    if(this->board[t]==-1){
+        this->end=1;
+    }
     this->board[t]=this->board[f];
     this->board[f]=0;
     this->next=1-next;
