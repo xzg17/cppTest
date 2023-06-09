@@ -29,7 +29,7 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 static PyObject *Board_str(Py_Class_Board *self);
 
 static PyObject *my_debug1(Py_Class_Board *self){
-    return Py_BuildValue("[ii]", self->test_bo->lost_history[4], self->test_bo->lost_history[7]);
+    return Py_BuildValue("[ii]", 0, 0);
 };
 
 static PyMethodDef Py_Class_Board_methods[] = {
@@ -145,7 +145,6 @@ static int *Dummy_init(Py_Class_Board *self, PyObject *args){
         (int)PyLong_AsLong(PyList_GetItem(pyboard,13))
     };
     int chands[6]={0,0,0,0,0,0};
-    self->test_bo=new TestBoard(cboard,chands);
     self->board=new Board(cboard);
     return 0;
 };
