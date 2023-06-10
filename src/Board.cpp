@@ -17,7 +17,7 @@ static PyObject *catch_or_moves(Py_Class_Board *self);
 static PyObject *get_information(Py_Class_Board *self);
 static PyObject *get_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
-static PyObject *set_tesu(Py_Class_Board *self);
+static PyObject *set_tesu(Py_Class_Board *self, PyObject *args);
 static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *next_player(Py_Class_Board *self);
@@ -39,6 +39,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"moves", (PyCFunction)Board_moves, METH_VARARGS, "(ToT)"},
     {"catch", (PyCFunction)catch_moves, METH_VARARGS, "(^o^)v"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
+    {"set_tesu", (PyCFunction)set_tesu, METH_VARARGS, "(^o^)v"},
     {"catch_or_moves", (PyCFunction)catch_or_moves, METH_VARARGS, "(ToT)/\(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
