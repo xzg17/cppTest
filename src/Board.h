@@ -11,6 +11,7 @@ public:
     std::string to_string();
     int board[14];
     int next;
+    int tesu;
     int end;//0,1
 private:
 };
@@ -31,6 +32,7 @@ Board::Board(int bo[14], int turn){
     this->board[13] = bo[13];
     this->next=turn;
     this->end=0;
+    this->tesu=0;
 };
 void Board::rotate(){
     int _;
@@ -66,6 +68,7 @@ void Board::push(int move){
     this->board[t]=this->board[f];
     this->board[f]=0;
     this->next=1-next;
+    this->tesu+=1;
     this->rotate();
 };
 
