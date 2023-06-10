@@ -17,6 +17,7 @@ static PyObject *catch_or_moves(Py_Class_Board *self);
 static PyObject *get_information(Py_Class_Board *self);
 static PyObject *get_board(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
+static PyObject *set_tesu(Py_Class_Board *self);
 static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *next_player(Py_Class_Board *self);
@@ -113,6 +114,17 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
 
 static PyObject *get_tesu(Py_Class_Board *self){
     return Py_BuildValue("i", self->board->tesu);
+};
+
+static PyObject *set_tesu(Py_Class_Board *self, PyObject *args){
+    int tesu;
+    if (!PyArg_ParseTuple(args, "i", &tesu)) {
+        PyErr_SetString(PyExc_ValueError, "SetError1!");
+        return NULL;
+    };
+    self->board->tesu = tesu;
+    Py_INCREF(Py_None);
+    return Py_None;
 };
 
 //*
