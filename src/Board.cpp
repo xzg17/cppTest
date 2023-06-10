@@ -16,6 +16,7 @@ static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *catch_or_moves(Py_Class_Board *self);
 static PyObject *get_information(Py_Class_Board *self);
 static PyObject *get_board(Py_Class_Board *self);
+static PyObject *get_tesu(Py_Class_Board *self);
 static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *next_player(Py_Class_Board *self);
@@ -107,6 +108,12 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
     Py_INCREF(Py_None);
     return Py_None;
 };
+
+
+static PyObject *get_tesu(Py_Class_Board *self){
+    return Py_BuildValue("i", self->board->tesu);
+};
+
 //*
 static PyObject *pushed_board(Py_Class_Board *self, PyObject *args){
     int move;
