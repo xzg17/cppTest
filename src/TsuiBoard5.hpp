@@ -16,10 +16,12 @@ public:
     void rotate();
     int push(int move);//合法1反則0
     Board pushed(int move);
-    int next_player();
+    int is_dist_check();//一マス以上開けての王手判定
+    int is_close_check();//隣からの王手判定
     int is_end();
     std::string to_string();
     int board[38];//0~24盤25~34持駒35,36反則37手数
+    int kpos[2];
     //以下使うか怪しいもの
     int moves1[200];//成でない「指す」手。移動先*方向=25*8=200
     int moves2[25];//可成域への成る手。移動先*方向=5*5=25(+200)
@@ -66,6 +68,8 @@ Board::Board(){
     this->board[35] = 9;
     this->board[36] = 9;
     this->board[37] = 0;
+    this->kpos[0] = 20;
+    this->kpos[1] = 4;
 };
 void Board::rotate(){
     int _;
@@ -125,7 +129,25 @@ void Board::rotate(){
     _ = this->board[35];
     this->board[35] = this->board[36];
     this->board[36] = _;
+    _ = this->kpos[0];
+    this->kpos[0] = this->kpos[1];
+    this->kpos[1] = _;
 };
+
+int Board::is_dist_check(){
+    kpos;
+};
+int is_close_check(){
+    if(this->kpos[0] < 5){
+        return -1
+    }else{
+        if(this->board[this->kpos[0]] < 0 && this->board[this->kpos[0]] != -3){
+            return 1;
+        };
+        if()
+    };
+    
+};//隣からの王手判定
 int Board::push(int move){//入力がpseudo_legalを前提とする。
     int to;
     int dir;
