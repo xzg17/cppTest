@@ -1,17 +1,17 @@
 /*
 空:0
-歩:1
-銀:2
-角:3
-飛:4
-金:5
+歩:1[25]
+銀:2[26]
+角:3[27]
+飛:4[28]
+金:5[29]
 玉:6
 成:+6
 偶:11
 direction
 012
 3-4
-567
+567(012)
 drop:8
 合法手生成はひらがなすいしょうとかを参考にした
 */
@@ -52,10 +52,10 @@ public:
     void direction_PR3(int *moves3, int pos);
     void direction_PB3(int *moves3, int pos);
     
-    int pseudo_move1(int *move1);
-    int pseudo_move2(int *move2);
-    int pseudo_move3(int *move3);
-    int pseudo_move4(int *move4);
+    int pseudo_moves1(int *moves1);
+    int pseudo_moves2(int *moves2);
+    int pseudo_moves3(int *moves3);
+    int pseudo_moves4(int *moves4);
     //以下使うか怪しいもの
     int moves1[200];//成でない「指す」手。移動先*方向=25*8=200
     int moves2[25];//可成域への成る手。移動先*方向=5*5=25(+200)
@@ -102,7 +102,7 @@ void TsuiBoard5::direction_PR1(int *moves1, int pos){
     int p = pos;
     while(5 <= p){
         p -= 5;
-        moves1[p + 1] = pos;
+        moves1[8 * p + 1] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -110,7 +110,7 @@ void TsuiBoard5::direction_PR1(int *moves1, int pos){
     p = pos;
     while(p < 20){
         p += 5;
-        moves1[p + 6] = pos;
+        moves1[8 * p + 6] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -118,7 +118,7 @@ void TsuiBoard5::direction_PR1(int *moves1, int pos){
     p = pos;
     while(p % 5 != 0){
         p -= 1;
-        moves1[p + 3] = pos;
+        moves1[8 * p + 3] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -126,7 +126,7 @@ void TsuiBoard5::direction_PR1(int *moves1, int pos){
     p = pos;
     while(p % 5 != 0){
         p += 1;
-        moves1[p + 4] = pos;
+        moves1[8 * p + 4] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -136,7 +136,7 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
     int p = pos;
     while(5 <= p && p % 5 != 0){
         p -= 6;
-        moves1[p] = pos;
+        moves1[8 * p] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -144,7 +144,7 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
     p = pos;
     while(5 <= p && p % 5 != 4){
         p -= 4;
-        moves1[p + 2] = pos;
+        moves1[8 * p + 2] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -152,7 +152,7 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
     p = pos;
     while(p < 20 && p % 5 != 0){
         p += 4;
-        moves1[p + 5] = pos;
+        moves1[8 * p + 5] = pos;
         if(this->board[p] > 0){
             break;
         };
@@ -160,9 +160,137 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
     p = pos;
     while(p < 20 && p % 5 != 4){
         p += 6;
-        moves1[p + 7] = pos;
+        moves1[8 * p + 7] = pos;
         if(this->board[p] > 0){
             break;
+        };
+    };
+};
+
+void TsuiBoard5::direction_N2(int *moves2, int pos){
+    if(5 <= pos && pos < 10){//渡すときにこの条件を満たすように実装した方がいいかも
+        moves2[5 * pos - 24] = pos;//moves1[5 * (pos - 5) + 1] = pos;
+    };
+};
+void TsuiBoard5::direction_NEW2(int *moves2, int pos){
+    if(5 <= pos && pos < 10){
+        if(pos != 5){
+            moves2[5 * pos - 30] = pos;//moves1[5 * (pos - 6) + 0] = pos;
+        };
+        if(pos != 9){
+            moves2[5 * pos - 18] = pos;//moves1[5 * (pos - 4) + 2] = pos;
+        };
+    };
+};
+void TsuiBoard5::direction_EW2(int *moves2, int pos){
+    if(pos < 5){
+        if(pos != 0){
+            moves2[5 * pos - 2] = pos;//moves1[5 * (pos - 1) + 3] = pos;
+        };
+        if(pos != 4){
+            moves2[5 * pos + 9] = pos;//moves1[5 * (pos + 1) + 4] = pos;
+        };
+    };
+};
+void TsuiBoard5::direction_PR2(int *moves2, int pos){
+    int p = pos;
+    while(5 <= p){
+        p -= 5;
+        if(p < 5){
+            moves2[5 * p + 1] = pos;
+        }
+        if(this->board[p] > 0){
+            break;
+        };
+    ;}
+    p = pos;
+    while(p % 5 != 0){
+        p -= 1;
+        if(p < 5){
+            moves2[5 * p + 3] = pos;
+        }
+        if(this->board[p] > 0){
+            break;
+        };
+    };
+    p = pos;
+    while(p % 5 != 0){
+        p += 1;
+        if(p < 5){
+            moves2[5 * p + 4] = pos;
+        }
+        if(this->board[p] > 0){
+            break;
+        };
+    };
+};
+void TsuiBoard5::direction_PB2(int *moves2, int pos){
+    int p = pos;
+    while(5 <= p && p % 5 != 0){
+        p -= 6;
+        if(p < 5){
+            moves2[5 * p] = pos;
+        }
+        if(this->board[p] > 0){
+            break;
+        };
+    };
+    p = pos;
+    while(5 <= p && p % 5 != 4){
+        p -= 4;
+        if(p < 5){
+            moves2[5 * p + 2] = pos;
+        }
+        if(this->board[p] > 0){
+            break;
+        };
+    };
+};
+
+void TsuiBoard5::direction_S3(int *moves3, int pos){
+    if(pos < 5){
+        moves3[3 * pos + 16] = pos;//moves1[3 * (pos + 5) + 1] = pos;
+    }
+};
+void TsuiBoard5::direction_SEW3(int *moves3, int pos){
+    if(pos < 5){
+        if(pos % 5 != 0){
+            moves3[3 * pos + 12] = pos;//moves1[3 * (pos + 4) + 0] = pos;
+        };
+        if(pos % 5 != 4){
+            moves3[3 * pos + 20] = pos;//moves1[3 * (pos + 6) + 2] = pos;
+        };
+    };
+};
+void TsuiBoard5::direction_PR3(int *moves3, int pos){
+    if(pos < 5){
+        int p = pos;
+        while(p < 20){
+            p += 5;
+            moves3[3 * p + 1] = pos;
+            if(this->board[p] > 0){
+                break;
+            };
+        };
+    };
+};
+void TsuiBoard5::direction_PB3(int *moves3, int pos){
+    if(pos < 5){
+        int p = pos;
+        while(p < 20 && p % 5 != 0){
+            p += 4;
+            moves1[3 * p] = pos;
+            if(this->board[p] > 0){
+                break;
+            };
+        };
+        p = pos;
+        while(p < 20 && p % 5 != 4){
+            p += 6;
+            moves1[3 * p + 2] = pos;
+            if(this->board[p] > 0){
+                break;
+            };
         };
     };
 };
@@ -250,8 +378,98 @@ int TsuiBoard5::is_close_check(){
     };
 };
 
-int TsuiBoard5::pseudo_move1(int *moves1){
+int TsuiBoard5::pseudo_moves1(int *moves1){
+    for(int i = 0;i < 25;i++){
+        if(0 < this->board[i]){
+            if(this->board[i] != 3){
+                this->direction_N1(moves1, i);
+            };
+            if(this->board[i] == 2 || this->board[i] == 6 || this->board[i] == 10){
+                this->direction_NEW1(moves1, i);
+                this->direction_SEW1(moves1, i);
+            };
+            if(5 <= this->board[i]){
+                this->direction_NEW1(moves1, i);
+                this->direction_EW1(moves1, i);
+                this->direction_S1(moves1, i);
+            };
+            if(this->board[i] == 3 || this->board[i] == 9){
+                this->direction_PB1(moves1, i);
+            };
+            if(this->board[i] == 4 || this->board[i] == 10){
+                this->direction_PR1(moves1, i);
+            };
+        };
+    };
     return 1;
+};
+
+int TsuiBoard5::pseudo_moves2(int *moves2){
+    for(int i = 0;i < 25;i++){
+        if(0 < this->board[i] && this->board[i] <= 4){
+            if(this->board[i] == 1){
+                this->direction_N2(moves2, i);
+            };
+            if(this->board[i] == 2){
+                this->direction_N2(moves2, i);
+                this->direction_NEW2(moves2, i);
+            };
+            if(this->board[i] == 3){
+                this->direction_PB2(moves2, i);
+            };
+            if(this->board[i] == 4){
+                this->direction_PR2(moves2, i);
+            };
+        };
+    };
+    return 2;
+};
+int TsuiBoard5::pseudo_moves3(int *moves3){
+    for(int i = 0;i < 5;i++){
+        if(0 < this->board[i] && this->board[i] <= 4){
+            if(this->board[i] == 2){
+                this->direction_SEW3(moves3, i);
+            };
+            if(this->board[i] == 3){
+                this->direction_PB3(moves3, i);
+            };
+            if(this->board[i] == 4){
+                this->direction_PR3(moves3, i);
+            };
+        };
+    };
+    return 3;
+};
+int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけどどうしよう
+    int pcol = -1;
+    for(int i = 0;i < 25;i++){
+        if(this->board[i] == 1){
+            pcol = i % 5;
+            break;
+        };
+    };
+    for(int i = 0;i < 25;i++){
+        if(this->board[i] <= 0){
+            if(this->board[25] > 0){
+                if(i % 5 != pcol){
+                    moves4[5 * i] = 1;
+                };
+            };
+            if(this->board[26] > 0){
+                moves4[5 * i + 1] = 1;
+            };
+            if(this->board[27] > 0){
+                moves4[5 * i + 2] = 1;
+            };
+            if(this->board[28] > 0){
+                moves4[5 * i + 3] = 1;
+            };
+            if(this->board[29] > 0){
+                moves4[5 * i + 4] = 1;
+            };
+        };
+    };
+    return 4;
 };
 int TsuiBoard5::push(int move, int move_from){
     int to;
