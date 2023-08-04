@@ -363,7 +363,6 @@ void TsuiBoard5::rotate(){
 
 int TsuiBoard5::is_dist_check(){
     int k = this->kpos[0];
-    return 0;
 };
 int TsuiBoard5::is_close_check(){
     int k = this->kpos[0];
