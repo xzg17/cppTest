@@ -366,16 +366,48 @@ int TsuiBoard5::is_dist_check(){
     return 0;
 };
 int TsuiBoard5::is_close_check(){
-    if(this->kpos[0] < 5){
-        return 0;
-    }else{
-        if(this->board[this->kpos[0]] < 0 && this->board[this->kpos[0]] != -3){
+    int k = this->kpos[0];
+    if(k < 5){
+        if(this->board[k - 5] < 0 && this->board[k - 5] != -3){
             return 1;
         };
-        if(1){
-            return 0;
+        if(k % 5 != 0){
+            if(this->board[k - 6] <= -5 || this->board[k - 6] == -2 || this->board[k - 6] == -3){
+                return 1;
+            };
+        };
+        if(k % 5 != 4){
+            if(this->board[k - 4] <= -5 || this->board[k - 4] == -2 || this->board[k - 4] == -3){
+                return 1;
+            };
+        };
+    }else if(20 <= k){
+        if(this->board[k + 5] <= -4){
+            return 1;
+        };
+        if(k % 5 != 0){
+            if(this->board[k + 4] == -10 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
+                return 1;
+            };
+        };
+        if(k % 5 != 4){
+            if(this->board[k + 6] == -10 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
+                return 1;
+            };
+        };
+    }else{
+        if(k % 5 != 0){
+            if(this->board[k - 1] <= -4){
+                return 1;
+            };
+        };
+        if(k % 5 != 4){
+            if(this->board[k + 1] <= -4){
+                return 1;
+            };
         };
     };
+    return 0;
 };
 
 int TsuiBoard5::pseudo_moves1(int *moves1){
