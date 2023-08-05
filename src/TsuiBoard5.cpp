@@ -172,6 +172,7 @@ static PyObject *board_str(Py_Class_TsuiBoard *self){
 
 static int *board_init(Py_Class_TsuiBoard *self){
     self->board=new TsuiBoard5();
+    return 0;
 };
 
 static PyModuleDef custommodule = {
