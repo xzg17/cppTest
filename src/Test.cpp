@@ -3,6 +3,7 @@
 #include "Class.h"
 #include "Test.h"
 #include "Board.h"
+#include "TsuiBoard5.hpp"
 
 
 typedef struct {
