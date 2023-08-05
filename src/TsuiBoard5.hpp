@@ -507,19 +507,19 @@ int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけ�
     return 4;
 };
 int TsuiBoard5::push(int move, int move_from){
-    int to, dir, result;
+    int to, p, result;
     if(move < 225){
         if(move < 200){
             to = move >> 3;
-            p = this->board[move_form];
+            p = this->board[move_from];
         }else{
             to = move / 5;
-            p = this->board[move_form];
+            p = this->board[move_from];
         };
     }else{
         if(move < 285){
             to = move / 3;
-            p = this->board[move_form];
+            p = this->board[move_from];
         }else{
             to = move / 5;
             p = move % 5 + 1;
