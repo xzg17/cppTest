@@ -1,7 +1,7 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "TsuiBoard5.hpp"
-
+#include <string>
 
 typedef struct {
     
@@ -29,7 +29,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self);
 
 
 static int *board_init(Py_Class_TsuiBoard *self);
-//static PyObject *Board_str(Py_Class_TsuiBoard *self);
+static PyObject *board_str(Py_Class_TsuiBoard *self);
 /*
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[ii]", 0, 0);
@@ -55,7 +55,7 @@ static PyMethodDef Py_Class_TsuiBoard_methods[] = {
 
 static PyTypeObject CustomType = {
     PyVarObject_HEAD_INIT(NULL, 0) "custom.Custom", /* tp_name */
-    sizeof(Py_Class_Board),                           /* tp_basicsize */
+    sizeof(Py_Class_TsuiBoard),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
     0, /* tp_dealloc */
@@ -69,7 +69,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_as_mapping */
     0,                        /* tp_hash */
     0,                        /* tp_call */
-    (reprfunc)*Board_str,     /* tp_str */
+    (reprfunc)*board_str,     /* tp_str */
     0,                        /* tp_getattro */
     0,                        /* tp_setattro */
     0,                        /* tp_as_buffer */
@@ -81,7 +81,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_weaklistoffset */
     0,                        /* tp_iter */
     0,                        /* tp_iternext */
-    Py_Class_TsuiBoard_methods,     /* tp_methods */
+    Py_Class_TsuiBoard_methods,/* tp_methods */
     0,                        /* tp_members */
     0,                        /* tp_getset */
     0,                        /* tp_base */
@@ -163,14 +163,15 @@ static PyObject *is_end(Py_Class_Board *self){
 static PyObject *next_player(Py_Class_Board *self){
     return Py_BuildValue("i", self->board->next_player());
 };
-
-static PyObject *Board_str(Py_Class_Board *self){
-    return PyUnicode_FromFormat(self->board->to_string().c_str());
+//*/
+static PyObject *board_str(Py_Class_TsuiBoard *self){
+    std::string hoge = "hogehoge"
+    return PyUnicode_FromFormat(hoge.c_str());
 };
 //*/
 
 static int *board_init(Py_Class_TsuiBoard *self){
-    self->board=new Board();
+    self->board=new TsuiBoard5();
 };
 
 static PyModuleDef custommodule = {
