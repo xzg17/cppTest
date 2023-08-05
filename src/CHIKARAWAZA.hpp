@@ -3,7 +3,7 @@ int CHIKARAWAZA1(int *board, int k);
 int CHIKARAWAZA1(int *board, int k){
     if(k == 0){
         if(board[1] == 0){
-            if(board[2] == -4 || board[] == -10){
+            if(board[2] == -4 || board[2] == -10){
                 return 1;
             };
             if(board[2] == 0){
@@ -11,7 +11,7 @@ int CHIKARAWAZA1(int *board, int k){
                     return 1;
                 };
                 if(board[3] == 0){
-                    if(board[4] ==  -4 || board[] == -9){
+                    if(board[4] ==  -4 || board[4] == -9){
                         return 1;
                     };
                 };
@@ -499,7 +499,7 @@ int CHIKARAWAZA1(int *board, int k){
             };
         };
         if(board[12] == 0){
-            if(board[11] == -4 || board11[] == -10){
+            if(board[11] == -4 || board[11] == -10){
                 return 1;
             };
             if(board[11] == 0){
