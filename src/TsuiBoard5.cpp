@@ -201,7 +201,7 @@ PyInit_Tsuitate55(void){
     return m;
 }
 //*
-static PyObject *board_moves(Py_Class_Board *self){
+static PyObject *board_moves(Py_Class_TsuiBoard *self){
     int moves1[200];//成でない「指す」手。移動先*方向=25*8=200
     int moves2[25];//可成域への成る手。移動先*方向=5*5=25(+200)
     int moves3[60];//非可成域への成る手。移動先*方向=20*3=(+225)
