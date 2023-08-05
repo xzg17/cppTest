@@ -36,7 +36,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[ii]", 0, 0);
 };
 //*/
-static PyMethodDef Py_Class_Board_methods[] = {
+static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"pseudo_moves", (PyCFunction)board_moves, METH_VARARGS, "(O_O)"},
     //{"catch", (PyCFunction)catch_moves, METH_VARARGS, "(^o^)v"},
     //{"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
@@ -82,7 +82,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_weaklistoffset */
     0,                        /* tp_iter */
     0,                        /* tp_iternext */
-    Py_Class_Board_methods,     /* tp_methods */
+    Py_Class_TsuiBoard_methods,     /* tp_methods */
     0,                        /* tp_members */
     0,                        /* tp_getset */
     0,                        /* tp_base */
