@@ -20,6 +20,9 @@ drop:8
 //viewerでプレイする場合打歩詰反則に対応できないが同実装するか
 //lishogiで再生することを前提としよう
 //よく考えたらrotateするから純粋な再生は無理かも
+
+#include "CHIKARAWAZA.hpp"
+
 class TsuiBoard5{
 public:
     TsuiBoard5();
