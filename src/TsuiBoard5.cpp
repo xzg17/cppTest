@@ -30,7 +30,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self);
 
 static int *board_init(Py_Class_TsuiBoard *self);
 static PyObject *board_str(Py_Class_TsuiBoard *self);
-/*
+//*
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[ii]", 0, 0);
 };
