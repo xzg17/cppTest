@@ -28,8 +28,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *my_debug1(Py_Class_TsuiBoard *self);
 
 
-static int *Dummy_init(Py_Class_TsuiBoard *self, PyObject *args);
-//static int *board_init(Py_Class_TsuiBoard *self);
+static int *board_init(Py_Class_TsuiBoard *self);
 //static PyObject *Board_str(Py_Class_TsuiBoard *self);
 /*
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
@@ -90,7 +89,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_descr_get */
     0,                        /* tp_descr_set */
     0,                        /* tp_dictoffset */
-    (initproc)Dummy_init,     /* tp_init */
+    (initproc)board_init,     /* tp_init */
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
@@ -165,14 +164,14 @@ static PyObject *next_player(Py_Class_Board *self){
     return Py_BuildValue("i", self->board->next_player());
 };
 
-static int *board_init(Py_Class_TsuiBoard *self){
-    self->board=new Board();
-};
-
 static PyObject *Board_str(Py_Class_Board *self){
     return PyUnicode_FromFormat(self->board->to_string().c_str());
 };
 //*/
+
+static int *board_init(Py_Class_TsuiBoard *self){
+    self->board=new Board();
+};
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
