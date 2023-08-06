@@ -1,9 +1,5 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include "TsuiBoard5.hpp"
-#include <string>
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
 #include "Piece.hpp"
 #include "Board.h"
 #include "TsuiBoard5.hpp"
