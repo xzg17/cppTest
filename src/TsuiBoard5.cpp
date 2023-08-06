@@ -166,7 +166,6 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             };
         };
     };
-    return pseudo_moves;
     for(int i = 0;i < 25;i++){
         if(moves2[i]){
             PyObject *tuple = Py_BuildValue("(ii)", i + 200, moves2[i]);
@@ -175,32 +174,22 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             };
         };
     };
+    return pseudo_moves;
     for(int i = 0;i < 60;i++){
         if(moves3[i]){
-            PyObject *tuple = PyTuple_New(2);
-            if(!PyTuple_SetItem(tuple, 0, PyLong_FromLong(225 + (long)i)) || !PyTuple_SetItem(tuple, 1, PyLong_FromLong((long)moves3[i]))){
-                PyErr_SetString(PyExc_ValueError, "Error in setting moves3!");
-                Py_INCREF(Py_None);
-                return Py_None;
-            };
-            if(!PySet_Add(pseudo_moves, tuple)){
-                PyErr_SetString(PyExc_ValueError, "Error in addition of moves3!");
+            PyObject *tuple = Py_BuildValue("(ii)", i + 225, moves3[i]);
+            if(PySet_Add(pseudo_moves, tuple)){
+                return tuple;
             };
         };
     };
-    /*
     for(int i = 0;i < 125;i++){
         if(moves4[i]){
-            PyObject *tuple = PyTuple_New(2);
-            if(!PyTuple_SetItem(tuple, 0, PyLong_FromLong(285 + (long)i)) || !PyTuple_SetItem(tuple, 1, PyLong_FromLong(1))){
-                PyErr_SetString(PyExc_ValueError, "Error in setting moves4!");
-                return NULL;
-            };
-            if(!PySet_Add(pseudo_moves, tuple)){
-                PyErr_SetString(PyExc_ValueError, "Error in addition of moves4!");
+            PyObject *tuple = Py_BuildValue("(ii)", i + 285, 1);
+            if(PySet_Add(pseudo_moves, tuple)){
+                return tuple;
             };
         };
     };
-    //*/
     return pseudo_moves;
 };
