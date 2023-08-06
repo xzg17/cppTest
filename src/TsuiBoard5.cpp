@@ -48,8 +48,6 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
     {"pushed", (PyCFunction)pushed_board, METH_VARARGS, "{O_O}"},
     {"is_end", (PyCFunction)is_end, METH_VARARGS, "\(-A-)/"},
-    {"get_info", (PyCFunction)get_information, METH_VARARGS, "v(^o^)"},
-    {"get_board", (PyCFunction)get_board, METH_VARARGS, "v(^o^)"},
     {"next_player", (PyCFunction)next_player, METH_VARARGS, "(-_-)?"},
     //{"debug", (PyCFunction)my_debug1, METH_VARARGS, "(x_x)"},
     {NULL} /* Sentinel */
