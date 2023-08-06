@@ -10,23 +10,23 @@ typedef struct {
     PyObject_HEAD
     /* Type-specific fields go here. */
         TsuiBoard5 *board2;
-} Py_Class_Board;
+} Py_Class_TsuiBoard;
 
 
-static PyObject *board_moves(Py_Class_Board *self);
-static PyObject *get_tesu(Py_Class_Board *self);
-static PyObject *rotate_board(Py_Class_Board *self);
-static PyObject *push_move(Py_Class_Board *self, PyObject *args);
-static PyObject *my_debug1(Py_Class_Board *self);
-static int *board_init(Py_Class_Board *self);
+static PyObject *board_moves(Py_Class_TsuiBoard *self);
+static PyObject *get_tesu(Py_Class_TsuiBoard *self);
+static PyObject *rotate_board(Py_Class_TsuiBoard *self);
+static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args);
+static PyObject *my_debug1(Py_Class_TsuiBoard *self);
+static int *board_init(Py_Class_TsuiBoard *self);
 
-static PyObject *Board_str(Py_Class_Board *self);
+static PyObject *Board_str(Py_Class_TsuiBoard *self);
 
-static PyObject *my_debug1(Py_Class_Board *self){
+static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[ii]", 0, 0);
 };
 
-static PyMethodDef Py_Class_Board_methods[] = {
+static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"moves", (PyCFunction)board_moves, METH_VARARGS, "(ToT)"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
@@ -37,7 +37,7 @@ static PyMethodDef Py_Class_Board_methods[] = {
 
 static PyTypeObject CustomType = {
     PyVarObject_HEAD_INIT(NULL, 0) "custom.Custom", /* tp_name */
-    sizeof(Py_Class_Board),                           /* tp_basicsize */
+    sizeof(Py_Class_TsuiBoard),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
     0, /* tp_dealloc */
@@ -63,7 +63,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_weaklistoffset */
     0,                        /* tp_iter */
     0,                        /* tp_iternext */
-    Py_Class_Board_methods,     /* tp_methods */
+    Py_Class_TsuiBoard_methods,     /* tp_methods */
     0,                        /* tp_members */
     0,                        /* tp_getset */
     0,                        /* tp_base */
@@ -77,13 +77,13 @@ static PyTypeObject CustomType = {
 };
 
 
-static PyObject *rotate_board(Py_Class_Board *self){
+static PyObject *rotate_board(Py_Class_TsuiBoard *self){
     self->board2->rotate();
     Py_INCREF(Py_None);
     return Py_None;
 };
 
-static PyObject *push_move(Py_Class_Board *self, PyObject *args){
+static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *move_tuple;
     if (!PyArg_ParseTuple(args, "O", move_tuple)) {
         PyErr_SetString(PyExc_ValueError, "Error in push!");
@@ -97,11 +97,11 @@ static PyObject *push_move(Py_Class_Board *self, PyObject *args){
 };
 
 
-static PyObject *get_tesu(Py_Class_Board *self){
+static PyObject *get_tesu(Py_Class_TsuiBoard *self){
     return Py_BuildValue("i", self->board2->board[37]);
 };
 //*/
-static PyObject *Board_str(Py_Class_Board *self){
+static PyObject *Board_str(Py_Class_TsuiBoard *self){
     std::string dummy = "Dummy!";
     return PyUnicode_FromFormat(dummy.c_str());
 };
@@ -134,12 +134,12 @@ PyInit_np_nd_DIDS(void){
     return m;
 };
 //*
-static int *board_init(Py_Class_Board *self){
+static int *board_init(Py_Class_TsuiBoard *self){
     self->board2 = new TsuiBoard5();
     return 0;
 };
 //*/
-static PyObject *board_moves(Py_Class_Board *self){
+static PyObject *board_moves(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
     /*
     int moves1[200];//成でない「指す」手。移動先*方向=25*8=200
