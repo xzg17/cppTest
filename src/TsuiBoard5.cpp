@@ -22,7 +22,6 @@ static PyObject *is_end(Py_Class_Board *self);
 static PyObject *my_debug1(Py_Class_Board *self);
 static int *board_init(Py_Class_Board *self);
 
-static int *Dummy_init(Py_Class_Board *self, PyObject *args);
 static PyObject *Board_str(Py_Class_Board *self);
 
 static PyObject *my_debug1(Py_Class_Board *self){
