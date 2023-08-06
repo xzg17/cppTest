@@ -26,7 +26,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self){
 };
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
-    {"moves", (PyCFunction)board_moves, METH_NOARGS, "(ToT)"},
+    {"moves", (PyCFunction)board_moves, METH_VARARGS, "(ToT)"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
