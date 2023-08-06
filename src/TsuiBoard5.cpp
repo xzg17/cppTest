@@ -145,6 +145,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
     int moves3[60];//非可成域への成る手。移動先*方向=20*3=(+225)
     int moves4[125];//打つ手。移動先*駒種=25*5=125(+285)
     //計410
+    /*
     self->board2->pseudo_moves1(moves1);
     self->board2->pseudo_moves2(moves2);
     self->board2->pseudo_moves3(moves3);
