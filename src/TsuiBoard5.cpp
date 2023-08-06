@@ -98,7 +98,7 @@ static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args){
 
 
 static PyObject *get_tesu(Py_Class_TsuiBoard *self){
-    return Py_BuildValue("i", self->board2->board[37]);
+    return 0;//Py_BuildValue("i", self->board2->board[37]);
 };
 //*/
 static PyObject *Board_str(Py_Class_TsuiBoard *self){
