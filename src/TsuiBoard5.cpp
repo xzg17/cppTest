@@ -12,7 +12,6 @@ typedef struct {
         TsuiBoard5 *board2;
 } Py_Class_TsuiBoard;
 
-byuib;
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *rotate_board(Py_Class_TsuiBoard *self);
