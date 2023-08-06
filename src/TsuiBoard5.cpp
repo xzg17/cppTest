@@ -240,12 +240,12 @@ PyInit_np_nd_DIDS(void){
 
     return m;
 };
-/*
+//*
 static int *board_init(Py_Class_Board *self){
     self->board2 = new TsuiBoard5();
     return 0;
 };
-*/
+//*/
 static PyObject *board_moves(Py_Class_Board *self){
     PyObject *pseudo_moves = PySet_New(NULL);
     /*
