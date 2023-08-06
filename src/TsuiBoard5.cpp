@@ -75,7 +75,7 @@ static PyTypeObject CustomType = {
     0,                        /* tp_descr_get */
     0,                        /* tp_descr_set */
     0,                        /* tp_dictoffset */
-    (initproc)Dummy_init,     /* tp_init */
+    (initproc)board_init,     /* tp_init */
     0,                        /* tp_alloc */
     PyType_GenericNew,        /* tp_new */
 };
