@@ -141,7 +141,6 @@ static int *board_init(Py_Class_TsuiBoard *self){
 //*/
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
-    /*
     int moves1[200];//成でない「指す」手。移動先*方向=25*8=200
     int moves2[25];//可成域への成る手。移動先*方向=5*5=25(+200)
     int moves3[60];//非可成域への成る手。移動先*方向=20*3=(+225)
@@ -151,6 +150,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
     self->board2->pseudo_moves2(moves2);
     self->board2->pseudo_moves3(moves3);
     self->board2->pseudo_moves4(moves4);
+    /*
     for(int i = 0;i < 200;i++){
         if(moves1[i]){
             PyObject *tuple = PyTuple_New(2);
