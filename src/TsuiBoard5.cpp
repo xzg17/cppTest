@@ -87,12 +87,14 @@ static PyObject *rotate_board(Py_Class_Board *self){
 };
 
 static PyObject *push_move(Py_Class_Board *self, PyObject *args){
-    int move;
-    if (!PyArg_ParseTuple(args, "i", &move)) {
-        PyErr_SetString(PyExc_ValueError, "PushError1!");
+    PyObject *move_tuple;
+    if (!PyArg_ParseTuple(args, "O", move_tuple)) {
+        PyErr_SetString(PyExc_ValueError, "Error in push!");
         return NULL;
     };
-    self->board->push(move);
+    int move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
+    int move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
+    self->board2->push(move, move_from);
     Py_INCREF(Py_None);
     return Py_None;
 };
