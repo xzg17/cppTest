@@ -151,9 +151,11 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
     self->board2->pseudo_moves4(moves4);
     for(int i = 0;i < 200;i++){
         if(moves1[i]){
-            PyObject *tuple = PyTuple_New(2);
+            //PyObject *tuple = PyTuple_New(2);
             PyObject *dummy = PyLong_FromLong((long)i);
             Py_ssize_t dummy2 = 0;
+            PyObject *tuple = Py_BuildValue("(ii)", i, moves1[i]);
+            return PySet_New(NULL);
             if(!PyTuple_SetItem(tuple, dummy2, dummy)){
                 PyErr_SetString(PyExc_ValueError, "Error in setting moves1!");
                 return PySet_New(NULL);
