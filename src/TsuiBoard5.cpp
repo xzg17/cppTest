@@ -155,20 +155,14 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             if(PySet_Add(pseudo_moves, tuple)){
                 return tuple;
             };
-            return pseudo_moves;
         };
     };
-    /*
+    return pseudo_moves;
     for(int i = 0;i < 25;i++){
         if(moves2[i]){
-            PyObject *tuple = PyTuple_New(2);
-            if(!PyTuple_SetItem(tuple, 0, PyLong_FromLong(200 + (long)i)) || !PyTuple_SetItem(tuple, 1, PyLong_FromLong((long)moves2[i]))){
-                PyErr_SetString(PyExc_ValueError, "Error in setting moves2!");
-                Py_INCREF(Py_None);
-                return Py_None;
-            };
-            if(!PySet_Add(pseudo_moves, tuple)){
-                PyErr_SetString(PyExc_ValueError, "Error in addition of moves2!");
+            PyObject *tuple = Py_BuildValue("(ii)", i + 200, moves2[i]);
+            if(PySet_Add(pseudo_moves, tuple)){
+                return tuple;
             };
         };
     };
