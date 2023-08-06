@@ -149,7 +149,6 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
     self->board2->pseudo_moves2(moves2);
     self->board2->pseudo_moves3(moves3);
     self->board2->pseudo_moves4(moves4);
-    /*
     for(int i = 0;i < 200;i++){
         if(moves1[i]){
             PyObject *tuple = PyTuple_New(2);
@@ -162,6 +161,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             };
         };
     };
+    /*
     for(int i = 0;i < 25;i++){
         if(moves2[i]){
             PyObject *tuple = PyTuple_New(2);
