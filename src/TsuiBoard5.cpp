@@ -152,8 +152,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
     for(int i = 0;i < 200;i++){
         if(moves1[i]){
             PyObject *tuple = Py_BuildValue("(ii)", i, moves1[i]);
-            return pseudo_moves;
-            if(!PySet_Add(pseudo_moves, tuple)){
+            if(PySet_Add(pseudo_moves, tuple)){
                 return tuple;
             };
             return pseudo_moves;
