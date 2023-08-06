@@ -109,7 +109,7 @@ static PyObject *is_end(Py_Class_Board *self){
 };
 static PyObject *Board_str(Py_Class_Board *self){
     std::string dummy = "Dummy!";
-    return PyUnicode_FromFormat(self->board->to_string().c_str());
+    return PyUnicode_FromFormat(dummy.c_str());
 };
 
 
