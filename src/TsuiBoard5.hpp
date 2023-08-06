@@ -105,68 +105,68 @@ void TsuiBoard5::direction_PR1(int *moves1, int pos){
     int p = pos;
     while(5 <= p){
         p -= 5;
-        moves1[8 * p + 1] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 1] = pos;
     ;}
     p = pos;
     while(p < 20){
         p += 5;
-        moves1[8 * p + 6] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 6] = pos;
     };
     p = pos;
     while(p % 5 != 0){
         p -= 1;
-        moves1[8 * p + 3] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 3] = pos;
     };
     p = pos;
     while(p % 5 != 0){
         p += 1;
-        moves1[8 * p + 4] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 4] = pos;
     };
 };
 void TsuiBoard5::direction_PB1(int *moves1, int pos){
     int p = pos;
     while(5 <= p && p % 5 != 0){
         p -= 6;
-        moves1[8 * p] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p] = pos;
     };
     p = pos;
     while(5 <= p && p % 5 != 4){
         p -= 4;
-        moves1[8 * p + 2] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 2] = pos;
     };
     p = pos;
     while(p < 20 && p % 5 != 0){
         p += 4;
-        moves1[8 * p + 5] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 5] = pos;
     };
     p = pos;
     while(p < 20 && p % 5 != 4){
         p += 6;
-        moves1[8 * p + 7] = pos;
         if(this->board[p] > 0){
             break;
         };
+        moves1[8 * p + 7] = pos;
     };
 };
 
