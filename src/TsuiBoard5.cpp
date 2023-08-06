@@ -108,6 +108,7 @@ static PyObject *is_end(Py_Class_Board *self){
     return Py_BuildValue("i", self->board->is_end());
 };
 static PyObject *Board_str(Py_Class_Board *self){
+    std::string dummy;
     return PyUnicode_FromFormat(self->board->to_string().c_str());
 };
 
