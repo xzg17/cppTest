@@ -2,6 +2,7 @@
 #include <Python.h>
 #include "Piece.hpp"
 #include "Board.h"
+#include "TsuiBoard5.hpp"
 
 
 typedef struct {
