@@ -68,36 +68,36 @@ private:
 };
 
 void TsuiBoard5::direction_N1(int *moves1, int pos){
-    if(5 <= pos){
+    if(5 <= pos && this->board[pos - 5] <= 0){
         moves1[8 * pos - 39] = pos;//moves1[8 * (pos - 5) + 1] = pos;
     };
 };
 void TsuiBoard5::direction_S1(int *moves1, int pos){
-    if(pos < 20){
+    if(pos < 20 && this->board[pos + 5] <= 0){
         moves1[8 * pos + 46] = pos;//moves1[8 * (pos + 5) + 6] = pos;
     };
 };
 void TsuiBoard5::direction_EW1(int *moves1, int pos){
-    if(pos % 5 != 0){
+    if(pos % 5 != 0 && this->board[pos - 1] <= 0){
         moves1[8 * pos - 5] = pos;//moves1[8 * (pos - 1) + 3] = pos;
     };
-    if(pos % 5 != 4){
+    if(pos % 5 != 4 && this->board[pos + 1] <= 0){
         moves1[8 * pos + 12] = pos;//moves1[8 * (pos + 1) + 4] = pos;
     };
 };
 void TsuiBoard5::direction_NEW1(int *moves1, int pos){
-    if(5 <= pos && pos % 5 != 0){
+    if(5 <= pos && pos % 5 != 0 && this->board[pos - 6] <= 0){
         moves1[8 * pos - 48] = pos;//moves1[8 * (pos - 6) + 0] = pos;
     };
-    if(5 <= pos && pos % 5 != 4){
+    if(5 <= pos && pos % 5 != 4 && this->board[pos - 4] <= 0){
         moves1[8 * pos - 30] = pos;//moves1[8 * (pos - 4) + 2] = pos;
     };
 };
 void TsuiBoard5::direction_SEW1(int *moves1, int pos){
-    if(pos < 20 && pos % 5 != 0){
+    if(pos < 20 && pos % 5 != 0 && this->board[pos + 4] <= 0){
         moves1[8 * pos + 37] = pos;//moves1[8 * (pos + 4) + 5] = pos;
     };
-    if(pos < 20 && pos % 5 != 4){
+    if(pos < 20 && pos % 5 != 4 && this->board[pos + 6] <= 0){
         moves1[8 * pos + 55] = pos;//moves1[8 * (pos + 6) + 7] = pos;
     };
 };
