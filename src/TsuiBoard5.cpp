@@ -153,6 +153,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
         if(moves1[i]){
             PyObject *tuple = Py_BuildValue("(ii)", i, moves1[i]);
             if(!PySet_Add(pseudo_moves, tuple)){
+                PyErr_SetString(PyExc_ValueError, "Error in setting moves2!");
                 return PySet_New(NULL);
             };
             return PySet_New(NULL);
