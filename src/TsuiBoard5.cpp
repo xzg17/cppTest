@@ -17,7 +17,6 @@ typedef struct {
 static PyObject *Board_moves(Py_Class_Board *self);
 static PyObject *board_moves(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
-static PyObject *catch_moves(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
 static PyObject *is_end(Py_Class_Board *self);
@@ -339,93 +338,6 @@ static PyObject *Board_moves(Py_Class_Board *self){
     }
     return move_list;
 };
-
-static PyObject *catch_moves(Py_Class_Board *self){
-    int board[14]={
-        self->board->board[0],
-        self->board->board[1],
-        self->board->board[2],
-        self->board->board[3],
-        self->board->board[4],
-        self->board->board[5],
-        self->board->board[6],
-        self->board->board[7],
-        self->board->board[8],
-        self->board->board[9],
-        self->board->board[10],
-        self->board->board[11],
-        self->board->board[12],
-        self->board->board[13]
-    };
-    int i,j;
-    for(i=0;i<14;i++){
-        int p=board[i];
-        if(0<p){
-            if(p<3){
-                if(p==1){
-                    for(j=0;j<13;j++){
-                        p=lion[i][j];
-                        if(p+1){
-                            if((board[p]==-1)){
-                                return Py_BuildValue("i",i*14+p);
-                            }
-                        }else{
-                            break;
-                        }
-                    };
-                }else{
-                    for(j=0;j<4;j++){
-                        p=jiraffe[i][j];
-                        if(p+1){
-                            if((board[p]==-1)){
-                                return Py_BuildValue("i",i*14+p);
-                            }
-                        }else{
-                            break;
-                        }
-                    }
-                }
-            }else{
-                if(5-p){
-                    if(4-p){
-                        for(j=0;j<4;j++){
-                            p=elephant[i][j];
-                            if(p+1){
-                                if((board[p]==-1)){
-                                    return Py_BuildValue("i",i*14+p);
-                                }
-                            }else{
-                                break;
-                            }
-                        }
-                    }else{
-                        p=chick[i][0];
-                        if(p+1){
-                            if((board[p]==-1)){
-                                return Py_BuildValue("i",i*14+p);
-                            }
-                        }else{
-                            break;
-                        }
-                    }
-                }else{
-                    for(j=0;j<6;j++){
-                        p=hen[i][j];
-                        if(p+1){
-                            if((board[p]==-1)){
-                                return Py_BuildValue("i",i*14+p);
-                            }
-                        }else{
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return Py_BuildValue("i",-1);
-};
-//*/
 /*
 static int *board_init(Py_Class_Board *self){
     self->board2 = new TsuiBoard5();
