@@ -18,7 +18,6 @@ static PyObject *board_moves(Py_Class_Board *self);
 static PyObject *get_tesu(Py_Class_Board *self);
 static PyObject *rotate_board(Py_Class_Board *self);
 static PyObject *push_move(Py_Class_Board *self, PyObject *args);
-static PyObject *is_end(Py_Class_Board *self);
 static PyObject *my_debug1(Py_Class_Board *self);
 static int *board_init(Py_Class_Board *self);
 
@@ -33,7 +32,6 @@ static PyMethodDef Py_Class_Board_methods[] = {
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
-    {"is_end", (PyCFunction)is_end, METH_VARARGS, "\(-A-)/"},
     {NULL} /* Sentinel */
 };
 
@@ -104,9 +102,6 @@ static PyObject *get_tesu(Py_Class_Board *self){
     return Py_BuildValue("i", self->board2->board[37]);
 };
 //*/
-static PyObject *is_end(Py_Class_Board *self){
-    return Py_BuildValue("i", self->board->is_end());
-};
 static PyObject *Board_str(Py_Class_Board *self){
     std::string dummy = "Dummy!";
     return PyUnicode_FromFormat(dummy.c_str());
