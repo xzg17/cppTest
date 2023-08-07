@@ -571,7 +571,7 @@ int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけ�
 };
 
 int TsuiBoard5::push(int move, int move_from){
-    if(move_form < 0){
+    if(move_from < 0){
         this->board[35] -= 1;
         return 0;
     };
