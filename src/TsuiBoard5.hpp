@@ -102,36 +102,52 @@ void TsuiBoard5::direction_SEW1(int *moves1, int pos){
 };
 void TsuiBoard5::direction_PR1(int *moves1, int pos){
     int p = pos;
+    int illegal = 1;
     while(5 <= p){
         p -= 5;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 1] = pos;
+        moves1[8 * p + 1] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     ;}
     p = pos;
+    illegal = 1;
     while(p < 20){
         p += 5;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 6] = pos;
+        moves1[8 * p + 6] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
+    illegal = 1;
     while(p % 5 != 0){
         p -= 1;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 3] = pos;
+        moves1[8 * p + 3] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
+    illegal = 1;
     while(p % 5 != 0){
         p += 1;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 4] = pos;
+        moves1[8 * p + 4] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
 };
 void TsuiBoard5::direction_PB1(int *moves1, int pos){
