@@ -556,7 +556,7 @@ int TsuiBoard5::push(int move, int move_from){
     }else{
         move_to = move / 5;
         p = move % 5 + 1;
-        if(this->board[to] != 0){
+        if(this->board[move_to] != 0){
             this->board[35] -= 1;
             result = 0;
         };
