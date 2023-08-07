@@ -14,6 +14,7 @@ typedef struct {
 
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
+static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *rotate_board(Py_Class_TsuiBoard *self);
 static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *my_debug1(Py_Class_TsuiBoard *self);
@@ -134,6 +135,9 @@ PyInit_np_nd_DIDS(void){
 static int *board_init(Py_Class_TsuiBoard *self){
     self->board2 = new TsuiBoard5();
     return 0;
+};
+static PyObject *get_hansoku(Py_Class_TsuiBoard *self){
+    return Py_BuildValue("(ii)", self->board2->board[35], self->board2->board[36]);
 };
 //*/
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
