@@ -14,6 +14,7 @@ typedef struct {
 
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
+static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
 static PyObject *rotate_board(Py_Class_TsuiBoard *self);
@@ -149,6 +150,14 @@ static int *board_init(Py_Class_TsuiBoard *self){
 };
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self){
     return Py_BuildValue("(ii)", self->board2->board[35], self->board2->board[36]);
+};
+static PyObject *get_board(Py_Class_TsuiBoard *self){
+    PyObject *row0 = Py_BuildValue("[iiiii]", self->board2->board[0], self->board2->board[1], self->board2->board[2], self->board2->board[3], self->board2->board[4]);
+    PyObject *row1 = Py_BuildValue("[iiiii]", self->board2->board[5], self->board2->board[6], self->board2->board[7], self->board2->board[8], self->board2->board[9]);
+    PyObject *row2 = Py_BuildValue("[iiiii]", self->board2->board[10], self->board2->board[11], self->board2->board[12], self->board2->board[13], self->board2->board[14]);
+    PyObject *row3 = Py_BuildValue("[iiiii]", self->board2->board[15], self->board2->board[16], self->board2->board[17], self->board2->board[18], self->board2->board[19]);
+    PyObject *row4 = Py_BuildValue("[iiiii]", self->board2->board[20], self->board2->board[21], self->board2->board[22], self->board2->board[23], self->board2->board[24]);
+    return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
 //*/
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
