@@ -549,7 +549,7 @@ int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけ�
     for(int i = 0;i < 25;i++){
         if(this->board[i] <= 0){
             if(this->board[25] > 0){
-                if(i % 5 != pcol){
+                if(i % 5 != pcol && 5<= i){
                     moves4[5 * i] = 1;
                 };
             };
@@ -571,7 +571,7 @@ int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけ�
 };
 
 int TsuiBoard5::push(int move, int move_from){
-    if(move_from < 0){
+    if(move_from < 0){//ずるいがこれで貫通判定とする。
         this->board[35] -= 1;
         return 0;
     };
@@ -592,11 +592,10 @@ int TsuiBoard5::push(int move, int move_from){
         this->board[move_to] = p;
         if(this->is_dist_check() || this->is_close_check()){
             this->board[35] -= 1;
-            result = 0;
             this->board[move_from] = p;
             this->board[move_to] = get;
+            return 0;
         }else{
-            //貫通判定未実装
             if(200 <= move){
                 this->board[move_to] += 6;
             };
@@ -604,6 +603,7 @@ int TsuiBoard5::push(int move, int move_from){
                 this->board[get + 24] += 1;
             };
             this->board[37] += 1;
+            return 1;
         };
     }else{
         move_to = move / 5;
@@ -611,9 +611,211 @@ int TsuiBoard5::push(int move, int move_from){
         if(this->board[move_to] != 0){
             this->board[35] -= 1;
             result = 0;
+        }else{
+            if(p == 1){//打歩詰処理スパゲッティ
+                if(this->board[move_to - 5] == -6){
+                    result = 0;//暫定反則(打歩詰、王手放置 未判定)
+                    int _ = this->kpos[0];
+                    this->kpos[0] = move_to;
+                    if(this->is_dist_check() || this->is_close_check()){
+                        result = 1;//暫定合法(王手放置 未判定)
+                    };
+                    this->kpos[0] = _;
+                    if(!result){
+                        this->board->rotate();
+                        result = 0;//暫定反則(打歩詰、王手放置 未判定)
+                        if(this->kpos[0] < 5){
+                            if(this->kpos[0] == 0){
+                                this->kpos[0] = 1;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = 1;
+                                if(!result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = 1;
+                                if(!result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            }else if(this->kpos[0] == 4){
+                                this->kpos[0] = 3;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = 8;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = 9;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            }else{
+                                this->kpos[0] = _ - 1;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = _ + 1;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 4;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 6;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            };
+                        }else{
+                            if(this->kpos[0] % 5 == 0){
+                                this->kpos[0] = _ - 5;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = _ - 4;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 1;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 6;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            }else if(this->kpos[0] % 5 == 4){
+                                this->kpos[0] = _ - 6;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = _ - 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ - 1;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 4;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            }else{
+                                this->kpos[0] = _ - 6;
+                                if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                    result = 1;//暫定合法(王手放置 未判定)
+                                };
+                                this->kpos[0] = _ - 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ - 4;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ - 1;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 1;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 4;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 5;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                                this->kpos[0] = _ + 6;
+                                if(result){
+                                    if(!(this->is_dist_check()) && !(this->is_close_check())){
+                                        result = 1;//暫定合法(王手放置 未判定)
+                                    };
+                                };
+                            };
+                        };
+                        this->board->rotate();
+                    };
+                    this->kpos[0] = _;
+                }else{
+                    result = 1;//暫定合法(王手放置 未判定)
+                };
+            };//スパゲッティ完食
+            if(!result){
+                this->board[35] -= 1;
+                return 0;
+            };
+            board[move_to] = p;//着手反映
+            if(this->is_dist_check() || this->is_close_check()){//王手放置判定
+                board[move_to] = 0;
+                this->board[35] -= 1;
+                return 0;
+            };
         };
     };
-    
     return result;
 };
 
