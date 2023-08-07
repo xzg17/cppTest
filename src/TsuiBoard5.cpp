@@ -32,6 +32,7 @@ static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"moves", (PyCFunction)board_moves, METH_VARARGS, "(ToT)"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"get_hansoku", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
+    {"get_board", (PyCFunction)get_board, METH_VARARGS, "(^p^)"},
     {"is_lose", (PyCFunction)is_lose, METH_VARARGS, "(^p^)"},
     {"get_tesu", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
