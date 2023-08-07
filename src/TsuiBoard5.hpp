@@ -102,101 +102,101 @@ void TsuiBoard5::direction_SEW1(int *moves1, int pos){
 };
 void TsuiBoard5::direction_PR1(int *moves1, int pos){
     int p = pos;
-    int illegal = 1;
+    int illegal = 0;
     while(5 <= p){
         p -= 5;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 1] = pos * illegal;
+        moves1[8 * p + 1] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     ;}
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p < 20){
         p += 5;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 6] = pos * illegal;
+        moves1[8 * p + 6] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p % 5 != 0){
         p -= 1;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 3] = pos * illegal;
+        moves1[8 * p + 3] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p % 5 != 0){
         p += 1;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 4] = pos * illegal;
+        moves1[8 * p + 4] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
 };
 void TsuiBoard5::direction_PB1(int *moves1, int pos){
     int p = pos;
-    int illegal = 1;
+    int illegal = 0;
     while(5 <= p && p % 5 != 0){
         p -= 6;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p] = pos * illegal;
+        moves1[8 * p] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(5 <= p && p % 5 != 4){
         p -= 4;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 2] = pos * illegal;
+        moves1[8 * p + 2] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p < 20 && p % 5 != 0){
         p += 4;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 5] = pos * illegal;
+        moves1[8 * p + 5] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p < 20 && p % 5 != 4){
         p += 6;
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 7] = pos * illegal;
+        moves1[8 * p + 7] = pos + illegal;
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
 };
@@ -228,75 +228,75 @@ void TsuiBoard5::direction_EW2(int *moves2, int pos){
 };
 void TsuiBoard5::direction_PR2(int *moves2, int pos){
     int p = pos;
-    int illegal = 1;
+    int illegal = 0;
     while(5 <= p){
         p -= 5;
         if(this->board[p] > 0){
             break;
         };
         if(p < 5){
-            moves2[5 * p + 1] = pos * illegal;
+            moves2[5 * p + 1] = pos + illegal;
         };
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     ;}
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p % 5 != 0){
         p -= 1;
         if(this->board[p] > 0){
             break;
         };
         if(p < 5){
-            moves2[5 * p + 3] = pos * illegal;
+            moves2[5 * p + 3] = pos + illegal;
         };
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(p % 5 != 0){
         p += 1;
         if(this->board[p] > 0){
             break;
         };
         if(p < 5){
-            moves2[5 * p + 4] = pos * illegal;
+            moves2[5 * p + 4] = pos + illegal;
         };
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
 };
 void TsuiBoard5::direction_PB2(int *moves2, int pos){
     int p = pos;
-    int illegal = 1;
+    int illegal = 0;
     while(5 <= p && p % 5 != 0){
         p -= 6;
         if(this->board[p] > 0){
             break;
         };
         if(p < 5){
-            moves2[5 * p] = pos * illegal;
+            moves2[5 * p] = pos + illegal;
         };
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
     p = pos;
-    illegal = 1;
+    illegal = 0;
     while(5 <= p && p % 5 != 4){
         p -= 4;
         if(this->board[p] > 0){
             break;
         };
         if(p < 5){
-            moves2[5 * p + 2] = pos * illegal;
+            moves2[5 * p + 2] = pos + illegal;
         };
         if(this->board[p] != 0){
-            illegal = -1;
+            illegal = -25;
         };
     };
 };
@@ -319,15 +319,15 @@ void TsuiBoard5::direction_SEW3(int *moves3, int pos){
 void TsuiBoard5::direction_PR3(int *moves3, int pos){
     if(pos < 5){
         int p = pos;
-        int illegal = 1;
+        int illegal = 0;
         while(p < 20){
             p += 5;
             if(this->board[p] > 0){
                 break;
             };
-            moves3[3 * p + 1] = pos * illegal;
+            moves3[3 * p + 1] = pos + illegal;
             if(this->board[p] != 0){
-                illegal = -1;
+                illegal = -25;
             };
         };
     };
@@ -335,27 +335,27 @@ void TsuiBoard5::direction_PR3(int *moves3, int pos){
 void TsuiBoard5::direction_PB3(int *moves3, int pos){
     if(pos < 5){
         int p = pos;
-        int illegal = 1;
+        int illegal = 0;
         while(p < 20 && p % 5 != 0){
             p += 4;
             if(this->board[p] > 0){
                 break;
             };
-            moves1[3 * p] = pos * illegal;
+            moves1[3 * p] = pos + illegal;
             if(this->board[p] != 0){
-                illegal = -1;
+                illegal = -25;
             };
         };
         p = pos;
-        illegal = 1;
+        illegal = 0;
         while(p < 20 && p % 5 != 4){
             p += 6;
             if(this->board[p] > 0){
                 break;
             };
-            moves1[3 * p + 2] = pos * illegal;
+            moves1[3 * p + 2] = pos + illegal;
             if(this->board[p] != 0){
-                illegal = -1;
+                illegal = -25;
             };
         };
     };
