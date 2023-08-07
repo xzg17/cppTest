@@ -622,7 +622,7 @@ int TsuiBoard5::push(int move, int move_from){
                     };
                     this->kpos[0] = _;
                     if(!result){
-                        this->board->rotate();
+                        this->rotate();
                         result = 0;//暫定反則(打歩詰、王手放置 未判定)
                         if(this->kpos[0] < 5){
                             if(this->kpos[0] == 0){
@@ -797,7 +797,7 @@ int TsuiBoard5::push(int move, int move_from){
                                 };
                             };
                         };
-                        this->board->rotate();
+                        this->rotate();
                     };
                     this->kpos[0] = _;
                 }else{
