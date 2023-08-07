@@ -14,6 +14,7 @@ typedef struct {
 
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
+static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
@@ -161,6 +162,11 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
 //*/
+
+static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
+    PyObject *row0, *row1, *row2, *row3, *row4;
+    return NULL;
+};
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
     int moves1[200] = {
