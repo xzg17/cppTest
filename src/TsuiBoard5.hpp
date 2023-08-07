@@ -158,7 +158,10 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p] = pos * illegal;;
+        moves1[8 * p] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
     illegal = 1;
@@ -167,7 +170,10 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 2] = pos * illegal;;
+        moves1[8 * p + 2] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
     illegal = 1;
@@ -176,7 +182,10 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 5] = pos * illegal;;
+        moves1[8 * p + 5] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
     illegal = 1;
@@ -185,7 +194,10 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
         if(this->board[p] > 0){
             break;
         };
-        moves1[8 * p + 7] = pos * illegal;;
+        moves1[8 * p + 7] = pos * illegal;
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
 };
 
@@ -224,7 +236,10 @@ void TsuiBoard5::direction_PR2(int *moves2, int pos){
         };
         if(p < 5){
             moves2[5 * p + 1] = pos * illegal;
-        }
+        };
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     ;}
     p = pos;
     illegal = 1;
@@ -235,7 +250,10 @@ void TsuiBoard5::direction_PR2(int *moves2, int pos){
         };
         if(p < 5){
             moves2[5 * p + 3] = pos * illegal;
-        }
+        };
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
     illegal = 1;
@@ -246,7 +264,10 @@ void TsuiBoard5::direction_PR2(int *moves2, int pos){
         };
         if(p < 5){
             moves2[5 * p + 4] = pos * illegal;
-        }
+        };
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
 };
 void TsuiBoard5::direction_PB2(int *moves2, int pos){
@@ -260,6 +281,9 @@ void TsuiBoard5::direction_PB2(int *moves2, int pos){
         if(p < 5){
             moves2[5 * p] = pos * illegal;
         };
+        if(this->board[p] != 0){
+            illegal = -1;
+        };
     };
     p = pos;
     illegal = 1;
@@ -270,6 +294,9 @@ void TsuiBoard5::direction_PB2(int *moves2, int pos){
         };
         if(p < 5){
             moves2[5 * p + 2] = pos * illegal;
+        };
+        if(this->board[p] != 0){
+            illegal = -1;
         };
     };
 };
@@ -299,6 +326,9 @@ void TsuiBoard5::direction_PR3(int *moves3, int pos){
                 break;
             };
             moves3[3 * p + 1] = pos * illegal;
+            if(this->board[p] != 0){
+                illegal = -1;
+            };
         };
     };
 };
@@ -312,6 +342,9 @@ void TsuiBoard5::direction_PB3(int *moves3, int pos){
                 break;
             };
             moves1[3 * p] = pos * illegal;
+            if(this->board[p] != 0){
+                illegal = -1;
+            };
         };
         p = pos;
         illegal = 1;
@@ -321,6 +354,9 @@ void TsuiBoard5::direction_PB3(int *moves3, int pos){
                 break;
             };
             moves1[3 * p + 2] = pos * illegal;
+            if(this->board[p] != 0){
+                illegal = -1;
+            };
         };
     };
 };
