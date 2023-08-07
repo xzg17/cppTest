@@ -89,9 +89,8 @@ static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args){
     };
     int move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
     int move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
-    self->board2->push(move, move_from);
-    Py_INCREF(Py_None);
-    return Py_None;
+    int result = self->board2->push(move, move_from);
+    return Py_BuildValue("i", result);
 };
 
 
