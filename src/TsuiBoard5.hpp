@@ -295,10 +295,10 @@ void TsuiBoard5::direction_PR3(int *moves3, int pos){
         int illegal = 1;
         while(p < 20){
             p += 5;
-            moves3[3 * p + 1] = pos;
             if(this->board[p] > 0){
                 break;
             };
+            moves3[3 * p + 1] = pos * illegal;
         };
     };
 };
@@ -308,19 +308,19 @@ void TsuiBoard5::direction_PB3(int *moves3, int pos){
         int illegal = 1;
         while(p < 20 && p % 5 != 0){
             p += 4;
-            moves1[3 * p] = pos;
             if(this->board[p] > 0){
                 break;
             };
+            moves1[3 * p] = pos * illegal;
         };
         p = pos;
         illegal = 1;
         while(p < 20 && p % 5 != 4){
             p += 6;
-            moves1[3 * p + 2] = pos;
             if(this->board[p] > 0){
                 break;
             };
+            moves1[3 * p + 2] = pos * illegal;
         };
     };
 };
