@@ -505,32 +505,50 @@ int TsuiBoard5::pseudo_moves4(int *moves4){//1~3は移動元を格納したけ�
     };
     return 4;
 };
+
 int TsuiBoard5::push(int move, int move_from){
-    int to, p, result;
-    if(move < 225){
+    int move_to, p, result, get;
+    if(move < 285){
         if(move < 200){
-            to = move >> 3;
+            move_to = move >> 3;
+            p = this->board[move_from];
+        }else if(move < 225){
+            move_to = move / 5;
             p = this->board[move_from];
         }else{
-            to = move / 5;
+            move_to = move / 3;
             p = this->board[move_from];
         };
-    }else{
-        if(move < 285){
-            to = move / 3;
-            p = this->board[move_from];
+        this->board[move_from] = 0;
+        get = this->board[move_to];
+        this->board[move_to] = p;
+        if(this->is_dist_check() || this->is_close_check()){
+            this->board[35] -= 1;
+            result = 0;
+            this->board[move_from] = p;
+            this->board[move_to] = get;
         }else{
-            to = move / 5;
-            p = move % 5 + 1;
-            if(this->board[to] != 0){
-                this->board[35] -= 1;
-                result = 0;
+            //貫通判定未実装
+            if(200 <= move){
+                this->board[move_to] += 6;
             };
+            if(get){
+                this->board[get + 24] += 1;
+            };
+            this->board[37] += 1;
+        };
+    }else{
+        move_to = move / 5;
+        p = move % 5 + 1;
+        if(this->board[to] != 0){
+            this->board[35] -= 1;
+            result = 0;
         };
     };
     
     return result;
 };
+
 
 TsuiBoard5 TsuiBoard5::pushed(int move, int move_from){
     TsuiBoard5 board;
