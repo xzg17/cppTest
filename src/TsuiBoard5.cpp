@@ -84,11 +84,11 @@ static PyObject *rotate_board(Py_Class_TsuiBoard *self){
 
 static PyObject *push_move(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *move_tuple;
+    Py_INCREF(Py_None);
+    return Py_None;
     if (!PyArg_ParseTuple(args, "O", move_tuple)) {
         return NULL;
     };
-    Py_INCREF(Py_None);
-    return Py_None;
     int move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
     int move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
     self->board2->push(move, move_from);
