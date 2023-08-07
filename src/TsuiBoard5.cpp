@@ -120,14 +120,14 @@ static PyObject *Board_str(Py_Class_TsuiBoard *self){
 
 static PyModuleDef custommodule = {
     PyModuleDef_HEAD_INIT,
-    "darkminishogi",
+    "DarkMiniShogi",
     "Example module that creates an extension type.",
     -1,
     NULL
 };
 
 PyMODINIT_FUNC
-PyInit_darkminishogi(void){
+PyInit_DarkMiniShogi(void){
     PyObject *m;
     
     m = PyModule_Create(&custommodule);
