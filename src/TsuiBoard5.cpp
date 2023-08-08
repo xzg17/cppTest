@@ -214,6 +214,14 @@ static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     self->board->board[22] = (int)PyLong_AsLong(PyList_GetItem(row4, 2));
     self->board->board[23] = (int)PyLong_AsLong(PyList_GetItem(row4, 3));
     self->board->board[24] = (int)PyLong_AsLong(PyList_GetItem(row4, 4));
+    for(int i = 0; i < 25; i++){
+        if(self->board->board[i] == -6){
+            self->board->kpos[1] == i;
+        };
+        if(self->board->board[i] == 6){
+            self->board->kpos[0] == i;
+        };
+    };
     Py_INCREF(Py_None);
     return Py_None;
 };
