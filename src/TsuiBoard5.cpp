@@ -15,6 +15,7 @@ typedef struct {
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
+static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
@@ -164,6 +165,16 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
 };
 //*/
 
+static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args){
+    PyObject *hansoku;
+    if(!PyArg_ParseTuple(args, "O", &hansoku)){
+        return NULL;
+    };
+    self->board->board[35] = (int)PyLong_AsLong(PyList_GetItem(hansoku, 0));
+    self->board->board[36] = (int)PyLong_AsLong(PyList_GetItem(hansoku, 1));
+    Py_INCREF(Py_None);
+    return Py_None;
+};
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *rows, *row0, *row1, *row2, *row3, *row4;
     if(!PyArg_ParseTuple(args, "O", &rows)){
@@ -202,6 +213,7 @@ static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     Py_INCREF(Py_None);
     return Py_None;
 };
+
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
     int moves1[200] = {
