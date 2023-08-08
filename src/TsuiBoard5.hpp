@@ -433,6 +433,26 @@ int TsuiBoard5::is_dist_check(){
 int TsuiBoard5::is_close_check(){
     int k = this->kpos[0];
     if(k < 5){
+        if(this->board[k + 5] < 0 && this->board[k + 5] <= -4){
+            return 1;
+        };
+        if(k % 5 != 0){
+            if(this->board[k - 1] <= -4){
+                return 1;
+            };
+            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
+                return 1;
+            };
+        };
+        if(k % 5 != 4){
+            if(this->board[k + 1] <= -4){
+                return 1;
+            };
+            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
+                return 1;
+            };
+        };
+    }else if(20 <= k){
         if(this->board[k - 5] < 0 && this->board[k - 5] != -3){
             return 1;
         };
@@ -440,34 +460,44 @@ int TsuiBoard5::is_close_check(){
             if(this->board[k - 6] <= -5 || this->board[k - 6] == -2 || this->board[k - 6] == -3){
                 return 1;
             };
-        };
-        if(k % 5 != 4){
-            if(this->board[k - 4] <= -5 || this->board[k - 4] == -2 || this->board[k - 4] == -3){
-                return 1;
-            };
-        };
-    }else if(20 <= k){
-        if(this->board[k + 5] <= -4){
-            return 1;
-        };
-        if(k % 5 != 0){
-            if(this->board[k + 4] == -10 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
-                return 1;
-            };
-        };
-        if(k % 5 != 4){
-            if(this->board[k + 6] == -10 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
-                return 1;
-            };
-        };
-    }else{
-        if(k % 5 != 0){
             if(this->board[k - 1] <= -4){
                 return 1;
             };
         };
         if(k % 5 != 4){
+            if(this->board[k - 4] <= -5 || this->board[k - 4] == -2 || this->board[k - 4] == -3){
+                return 1;
+            };
             if(this->board[k + 1] <= -4){
+                return 1;
+            };
+        };
+    }else{
+        if(this->board[k - 5] < 0 && this->board[k - 5] != -3){
+            return 1;
+        };
+        if(this->board[k + 5] < 0 && this->board[k + 5] <= -4){
+            return 1;
+        };
+        if(k % 5 != 0){
+            if(this->board[k - 6] <= -5 || this->board[k - 6] == -2 || this->board[k - 6] == -3){
+                return 1;
+            };
+            if(this->board[k - 1] <= -4){
+                return 1;
+            };
+            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
+                return 1;
+            };
+        };
+        if(k % 5 != 4){
+            if(this->board[k - 4] <= -5 || this->board[k - 4] == -2 || this->board[k - 4] == -3){
+                return 1;
+            };
+            if(this->board[k + 1] <= -4){
+                return 1;
+            };
+            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
                 return 1;
             };
         };
