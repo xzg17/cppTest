@@ -165,6 +165,9 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
 
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *row0, *row1, *row2, *row3, *row4;
+    if(!PyArg_ParseTuple(args, "OOOOO", &row0, &row1, &row2, &row3, &row4)){
+        return NULL;
+    };
     return NULL;
 };
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
