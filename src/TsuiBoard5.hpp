@@ -29,7 +29,8 @@ public:
     int is_dist_check();//一マス以上開けての王手判定
     int is_close_check();//隣からの王手判定
     int is_end();
-    int board[62];//0~24盤25~34持駒35,36反則37手数
+    int is_check();
+    int board[62];//0~24盤25~34持駒35,36反則37手数38王手の有無39遠距離王手の有無40近距離王手の有無
     int kpos[2];
     int end;
     int set(int *in_board);
@@ -473,7 +474,13 @@ int TsuiBoard5::is_close_check(){
     };
     return 0;
 };
-
+int TsuiBoard5::is_check(){
+    if(this->is_dist_check() + this->is_close_check()){
+        return 1;
+    }else{
+        return 0;
+    };
+};
 int TsuiBoard5::pseudo_moves1(int *moves1){
     for(int i = 0;i < 25;i++){
         if(0 < this->board[i]){
@@ -604,6 +611,10 @@ int TsuiBoard5::push(int move, int move_from){
             return 1;
         };
     }else{
+        if(this->board[40]){
+            this->board[35] -= 1;
+            return 0;
+        };
         move_to = move / 5;
         p = move % 5 + 1;
         if(this->board[move_to] != 0){
