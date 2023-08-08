@@ -27,7 +27,8 @@ static int *board_init(Py_Class_TsuiBoard *self);
 static PyObject *Board_str(Py_Class_TsuiBoard *self);
 
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
-    return Py_BuildValue("[ii]", 0, 0);
+    int i = self->board->is_check();
+    return Py_BuildValue("i", i);
 };
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
@@ -41,6 +42,7 @@ static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"get_tesu", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
+    {"debug1", (PyCFunction)my_debug1, METH_VARARGS, "('_')/debug!!"},
     {NULL} /* Sentinel */
 };
 
