@@ -171,8 +171,8 @@ static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args){
     if(!PyArg_ParseTuple(args, "O", &hansoku)){
         return NULL;
     };
-    self->board->board[35] = (int)PyLong_AsLong(PyList_GetItem(hansoku, 0));
-    self->board->board[36] = (int)PyLong_AsLong(PyList_GetItem(hansoku, 1));
+    self->board->board[35] = (int)PyLong_AsLong(PyTuple_GetItem(hansoku, 0));
+    self->board->board[36] = (int)PyLong_AsLong(PyTuple_GetItem(hansoku, 1));
     Py_INCREF(Py_None);
     return Py_None;
 };
