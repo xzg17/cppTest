@@ -164,10 +164,40 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
 //*/
 
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
-    PyObject *row0, *row1, *row2, *row3, *row4;
-    if(!PyArg_ParseTuple(args, "OOOOO", &row0, &row1, &row2, &row3, &row4)){
+    PyObject *rows, *row0, *row1, *row2, *row3, *row4;
+    if(!PyArg_ParseTuple(args, "O", &rows)){
         return NULL;
     };
+    row0 = PyList_GetItem(rows, 0);
+    row1 = PyList_GetItem(rows, 1);
+    row2 = PyList_GetItem(rows, 2);
+    row3 = PyList_GetItem(rows, 3);
+    row4 = PyList_GetItem(rows, 4);
+    self->board->board[0] = (int)PyLong_AsLong(PyList_GetItem(row0, 0));
+    self->board->board[1] = (int)PyLong_AsLong(PyList_GetItem(row0, 1));
+    self->board->board[2] = (int)PyLong_AsLong(PyList_GetItem(row0, 2));
+    self->board->board[3] = (int)PyLong_AsLong(PyList_GetItem(row0, 3));
+    self->board->board[4] = (int)PyLong_AsLong(PyList_GetItem(row0, 4));
+    self->board->board[5] = (int)PyLong_AsLong(PyList_GetItem(row1, 0));
+    self->board->board[6] = (int)PyLong_AsLong(PyList_GetItem(row1, 1));
+    self->board->board[7] = (int)PyLong_AsLong(PyList_GetItem(row1, 2));
+    self->board->board[8] = (int)PyLong_AsLong(PyList_GetItem(row1, 3));
+    self->board->board[9] = (int)PyLong_AsLong(PyList_GetItem(row1, 4));
+    self->board->board[10] = (int)PyLong_AsLong(PyList_GetItem(row2, 0));
+    self->board->board[11] = (int)PyLong_AsLong(PyList_GetItem(row2, 1));
+    self->board->board[12] = (int)PyLong_AsLong(PyList_GetItem(row2, 2));
+    self->board->board[13] = (int)PyLong_AsLong(PyList_GetItem(row2, 3));
+    self->board->board[14] = (int)PyLong_AsLong(PyList_GetItem(row2, 4));
+    self->board->board[15] = (int)PyLong_AsLong(PyList_GetItem(row3, 0));
+    self->board->board[16] = (int)PyLong_AsLong(PyList_GetItem(row3, 1));
+    self->board->board[17] = (int)PyLong_AsLong(PyList_GetItem(row3, 2));
+    self->board->board[18] = (int)PyLong_AsLong(PyList_GetItem(row3, 3));
+    self->board->board[19] = (int)PyLong_AsLong(PyList_GetItem(row3, 4));
+    self->board->board[20] = (int)PyLong_AsLong(PyList_GetItem(row4, 0));
+    self->board->board[21] = (int)PyLong_AsLong(PyList_GetItem(row4, 1));
+    self->board->board[22] = (int)PyLong_AsLong(PyList_GetItem(row4, 2));
+    self->board->board[23] = (int)PyLong_AsLong(PyList_GetItem(row4, 3));
+    self->board->board[24] = (int)PyLong_AsLong(PyList_GetItem(row4, 4));
     return NULL;
 };
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
