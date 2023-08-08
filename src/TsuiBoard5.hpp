@@ -422,8 +422,8 @@ void TsuiBoard5::rotate(){
     this->board[60] = _;
     
     _ = this->kpos[0];
-    this->kpos[0] = this->kpos[1];
-    this->kpos[1] = _;
+    this->kpos[0] = 24 - this->kpos[1];
+    this->kpos[1] = 24 - _;
 };
 
 int TsuiBoard5::is_dist_check(){
