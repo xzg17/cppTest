@@ -199,7 +199,8 @@ static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     self->board->board[22] = (int)PyLong_AsLong(PyList_GetItem(row4, 2));
     self->board->board[23] = (int)PyLong_AsLong(PyList_GetItem(row4, 3));
     self->board->board[24] = (int)PyLong_AsLong(PyList_GetItem(row4, 4));
-    return NULL;
+    Py_INCREF(Py_None);
+    return Py_None;
 };
 static PyObject *board_moves(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
