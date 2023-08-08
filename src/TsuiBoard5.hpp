@@ -625,7 +625,7 @@ int TsuiBoard5::push(int move, int move_from){
         this->board[move_from] = 0;
         get = this->board[move_to];
         this->board[move_to] = p;
-        if(this->is_dist_check() || this->is_close_check()){
+        if(this->is_check()){
             this->board[35] -= 1;
             this->board[move_from] = p;
             this->board[move_to] = get;
@@ -636,6 +636,9 @@ int TsuiBoard5::push(int move, int move_from){
             };
             if(get){
                 this->board[24 - get] += 1;
+            };
+            if(p == 6){
+                this->kpos[0] = move_to;
             };
             this->board[37] += 1;
             return 1;
