@@ -28,7 +28,8 @@ static PyObject *Board_str(Py_Class_TsuiBoard *self);
 
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     int i = self->board->is_check();
-    return Py_BuildValue("i", i);
+    int j = self->board->kpos[0];
+    return Py_BuildValue("[ii]", i, j);
 };
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
