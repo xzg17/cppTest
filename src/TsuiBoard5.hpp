@@ -635,7 +635,7 @@ int TsuiBoard5::push(int move, int move_from){
                 this->board[move_to] += 6;
             };
             if(get){
-                this->board[get + 24] += 1;
+                this->board[24 - get] += 1;
             };
             this->board[37] += 1;
             return 1;
