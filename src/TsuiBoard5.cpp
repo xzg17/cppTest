@@ -292,7 +292,6 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             };
         };
     };
-    return pseudo_moves;
     for(int i = 0;i < 60;i++){
         if(moves3[i] != -1){
             PyObject *tuple = Py_BuildValue("(ii)", i + 225, moves3[i]);
