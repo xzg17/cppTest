@@ -202,25 +202,27 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
 
 void TsuiBoard5::direction_N2(int *moves2, int pos){
     if(5 <= pos && pos < 10){//渡すときにこの条件を満たすように実装した方がいいかも
-        moves2[5 * pos - 24] = pos;//moves1[5 * (pos - 5) + 1] = pos;
+        if( && this->board[pos - 5] <= 0){
+            moves2[5 * pos - 24] = pos;//moves1[5 * (pos - 5) + 1] = pos;
+        };
     };
 };
 void TsuiBoard5::direction_NEW2(int *moves2, int pos){
     if(5 <= pos && pos < 10){
-        if(pos != 5){
+        if(pos != 5 && this->board[pos - 6] <= 0){
             moves2[5 * pos - 30] = pos;//moves1[5 * (pos - 6) + 0] = pos;
         };
-        if(pos != 9){
+        if(pos != 9 && this->board[pos - 4] <= 0){
             moves2[5 * pos - 18] = pos;//moves1[5 * (pos - 4) + 2] = pos;
         };
     };
 };
 void TsuiBoard5::direction_EW2(int *moves2, int pos){
     if(pos < 5){
-        if(pos != 0){
+        if(pos != 0 && this->board[pos - 1] <= 0){
             moves2[5 * pos - 2] = pos;//moves1[5 * (pos - 1) + 3] = pos;
         };
-        if(pos != 4){
+        if(pos != 4 && this->board[pos + 1] <= 0){
             moves2[5 * pos + 9] = pos;//moves1[5 * (pos + 1) + 4] = pos;
         };
     };
@@ -302,16 +304,22 @@ void TsuiBoard5::direction_PB2(int *moves2, int pos){
 
 void TsuiBoard5::direction_S3(int *moves3, int pos){
     if(pos < 5){
-        moves3[3 * pos + 16] = pos;//moves1[3 * (pos + 5) + 1] = pos;
+        if(this->board[pos + 5] <= 0){
+            moves3[3 * pos + 16] = pos;//moves1[3 * (pos + 5) + 1] = pos;
+        };
     }
 };
 void TsuiBoard5::direction_SEW3(int *moves3, int pos){
     if(pos < 5){
         if(pos % 5 != 0){
-            moves3[3 * pos + 12] = pos;//moves1[3 * (pos + 4) + 0] = pos;
+            if(this->board[pos + 4] <= 0){
+                moves3[3 * pos + 12] = pos;//moves1[3 * (pos + 4) + 0] = pos;
+            };
         };
         if(pos % 5 != 4){
-            moves3[3 * pos + 20] = pos;//moves1[3 * (pos + 6) + 2] = pos;
+            if(this->board[pos + 6] <= 0){
+                moves3[3 * pos + 20] = pos;//moves1[3 * (pos + 6) + 2] = pos;
+            };
         };
     };
 };
