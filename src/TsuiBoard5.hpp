@@ -202,7 +202,7 @@ void TsuiBoard5::direction_PB1(int *moves1, int pos){
 
 void TsuiBoard5::direction_N2(int *moves2, int pos){
     if(5 <= pos && pos < 10){//渡すときにこの条件を満たすように実装した方がいいかも
-        if( && this->board[pos - 5] <= 0){
+        if(this->board[pos - 5] <= 0){
             moves2[5 * pos - 24] = pos;//moves1[5 * (pos - 5) + 1] = pos;
         };
     };
