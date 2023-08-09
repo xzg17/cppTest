@@ -727,16 +727,16 @@ int CHIKARAWAZA1(int *board, int k){
         };
     };
     if(k == 20){
-        if(board[19] == 0){
-            if(board[18] == -4 || board[18] == -10){
+        if(board[21] == 0){
+            if(board[22] == -4 || board[22] == -10){
                 return 1;
             };
-            if(board[18] == 0){
-                if(board[17] == -4 || board[17] == -10){
+            if(board[22] == 0){
+                if(board[23] == -4 || board[23] == -10){
                     return 1;
                 };
-                if(board[17] == 0){
-                    if(board[16] == -4 || board[16] == -10){
+                if(board[23] == 0){
+                    if(board[24] == -4 || board[24] == -10){
                         return 1;
                     };
                 };
