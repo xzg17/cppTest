@@ -30,7 +30,16 @@ static PyObject *Board_str(Py_Class_TsuiBoard *self);
 static PyObject *my_debug1(Py_Class_TsuiBoard *self){
     int i = self->board->is_check();
     int j = self->board->kpos[0];
-    return Py_BuildValue("[ii]", i, j);
+    int moves4[125] = {
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };
+    self->board->pseudo_moves4(moves4);
+    int k = moves[60];
+    return Py_BuildValue("[iii]", i, j, k);
 };
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
