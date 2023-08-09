@@ -616,10 +616,10 @@ int TsuiBoard5::push(int move, int move_from){
             move_to = move >> 3;
             p = this->board[move_from];
         }else if(move < 225){
-            move_to = move / 5;
+            move_to = (move - 200) / 5;
             p = this->board[move_from];
         }else{
-            move_to = move / 3;
+            move_to = (move -225) / 3;
             p = this->board[move_from];
         };
         this->board[move_from] = 0;
@@ -651,7 +651,7 @@ int TsuiBoard5::push(int move, int move_from){
             this->board[35] -= 1;
             return 0;
         };
-        move_to = move / 5;
+        move_to = (move - 285) / 5;
         p = move % 5 + 1;
         if(this->board[move_to] != 0){
             this->board[35] -= 1;
