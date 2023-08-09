@@ -440,7 +440,7 @@ int TsuiBoard5::is_close_check(){
             if(this->board[k - 1] <= -4){
                 return 1;
             };
-            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
+            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3 || this->board[k + 4] == -6){
                 return 1;
             };
         };
@@ -448,7 +448,7 @@ int TsuiBoard5::is_close_check(){
             if(this->board[k + 1] <= -4){
                 return 1;
             };
-            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
+            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3 || this->board[k + 4] == -6){
                 return 1;
             };
         };
@@ -486,7 +486,7 @@ int TsuiBoard5::is_close_check(){
             if(this->board[k - 1] <= -4){
                 return 1;
             };
-            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3){
+            if(this->board[k + 4] <= -9 || this->board[k + 4] == -2 || this->board[k + 4] == -3 || this->board[k + 4] == -6){
                 return 1;
             };
         };
@@ -497,7 +497,7 @@ int TsuiBoard5::is_close_check(){
             if(this->board[k + 1] <= -4){
                 return 1;
             };
-            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3){
+            if(this->board[k + 6] <= -9 || this->board[k + 6] == -2 || this->board[k + 6] == -3 || this->board[k + 4] == -6){
                 return 1;
             };
         };
