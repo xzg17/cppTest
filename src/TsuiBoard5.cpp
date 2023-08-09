@@ -38,7 +38,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self){
         -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
     };
     self->board->pseudo_moves4(moves4);
-    int k = moves[60];
+    int k = moves4[60];
     return Py_BuildValue("[iii]", i, j, k);
 };
 
