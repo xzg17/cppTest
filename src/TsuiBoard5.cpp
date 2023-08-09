@@ -14,6 +14,7 @@ typedef struct {
 
 static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
+static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
@@ -37,6 +38,7 @@ static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"get_hansoku", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"get_board", (PyCFunction)get_board, METH_VARARGS, "(^p^)"},
+    {"get_mochi", (PyCFunction)get_mochi, METH_VARARGS, "(^p^)"},
     {"set_hansoku", (PyCFunction)set_hansoku, METH_VARARGS, "(^p^)"},
     {"set_board", (PyCFunction)set_board, METH_VARARGS, "(^p^)"},
     {"is_lose", (PyCFunction)is_lose, METH_VARARGS, "(^p^)"},
@@ -117,6 +119,9 @@ static PyObject *is_lose(Py_Class_TsuiBoard *self){
     }else{
         return Py_BuildValue("i", 0);
     };
+};
+static PyObject *get_mochi(Py_Class_TsuiBoard *self){
+    return Py_BuildValue("[iiiii]", self->board->board[25], self->board->board[26], self->board->board[27], self->board->board[28], self->board->board[29]);
 };
 //*/
 static PyObject *Board_str(Py_Class_TsuiBoard *self){
