@@ -419,15 +419,15 @@ void TsuiBoard5::rotate(){
     }
     this->board[12] = -this->board[12];
     
-    for(int i = 49;i < 54;i++){
+    for(int i = 25;i < 30;i++){
         _ = this->board[i];
         this->board[i] = this->board[i + 5];
         this->board[i + 5] = _;
     }
     
-    _ = this->board[59];
-    this->board[59] = this->board[60];
-    this->board[60] = _;
+    _ = this->board[35];
+    this->board[35] = this->board[36];
+    this->board[36] = _;
     
     _ = this->kpos[0];
     this->kpos[0] = 24 - this->kpos[1];
