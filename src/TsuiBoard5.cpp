@@ -189,8 +189,9 @@ static PyObject *pseudo_push(Py_Class_Board *self, PyObject *args){
     if(!PyArg_ParseTuple(args, "O", &move_tuple)){
         return NULL;
     };
-    int move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
-    int move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
+    int move, move_from, move_to;
+    move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
+    move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
     int predict_board[25];
     for(int i = 0;i < 25;i++){
         predict_board[i] = self->board->board[i];
