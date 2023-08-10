@@ -185,7 +185,7 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
 };
 //*
 static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
-    /*
+    //*
     PyObject *move_tuple;
     if(!PyArg_ParseTuple(args, "O", &move_tuple)){
         return NULL;
