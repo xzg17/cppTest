@@ -196,7 +196,7 @@ static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     for(int i = 0;i < 25;i++){
         predict_board[i] = self->board->board[i];
     };
-    /*
+    //*
     if(move < 285){
         if(move < 200){
             move_to = move >> 3;
