@@ -183,7 +183,7 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
     PyObject *row4 = Py_BuildValue("[iiiii]", self->board->board[20], self->board->board[21], self->board->board[22], self->board->board[23], self->board->board[24]);
     return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
-
+/*
 static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *move_tuple;
     if(!PyArg_ParseTuple(args, "O", &move_tuple)){
