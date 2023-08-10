@@ -17,7 +17,7 @@ static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args);
-static PyObject *pseudo_push(Py_Class_Board *self, PyObject *args);
+static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
@@ -184,7 +184,7 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
     return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
 
-static PyObject *pseudo_push(Py_Class_Board *self, PyObject *args){
+static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *move_tuple;
     if(!PyArg_ParseTuple(args, "O", &move_tuple)){
         return NULL;
