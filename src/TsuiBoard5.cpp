@@ -17,6 +17,7 @@ static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args);
+static PyObject *pseudo_push(Py_Class_Board *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
@@ -179,6 +180,42 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
     PyObject *row2 = Py_BuildValue("[iiiii]", self->board->board[10], self->board->board[11], self->board->board[12], self->board->board[13], self->board->board[14]);
     PyObject *row3 = Py_BuildValue("[iiiii]", self->board->board[15], self->board->board[16], self->board->board[17], self->board->board[18], self->board->board[19]);
     PyObject *row4 = Py_BuildValue("[iiiii]", self->board->board[20], self->board->board[21], self->board->board[22], self->board->board[23], self->board->board[24]);
+    return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
+};
+
+static PyObject *pseudo_push(Py_Class_Board *self, PyObject *args){
+    PyObject *move_tuple;
+    if(!PyArg_ParseTuple(args, "O", &move_tuple)){
+        return NULL;
+    };
+    int move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
+    int move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
+    int predict_board[25];
+    for(int i = 0;i < 25;i++){
+        predict_board[i] = self->board->board[i];
+    };
+    if(move < 285){
+        if(move < 200){
+            move_to = move >> 3;
+            p = this->board[move_from];
+        }else if(move < 225){
+            move_to = (move - 200) / 5;
+            p = this->board[move_from];
+        }else{
+            move_to = (move -225) / 3;
+            p = this->board[move_from];
+        };
+        predict_board[move_from] = 0;
+        predict_board[move_to] = p;
+    }else{
+        p = move % 5 + 1;
+        predict_board[move_to] = p;
+    };
+    PyObject *row0 = Py_BuildValue("[iiiii]", predict_board[0], predict_board[1], predict_board[2], predict_board[3], predict_board[4]);
+    PyObject *row1 = Py_BuildValue("[iiiii]", predict_board[5], predict_board[6], predict_board[7], predict_board[8], predict_board[9]);
+    PyObject *row2 = Py_BuildValue("[iiiii]", predict_board[10], predict_board[11], predict_board[12], predict_board[13], predict_board[14]);
+    PyObject *row3 = Py_BuildValue("[iiiii]", predict_board[15], predict_board[16], predict_board[17], predict_board[18], predict_board[19]);
+    PyObject *row4 = Py_BuildValue("[iiiii]", predict_board[20], predict_board[21], predict_board[22], predict_board[23], predict_board[24]);
     return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
 //*/
