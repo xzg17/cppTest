@@ -185,7 +185,6 @@ static PyObject *get_board(Py_Class_TsuiBoard *self){
 };
 //*
 static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
-    //*
     PyObject *move_tuple;
     if(!PyArg_ParseTuple(args, "O", &move_tuple)){
         return NULL;
@@ -193,12 +192,11 @@ static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     int move, move_from, move_to, p;
     move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
     move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
-    //*/
     int predict_board[25];
-    /*
     for(int i = 0;i < 25;i++){
         predict_board[i] = self->board->board[i];
     };
+    /*
     if(move < 285){
         if(move < 200){
             move_to = move >> 3;
