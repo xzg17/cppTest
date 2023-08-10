@@ -194,19 +194,24 @@ static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
     int predict_board[25];
     for(int i = 0;i < 25;i++){
-        predict_board[i] = self->board->board[i];
+        if(0 < self->board->board[i]){
+            predict_board[i] = self->board->board[i];
+        }else{
+            predict_board[i] = 0;
+        };
+        
     };
     //*
     if(move < 285){
         if(move < 200){
             move_to = move >> 3;
-            p = this->board[move_from];
+            p = predict_board[move_from];
         }else if(move < 225){
             move_to = (move - 200) / 5;
-            p = this->board[move_from];
+            p = predict_board[move_from];
         }else{
             move_to = (move -225) / 3;
-            p = this->board[move_from];
+            p = predict_board[move_from];
         };
         predict_board[move_from] = 0;
         predict_board[move_to] = p;
