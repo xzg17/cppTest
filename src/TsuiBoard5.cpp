@@ -18,6 +18,7 @@ static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args);
+static PyObject *push_for_torch(Py_Class_TsuiBoard *self, PyObject *args);
 static PyObject *get_board(Py_Class_TsuiBoard *self);
 static PyObject *get_hansoku(Py_Class_TsuiBoard *self);
 static PyObject *is_lose(Py_Class_TsuiBoard *self);
@@ -228,6 +229,95 @@ static PyObject *pseudo_push(Py_Class_TsuiBoard *self, PyObject *args){
     return Py_BuildValue("[OOOOO]", row0, row1, row2, row3, row4);
 };
 //*/
+
+static PyObject *push_for_torch(Py_Class_TsuiBoard *self, PyObject *args){
+    PyObject *move_tuple;
+    if(!PyArg_ParseTuple(args, "O", &move_tuple)){
+        return NULL;
+    };
+    int move, move_from, move_to, p, b_ill, w_ill;
+    b_ill = self->board->board[35];
+    w_ill = self->board->board[36];
+    move = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 0));
+    move_from = (int)PyLong_AsLong(PyTuple_GetItem(move_tuple, 1));
+    int predict_board[25];
+    int predict_mochi[5];//先手のみ
+    for(int i = 0;i < 25;i++){
+        if(0 < self->board->board[i]){
+            predict_board[i] = self->board->board[i];
+        }else{
+            predict_board[i] = 0;
+        };
+        
+    };
+    for(int i = 0;i < 5;i++){
+        predict_mochi[i] = self->board->board[i + 25];
+    };
+    //*
+    if(move < 285){
+        if(move < 200){
+            move_to = move >> 3;
+            p = predict_board[move_from];
+        }else if(move < 225){
+            move_to = (move - 200) / 5;
+            p = predict_board[move_from];
+        }else{
+            move_to = (move -225) / 3;
+            p = predict_board[move_from];
+        };
+        predict_board[move_from] = 0;
+        predict_board[move_to] = p;
+    }else{
+        p = move % 5 + 1;
+        predict_board[move_to] = p;
+        predict_mochi[p] -= 1;
+    };
+    //*/
+    PyObject *torch_boards = PyList_New(38);
+    for(int i = 0;i < 38;i++){
+        if(i < 10){
+            PyObject *torch_board = PyList_New(5);
+            for(int j = 0;j < 5;j++){
+                PyObject *torch_row = PyList_New(5);
+                for(int k = 0;k < 5;k++){
+                    int l = predict_board[j * 5 + k];
+                    if(l == i + 1){
+                        PyList_SetItem(torch_row, k, PyLong_FromLong(1));
+                    }else{
+                        PyList_SetItem(torch_row, k, PyLong_FromLong(0));
+                    };
+                };
+                PyList_SetItem(torch_board, j, torch_row);
+            };
+            PyList_SetItem(torch_boards, i, torch_board);
+        }else if(i < 20){
+            if(predict_mochi[i / 2 - 5] == 2){
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1)));
+                PyList_SetItem(torch_boards, i + 1, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1)));
+            }else if(predict_mochi[i / 2 - 5] == 1){
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1)));
+                PyList_SetItem(torch_boards, i + 1, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0)));
+            }else{
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0)));
+                PyList_SetItem(torch_boards, i + 1, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0)));
+            };
+            i++;
+        }else if(i < 29){
+            if(29 <= i + b_ill){
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1)));
+            }else{
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0)));
+            };
+        }else{
+            if(38 <= i + b_ill){
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1), Py_BuildValue("[iiiii]", 1, 1, 1, 1, 1)));
+            }else{
+                PyList_SetItem(torch_boards, i, Py_BuildValue("[OOOOO]", Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0), Py_BuildValue("[iiiii]", 0, 0, 0, 0, 0)));
+            };
+        };
+    };
+    return torch_boards;
+};
 
 static PyObject *set_hansoku(Py_Class_TsuiBoard *self, PyObject *args){
     PyObject *hansoku;
