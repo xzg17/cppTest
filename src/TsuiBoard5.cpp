@@ -56,6 +56,7 @@ static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"get_tesu", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"rotate", (PyCFunction)rotate_board, METH_VARARGS, "(^q^)"},
     {"push", (PyCFunction)push_move, METH_VARARGS, "(O_O)"},
+    {"push_for_torch", (PyCFunction)push_for_toch, METH_VARARGS, "(O_O)"},
     {"pseudo_push", (PyCFunction)pseudo_push, METH_VARARGS, "(OAO)"},
     {"debug1", (PyCFunction)my_debug1, METH_VARARGS, "('_')/debug!!"},
     {NULL} /* Sentinel */
