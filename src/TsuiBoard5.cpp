@@ -167,7 +167,7 @@ PyInit_BlindMiniShogi(void){
     }
 
     Py_INCREF(&CustomType);
-    PyModule_AddObject(m, "DIBoard", (PyObject *) &CustomType);
+    PyModule_AddObject(m, "BlindMiniBoard", (PyObject *) &CustomType);
 
     return m;
 };
