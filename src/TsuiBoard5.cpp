@@ -13,6 +13,7 @@ typedef struct {
 } Py_Class_TsuiBoard;
 
 static PyObject *board_moves2(Py_Class_TsuiBoard *self);
+static PyObject *board_moves(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
@@ -46,6 +47,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self){
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
     {"moves2", (PyCFunction)board_moves2, METH_VARARGS, "(ToT)"},
+    {"moves", (PyCFunction)board_moves2, METH_VARARGS, "(ToT)"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"get_hansoku", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"get_board", (PyCFunction)get_board, METH_VARARGS, "(^p^)"},
@@ -441,6 +443,100 @@ static PyObject *board_moves2(Py_Class_TsuiBoard *self){
         if(moves4[i] != -1){
             PyObject *tuple = Py_BuildValue("(ii)", i + 285, 1);
             if(PySet_Add(pseudo_moves, tuple)){
+                return tuple;
+            };
+        };
+    };
+    return pseudo_moves;
+};
+
+static PyObject *board_moves(Py_Class_TsuiBoard *self){
+    int moves1[200] = {
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };//成でない「指す」手。移動先*方向=25*8=200
+    int moves2[25] = {
+        -1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,
+    };//可成域への成る手。移動先*方向=5*5=25(+200)
+    int moves3[60] = {
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };//非可成域への成る手。移動先*方向=20*3=(+225)
+    int moves4[125] = {
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };//打つ手。移動先*駒種=25*5=125(+285)
+    //計410
+    self->board->pseudo_moves1(moves1);
+    self->board->pseudo_moves2(moves2);
+    self->board->pseudo_moves3(moves3);
+    self->board->pseudo_moves4(moves4);
+    Py_ssize_t cnt = 0;
+    for(int i = 0;i < 200;i++){
+        if(moves1[i] != -1){
+            cnt++;
+        };
+    };
+    for(int i = 0;i < 25;i++){
+        if(moves2[i] != -1){
+            cnt++;
+        };
+    };
+    for(int i = 0;i < 60;i++){
+        if(moves3[i] != -1){
+            cnt++;
+        };
+    };
+    for(int i = 0;i < 125;i++){
+        if(moves4[i] != -1){
+            cnt++;
+        };
+    };
+    PyObject *pseudo_moves = PyList_New(cnt);
+    cnt = 0;
+    for(int i = 0;i < 200;i++){
+        if(moves1[i] != -1){
+            PyObject *tuple = Py_BuildValue("(ii)", i, moves1[i]);
+            if(PyList_SetItem(pseudo_moves, cnt, tuple)){
+                return tuple;
+            };
+            
+        };
+    };
+    for(int i = 0;i < 25;i++){
+        if(moves2[i] != -1){
+            PyObject *tuple = Py_BuildValue("(ii)", i + 200, moves2[i]);
+            if(PyList_SetItem(pseudo_moves, cnt, tuple)){
+                return tuple;
+            };
+        };
+    };
+    for(int i = 0;i < 60;i++){
+        if(moves3[i] != -1){
+            PyObject *tuple = Py_BuildValue("(ii)", i + 225, moves3[i]);
+            if(PyList_SetItem(pseudo_moves, cnt, tuple)){
+                return tuple;
+            };
+        };
+    };
+    for(int i = 0;i < 125;i++){
+        if(moves4[i] != -1){
+            PyObject *tuple = Py_BuildValue("(ii)", i + 285, 1);
+            if(PyList_SetItem(pseudo_moves, cnt, tuple)){
                 return tuple;
             };
         };
