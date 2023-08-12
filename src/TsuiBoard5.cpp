@@ -514,7 +514,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             if(PyList_SetItem(pseudo_moves, cnt, tuple)){
                 return tuple;
             };
-            
+            cnt++;
         };
     };
     for(int i = 0;i < 25;i++){
@@ -523,6 +523,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             if(PyList_SetItem(pseudo_moves, cnt, tuple)){
                 return tuple;
             };
+            cnt++;
         };
     };
     for(int i = 0;i < 60;i++){
@@ -531,6 +532,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             if(PyList_SetItem(pseudo_moves, cnt, tuple)){
                 return tuple;
             };
+            cnt++;
         };
     };
     for(int i = 0;i < 125;i++){
@@ -539,6 +541,7 @@ static PyObject *board_moves(Py_Class_TsuiBoard *self){
             if(PyList_SetItem(pseudo_moves, cnt, tuple)){
                 return tuple;
             };
+            cnt++;
         };
     };
     return pseudo_moves;
