@@ -12,7 +12,7 @@ typedef struct {
         TsuiBoard5 *board;
 } Py_Class_TsuiBoard;
 
-static PyObject *board_moves(Py_Class_TsuiBoard *self);
+static PyObject *board_moves2(Py_Class_TsuiBoard *self);
 static PyObject *get_tesu(Py_Class_TsuiBoard *self);
 static PyObject *get_mochi(Py_Class_TsuiBoard *self);
 static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args);
@@ -45,7 +45,7 @@ static PyObject *my_debug1(Py_Class_TsuiBoard *self){
 };
 
 static PyMethodDef Py_Class_TsuiBoard_methods[] = {
-    {"moves", (PyCFunction)board_moves, METH_VARARGS, "(ToT)"},
+    {"moves2", (PyCFunction)board_moves2, METH_VARARGS, "(ToT)"},
     {"tesu", (PyCFunction)get_tesu, METH_VARARGS, "(^o^)v"},
     {"get_hansoku", (PyCFunction)get_hansoku, METH_VARARGS, "(^p^)"},
     {"get_board", (PyCFunction)get_board, METH_VARARGS, "(^p^)"},
@@ -377,7 +377,7 @@ static PyObject *set_board(Py_Class_TsuiBoard *self, PyObject *args){
     return Py_None;
 };
 
-static PyObject *board_moves(Py_Class_TsuiBoard *self){
+static PyObject *board_moves2(Py_Class_TsuiBoard *self){
     PyObject *pseudo_moves = PySet_New(NULL);
     int moves1[200] = {
         -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
