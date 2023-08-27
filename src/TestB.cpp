@@ -14,7 +14,7 @@ typedef struct {
 
 
 static PyObject *test_func(Py_Test_Class *self, PyObject *args);
-
+static PyObject *test_str(Py_Test_Class *self, PyObject *args);
 static int test_init(Py_Test_Class *self, PyObject *args);
 
 static PyMethodDef Py_Test_Class_methods[] = {
