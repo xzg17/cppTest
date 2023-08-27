@@ -9,6 +9,7 @@ src_dir = 'src'
 ext_modules = [Extension('customZ',[src_dir + '/Test.cpp'])]
 ext_modules.append(Extension('np_nd_DIDS',[src_dir + '/Board.cpp']))
 ext_modules.append(Extension('BlindMiniShogi',[src_dir + '/TsuiBoard5.cpp']))
+ext_modules.append(Extension('TestMod',[src_dir + '/TestB.cpp']))
 setup(
   name='custom',
   ext_modules = ext_modules,
