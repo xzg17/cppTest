@@ -18,7 +18,7 @@ static PyObject *test_str(Py_Test_Class *self, PyObject *args);
 static int test_init(Py_Test_Class *self, PyObject *args);
 
 static PyMethodDef Py_Test_Class_methods[] = {
-    //{"test", (PyCFunction)test_func, METH_NOARGS, "(ToT)"},
+    {"test", (PyCFunction)test_func, METH_VARARGS, "(ToT)"},
     {NULL} /* Sentinel */
 };
 
