@@ -24,7 +24,7 @@ static PyMethodDef Py_Test_Class_methods[] = {
 
 
 static PyTypeObject TestType = {
-    PyVarObject_HEAD_INIT(NULL, 0) "custom.Custom", /* tp_name */
+    PyVarObject_HEAD_INIT(NULL, 0) "Test", /* tp_name */
     sizeof(Py_Test_Class),                           /* tp_basicsize */
     0,                                              /* tp_itemsize */
     /* methods */
