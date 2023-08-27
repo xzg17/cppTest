@@ -68,6 +68,11 @@ static PyObject *test_func(Py_Test_Class *self){
     return Py_BuildValue("i", self->test_class->num);
 };
 
+static PyObject *test_str(Py_Test_Class *self, PyObject *args){
+    std::string teststring = "test";
+    return PyUnicode_FromFormat(teststring.c_str());
+};
+
 static int test_init(Py_Test_Class *self, PyObject *args){
     int num;
     if (PyArg_ParseTuple(args, "i", &num)) {
