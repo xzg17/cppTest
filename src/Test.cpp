@@ -192,7 +192,7 @@ PyInit_customZ(void){
     Py_INCREF(&CustomType);
     PyModule_AddObject(m, "MyPyClass", (PyObject *) &CustomType);
 
-    return m;
+    return NULL;
 }
 //*
 static PyObject *Board_moves(Py_Class_Board *self){
