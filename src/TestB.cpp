@@ -65,7 +65,7 @@ static PyTypeObject TestType = {
 };
 
 static PyObject *test_func(Py_Test_Class *self){
-    return Py_BuildValue("i", self->test_class->num);
+    return Py_BuildValue("i", 0);
 };
 
 static PyObject *test_str(Py_Test_Class *self, PyObject *args){
