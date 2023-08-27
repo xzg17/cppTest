@@ -44,7 +44,7 @@ static PyTypeObject TestType = {
     0,                        /* tp_setattro */
     0,                        /* tp_as_buffer */
     Py_TPFLAGS_DEFAULT,       /* tp_flags */
-    PyDoc_STR("Custom objects"),/* tp_doc */
+    PyDoc_STR("Test objects"),/* tp_doc */
     0,                        /* tp_traverse */
     0,                        /* tp_clear */
     0,                        /* tp_richcompare */
