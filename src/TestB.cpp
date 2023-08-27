@@ -90,7 +90,7 @@ static struct PyModuleDef TestMod = {
 };
 
 PyMODINIT_FUNC
-PyInit_TestMod(void){
+PyInit_TestMod(void){//ここでNULLが返されるとSystemError: initialization of customZ failed without raising an exceptionとなる。
     PyObject *m;
     
     m = PyModule_Create(&TestMod);
